@@ -59,14 +59,22 @@ def main(argv: list[str]) -> int:
     (run_dir / "checks.json").write_text(json.dumps([asdict(c) for c in checks], indent=2) + "\n")
 
     # Scoring sheet: one row per required element, rating left blank for a person.
+    # Ratings and notes already in the sheet are kept, so re-running never wipes them.
+    sheet = run_dir / "scoring.csv"
+    kept: dict[tuple[str, str], tuple[str, str]] = {}
+    if sheet.exists():
+        with sheet.open(newline="") as handle:
+            for line in csv.DictReader(handle):
+                kept[(line["question_id"], line["element_id"])] = (line["rating (fully|partly|missing)"], line["reviewer_notes"])
     by_id = {q.id: q for q in questions}
-    with (run_dir / "scoring.csv").open("w", newline="") as handle:
+    with sheet.open("w", newline="") as handle:
         writer = csv.writer(handle, lineterminator="\n")
         writer.writerow(["run_id", "question_id", "question", "element_id", "check", "source", "answer_file", "rating (fully|partly|missing)", "reviewer_notes"])
         for record in records:
             question = by_id[record.question_id]
             for element in question.required_elements:
-                writer.writerow([run_id, question.id, question.question, element.id, element.check, element.source, f"{run_dir}/{question.id}.json", "", ""])
+                rating, notes = kept.get((question.id, element.id), ("", ""))
+                writer.writerow([run_id, question.id, question.question, element.id, element.check, element.source, f"{run_dir}/{question.id}.json", rating, notes])
 
     total = len(records)
 

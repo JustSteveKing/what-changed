@@ -1,0 +1,174 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "## Introduction: Navigating the Laravel 13 Upgrade Landscape\n\nUpgrading from Laravel 12 to Laravel 13 introduces several changes with significant impact, requiring careful attention from developers. While the framework aims for a relatively minor upgrade effort for most applications, focusing on AI-native workflows and enhanced developer APIs, specific adjustments are necessary to ensure a smooth transition and leverage the new capabilities [1][2].\n\n## Critical PHP Version Requirements and Dependency Nuances\n\nA primary consideration for upgrading to Laravel 13 is its PHP version requirement. Laravel 13 officially mandates **PHP 8.3** as the minimum supported version [1][3]. This is a direct consequence of PHP 8.1 reaching end-of-life and ensuring users benefit from supported, secure, and performant PHP versions [4].\n\nHowever, a critical nuance exists for later versions of Laravel 13. Specifically, **Laravel 13.3.0 and subsequent releases effectively require PHP 8.4** [5]. This is due to transitive dependencies on Symfony 8 components (e.g., `symfony/error-handler ^8.0` and `symfony/console ^8.0`), which themselves demand PHP 8.4 or higher [5]. While Laravel 13 initially advertises PHP 8.3 compatibility, developers attempting to install additional packages on PHP 8.3 with Laravel 13.3.0+ will encounter dependency conflicts. Workarounds include upgrading to PHP 8.4, explicitly pinning Symfony packages to version 7.4 in `composer.json`, or remaining on Laravel 12 if PHP 8.4 isn't immediately feasible [5].\n\n## Key Breaking Changes and Configuration Adjustments\n\nSeveral specific breaking changes and configuration adjustments require developer attention during the upgrade process:\n\n*   **CSRF Middleware Renaming and Enhancements**: The `VerifyCsrfToken` middleware has been **renamed to `PreventRequestForgery`** [6][3]. This new middleware includes enhanced origin verification using the `Sec-Fetch-Site` header, adding a layer of security beyond traditional token validation [6]. Although `VerifyCsrfToken` remains a deprecated alias, direct references in tests or route definitions should be updated to `PreventRequestForgery` to avoid potential issues [6][3].\n*   **Cache and Session Configuration Defaults**: Default prefixes for cache and session have changed from **underscore (`_`) to hyphen (`-`)** [6][3]. Applications relying on framework-level fallback configurations for these prefixes, rather than explicitly defining them, will experience a complete cache invalidation and active user sessions being logged out upon deployment. To prevent this, `CACHE_PREFIX`, `REDIS_PREFIX`, and `SESSION_COOKIE` should be explicitly configured in the environment file before upgrading [6][3]. Additionally, the cache configuration's `serializable_classes` option now **defaults to `false`** as a security measure against PHP deserialization gadget chain attacks [6][3]. Applications intentionally storing PHP objects in the cache must explicitly list allowed classes for deserialization or migrate to non-object payloads [6].\n*   **Removed Deprecated Methods**: Several methods previously deprecated in Laravel 11 and 12 have been **removed** in Laravel 13 [7]. These include:\n    *   `Route::controller()` (developers should use `Route::resource()` or explicit route definitions) [7].\n    *   `$request->has()` when used with array syntax (superseded by `$request->hasAny()`) [7].\n    *   `Model::unguard()` (replaced by `Model::preventSilentlyDiscardingAttributes()`) [7].\n    *   `Str::slug()` when using a custom separator as the second positional argument (now requires a named argument) [7].\n*   **Queue Event Property Changes**: The `Illuminate\\Queue\\Events\\JobAttempted` event now exposes the exception object via `$event->exception`, replacing the previous boolean `$event->exceptionOccurred` [6][3]. Similarly, the `Illuminate\\Queue\\Events\\QueueBusy` event's `$connection` property has been **renamed to `$connectionName`** for consistency [6][3].\n*   **Model Factory and Observer Interaction**: Creating models via factories can now throw a `LogicException` if observers are registered within the model's `boot()` method. This circular re-entry issue can be resolved by moving observer registration to the `booted()` method or using `whenBooted()` for traits [8].\n*   **`Container::call()` Stricter Behavior**: The `Container::call()` method now **respects nullable class parameter defaults** when no binding exists, aligning with constructor injection behavior introduced in Laravel 12. This can alter outcomes if previous logic relied on the container resolving a class despite a `null` default [6][3].\n\n## Broader Impact and New Capabilities\n\nDespite these specific breaking changes and necessary configuration updates, Laravel 13 is generally considered a **minor upgrade in terms of effort for most existing applications**, with many able to upgrade with minimal code modification [1][2]. The release focuses on delivering **substantial new capabilities** that enhance developer experience and introduce modern features:\n\n*   **First-Party Laravel AI SDK**: A production-stable SDK provides a unified API for AI-native workflows, including text generation, tool-calling agents, embeddings, audio, image creation, and vector-store integrations [1][9]. This allows for provider-agnostic AI features, simplifying development for OpenAI, Anthropic, and Gemini services [9].\n*   **JSON:API Resources**: First-party support for JSON:API resources makes it straightforward to return responses compliant with the JSON:API specification [1][9].\n*   **Semantic / Vector Search**: Laravel 13 deepens its semantic search capabilities with native vector query support, including `whereVectorSimilarTo()` in the query builder for PostgreSQL with the `pgvector` extension [1][9].\n*   **Expanded PHP Attribute Support**: PHP attributes are now supported across numerous framework locations (e.g., controllers, jobs, models) as an optional, additive alternative to traditional property declarations [1][9][4].\n*   **`Cache::touch()`**: A new `Cache::touch()` method allows extending an existing cache item's TTL without retrieving and re-storing its value, optimizing operations like sliding session windows [1][9].\n\nThe overall impact of the Laravel 13 upgrade is a move towards a more secure, performant, and feature-rich framework. Developers are advised to perform thorough testing, consult the official upgrade guides, and pay close attention to the highlighted high-impact and medium-impact changes to ensure a smooth transition.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://laravel.com/framework/docs/releases",
+      "title": "Release Notes | Laravel 13.x - The clean stack for Artisans and agents",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 requires a minimum PHP version of 8.3.",
+        "Laravel 13 release date for bug fixes is March 17th, 2026.",
+        "Laravel 13 release date for security fixes is March 17th, 2028.",
+        "Laravel 13 release includes first-party AI primitives, JSON:API resources, semantic / vector search capabilities, and incremental improvements across queues, cache, and security.",
+        "Laravel 13 release is a relatively minor upgrade in terms of effort, while still delivering substantial new capabilities.",
+        "Most Laravel applications may upgrade to Laravel 13 without changing much application code.",
+        "Laravel 13 introduces the first-party Laravel AI SDK.",
+        "Laravel 13 includes first-party JSON:API resources.",
+        "Laravel 13 adds queue routing by class via `Queue::route(...)`.",
+        "Laravel 13 continues to expand first-party PHP attribute support across the framework."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://www.itpathsolutions.com/laravel-13-new-features-updates-guide",
+      "title": "Laravel 13: New Features, Release Date &amp; Upgrade Guide (2026)",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 was released on March 17, 2026.",
+        "Laravel 13 requires PHP 8.3 or higher.",
+        "Laravel 13 introduces first-party AI tooling, JSON:API resources, vector and semantic search capabilities, and improvements across queues, caching and security.",
+        "Most Laravel 12 applications can upgrade with relatively limited code changes.",
+        "Laravel 13 has zero breaking changes for the majority of codebases under normal conditions.",
+        "Specific changes in Laravel 13 include cache prefix formatting, model booting restrictions, CSRF middleware naming, and DELETE query behavior.",
+        "Bug fixes for Laravel 13 are provided through Q3 2027, and security fixes continue through Q1 2028.",
+        "The Laravel AI SDK is now a first-party, production-stable component of Laravel 13.",
+        "The Laravel AI SDK works with OpenAI and Anthropic out of the box.",
+        "Laravel 13 completes the migration toward native PHP Attributes as the standard way to configure framework behavior."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://ortamarco.me/en/blog/what-breaks-upgrading-to-laravel-13",
+      "title": "Laravel 13 Breaking Changes: The Real List | Marco Orta",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 requires PHP 8.3 minimum and supports up to PHP 8.5.",
+        "Laravel 12 stopped receiving bug fixes on August 13, 2026.",
+        "The CSRF middleware `VerifyCsrfToken` is renamed to `PreventRequestForgery` in Laravel 13 and now performs origin verification by reading the `Sec-Fetch-Site` header.",
+        "The default `cache` configuration in Laravel 13 includes `serializable_classes => false` as a hardening measure against deserialization gadget chain attacks.",
+        "Laravel 13 validates that `uniqueBy` is not empty for `upsert` operations with MySQL or MariaDB, throwing `InvalidArgumentException` instead of generating invalid SQL.",
+        "The default cache prefixes in Laravel 13 move from underscore to hyphen (e.g., `myapp_cache_` to `myapp-cache-`), affecting applications that rely on framework fallbacks.",
+        "The `JobAttempted` event in Laravel 13 now exposes the exception object (`$event->exception`) instead of a boolean (`$event->exceptionOccurred`).",
+        "The `QueueBusy` event in Laravel 13 renames the `$connection` property to `$connectionName` for consistency.",
+        "In Laravel 13, routes with an explicit domain are evaluated before routes without one.",
+        "Laravel 13 collection serialization restores eager-loaded relations when a model collection is serialized and restored."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://medium.com/@tankpratik125/beyond-the-hype-a-practical-guide-to-upgrading-to-laravel-13-7e0959635e7e",
+      "title": "Medium",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 requires PHP 8.3 or higher, dropping support for PHP 8.2.",
+        "PHP 8.1 reached its end-of-life in December 2025.",
+        "Laravel 13 introduces PHP attributes for route definitions, middleware assignment, event listeners, queue jobs, and model configurations.",
+        "The Laravel AI SDK is now stable and offers an abstraction for interacting with AI providers like OpenAI and Anthropic.",
+        "Cache and session prefixes have been altered in Laravel 13 to prevent conflicts in shared environments.",
+        "Eager-loaded relations on models within collections are preserved during serialization in Laravel 13.",
+        "The Container::call() method in Laravel 13 throws an exception if it cannot resolve a class."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://github.com/laravel/framework/issues/59564",
+      "title": "Laravel 13.3+ requires PHP 8.4 due to Symfony 8 transitive dependency · Issue #59564 · laravel/framework · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13.3.0+ requires PHP 8.4 due to transitive dependencies on symfony/error-handler ^8.0 and symfony/console ^8.0.",
+        "Laravel 13 officially advertises PHP 8.3 as the minimum requirement.",
+        "Users running PHP 8.3 with Laravel 13.3+ may encounter errors when installing additional packages.",
+        "A workaround is to upgrade to PHP 8.4.",
+        "Another workaround is to pin Symfony to version 7.4 in composer.json: composer require symfony/console:\"^7.4\" symfony/error-handler:\"^7.4\".",
+        "Staying on Laravel 12 is an option, as it fully supports PHP 8.3 until August 2026.",
+        "The error message indicates that symfony/error-handler v8.0.8 requires php >=8.4, but the user's PHP version is 8.3.30."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://laravel.com/framework/docs/upgrade",
+      "title": "Upgrade Guide | Laravel 13.x - The clean stack for Artisans and agents",
+      "kind": "research_citation",
+      "claims": [
+        "To upgrade to Laravel 13 from 12.x, update dependencies: laravel/framework to ^13.0, laravel/boost to ^2.0, laravel/tinker to ^3.0, phpunit/phpunit to ^12.0, and pestphp/pest to ^4.0.",
+        "The Laravel Installer can be updated using `composer global update laravel/installer`.",
+        "The CSRF middleware has been renamed from `VerifyCsrfToken` to `PreventRequestForgery` in Laravel 13.",
+        "The `Illuminate\\Queue\\Events\\JobAttempted` event now exposes the exception object via `$event->exception`, replacing `$event->exceptionOccurred`.",
+        "The `Illuminate\\Queue\\Events\\QueueBusy` event property `$connection` has been renamed to `$connectionName`.",
+        "The default application skeleton sets the session `serialization` option to `json` in `config/session.php` for security.",
+        "When table names are inferred for polymorphic pivot models using custom pivot model classes, Laravel 13 now generates pluralized names.",
+        "The cache contracts now include a `touch` method for extending item TTLs.",
+        "The default application `cache` configuration now includes a `serializable_classes` option set to `false`.",
+        "The `Container::call` method now respects nullable class parameter defaults when no binding exists."
+      ]
+    },
+    {
+      "position": 7,
+      "url": "https://www.phpeveryday.com/articles/laravel-13-2026-release-new-features-and-upgrade-guide",
+      "title": "Laravel 13 (2026) Release: New Features and Upgrade Guide - PHP Everyday",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 removed the `Route::controller()` method.",
+        "Laravel 13 removed the `$request->has()` method when used with array syntax.",
+        "Laravel 13 removed the `Model::unguard()` method.",
+        "Laravel 13 removed the `Str::slug()` method when using a custom separator as the second positional argument."
+      ]
+    },
+    {
+      "position": 8,
+      "url": "https://github.com/laravel/framework/discussions/59272",
+      "title": "[13.x] Exception is thrown when model is created using factory · laravel/framework · Discussion #59272 · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "In Laravel 13.0.0, an exception is thrown when a model is created using a factory if the observer is called within the `boot()` method, causing a circular re-entry.",
+        "The issue can be fixed by replacing `boot()` with `booted()` in the model's definition, as `booted()` runs after the model finishes booting.",
+        "Alternatively, for traits, `whenBooted()` can be used, or the observer can be called within an `initialize[TraitName]` method."
+      ]
+    },
+    {
+      "position": 9,
+      "url": "https://www.krishaweb.com/blog/laravel-13-key-features/",
+      "title": "Laravel 13 Features (2026): What Changed and Why It Matters for Your Next Project",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 requires PHP 8.3 as a minimum version, up from PHP 8.2 in Laravel 12.",
+        "Laravel 13 has zero breaking changes from Laravel 12 for standard applications.",
+        "Laravel 13 supports bug fixes through Q3 2027 and security fixes through Q1 2028.",
+        "Laravel 13 includes a production-stable, first-party AI SDK supporting text generation, tool-calling agents, image creation, audio synthesis, and embeddings.",
+        "Laravel 13 introduces semantic vector search in the query builder using `whereVectorSimilarTo()`, requiring PostgreSQL with the pgvector extension.",
+        "PHP Attributes can be optionally used in Laravel 13 across over 15 framework locations as an alternative to class property declarations.",
+        "Passkey authentication is a first-party feature in Laravel 13, integrated with Fortify and starter kits.",
+        "Laravel 13 introduces `Cache::touch()` to extend a cache entry's Time To Live (TTL) without altering the value.",
+        "Laravel 13 adds a database driver for Reverb scaling as an alternative to Redis.",
+        "Laravel 13 includes first-party JSON:API resources via `Illuminate\\Http\\Resources\\JsonApi\\JsonApiResource`."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What are the high impact changes when upgrading from Laravel 12 to Laravel 13?",
+  "decision": {
+    "route": "research",
+    "reason": "Asks what changed or how a change affects code; needs several sources.",
+    "packages": [
+      "laravel/framework"
+    ],
+    "version_mentioned": {
+      "package": "laravel/framework",
+      "version": "12"
+    }
+  },
+  "cached": false,
+  "started_at": "2026-10-06T10:29:06.849448Z",
+  "ended_at": "2026-10-06T10:31:37.346691Z",
+  "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+  "question_id": "q07",
+  "strategy": "routed",
+  "expected_route": "research",
+  "duration_ms": 150497
+}

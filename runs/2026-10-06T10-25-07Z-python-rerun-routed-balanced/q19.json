@@ -1,0 +1,23 @@
+{
+  "terminal_state": "declined",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The question asks for an opinion or comparison, not what changed.",
+  "sources": [],
+  "error": null,
+  "cost": null,
+  "cost_note": "No outbound call was made.",
+  "question": "Is Livewire better than Inertia for a new project?",
+  "decision": {
+    "route": "decline",
+    "reason": "The question asks for an opinion or comparison, not what changed."
+  },
+  "cached": false,
+  "started_at": "2026-10-06T10:49:05.074834Z",
+  "ended_at": "2026-10-06T10:49:05.074892Z",
+  "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+  "question_id": "q19",
+  "strategy": "routed",
+  "expected_route": "decline",
+  "duration_ms": 0
+}

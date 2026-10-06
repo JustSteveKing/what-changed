@@ -1,0 +1,38 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The latest GitHub release of inertiajs/inertia-laravel is v3.5.1, published 2026-10-01T10:38:28Z.\n\nRelease notes:\n\n## What's Changed\r\n* [3.x] Assert big integers as plain integers in tests by @pascalbaljet in https://github.com/inertiajs/inertia-laravel/pull/918\r\n\r\n**Full Changelog**: https://github.com/inertiajs/inertia-laravel/compare/v3.5.0...v3.5.1",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://github.com/inertiajs/inertia-laravel/releases/tag/v3.5.1",
+      "title": "v3.5.1",
+      "kind": "github_release",
+      "claims": [
+        "Latest release of inertiajs/inertia-laravel is v3.5.1, published 2026-10-01T10:38:28Z."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Public Packagist and GitHub endpoints; no cost is reported.",
+  "question": "Show me the release notes for the latest Inertia release",
+  "decision": {
+    "route": "direct",
+    "reason": "Asks for the date or notes of the latest release of one package.",
+    "lookup": {
+      "kind": "github_latest_release",
+      "package": "inertiajs/inertia-laravel",
+      "repo": "inertiajs/inertia-laravel"
+    }
+  },
+  "cached": false,
+  "started_at": "2026-10-06T10:29:06.261852Z",
+  "ended_at": "2026-10-06T10:29:06.595732Z",
+  "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+  "question_id": "q04",
+  "strategy": "routed",
+  "expected_route": "direct",
+  "duration_ms": 333
+}

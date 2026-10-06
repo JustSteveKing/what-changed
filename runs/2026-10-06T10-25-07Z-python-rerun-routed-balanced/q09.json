@@ -1,0 +1,146 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "### Introduction: Laravel 13's PHP Landscape\n\nLaravel 13 officially supports **PHP versions 8.3 through 8.5**, with an initial minimum requirement of PHP 8.3. However, for Laravel 13.3.0 and newer releases, **PHP 8.4 becomes effectively required** due to transitive dependencies on Symfony 8, despite the initial 8.3 minimum. This means that while Laravel 13 was designed to be compatible with PHP 8.3 at its launch, later minor versions introduce a higher practical floor for PHP versions [1][2].\n\n### Official PHP Support Range for Laravel 13\n\nLaravel 13, released on March 17, 2026, officially states its minimum PHP requirement as **PHP 8.3** and supports versions up to **PHP 8.5** [1][3][4]. To run Laravel 13, a web server must have PHP 8.3 or higher installed, along with several essential PHP extensions. These include Ctype, cURL, DOM, Fileinfo, Filter, Hash, Mbstring, OpenSSL, PCRE, PDO, Session, Tokenizer, and XML [5]. Additionally, for common use cases like localization and the default testing suite, `php-intl` and `php-sqlite3` extensions are often required [6].\n\n### Evolving Requirements: The Case of Laravel 13.3+ and PHP 8.4\n\nWhile Laravel 13's official documentation indicates PHP 8.3 as the minimum, a practical shift occurs with minor versions **13.3.0 and above**. These later releases pull in **Symfony 8** components (specifically `symfony/error-handler ^8.0` and `symfony/console ^8.0`) as transitive dependencies [2]. Symfony 8, in turn, requires **PHP 8.4** [2].\n\nThis creates a dependency conflict for developers attempting to run Laravel 13.3+ on PHP 8.3. Installing any additional package via Composer would result in an error, as Composer would try to resolve to Symfony 8.0.8, which explicitly demands PHP 8.4 [2].\n\nDevelopers encountering this issue have a few options:\n*   **Upgrade to PHP 8.4**: This is the most straightforward solution, ensuring full compatibility with the latest Laravel 13.x features [2].\n*   **Pin Symfony dependencies**: Manually pinning `symfony/console` and `symfony/error-handler` to version `^7.4` in the project's `composer.json` can temporarily resolve the conflict for PHP 8.3 users [2].\n*   **Stay on Laravel 12**: If upgrading PHP is not immediately feasible, Laravel 12 fully supports PHP 8.3 until August 2026 [2].\n\n### Conclusion: Choosing the Right PHP Version for Laravel 13\n\nIn summary, while Laravel 13 initially set a minimum requirement of PHP 8.3 and supports up to 8.5, the practical reality for newer minor versions like **Laravel 13.3.0 and beyond necessitates PHP 8.4**. This is driven by its underlying Symfony 8 dependencies.\n\nFor new Laravel 13 projects or upgrading existing ones, developers should strongly consider using **PHP 8.4** to avoid potential dependency conflicts and leverage the latest features and security updates [7]. PHP 8.4 is recommended for production environments as of March 2026 and will continue to receive security support until December 31, 2028 [7][8]. Adhering to the latest supported PHP versions ensures access to active bug fixes, critical security patches, and broad ecosystem compatibility.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://endoflife.date/laravel",
+      "title": "Laravel | endoflife.date",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 requires PHP versions 8.3 - 8.5.",
+        "Laravel 12 supports PHP versions 8.2 - 8.5.",
+        "Laravel 11 supports PHP versions 8.2 - 8.4.",
+        "Laravel 10 supports PHP versions 8.1 - 8.3.",
+        "Laravel 9 supports PHP versions 8.0 - 8.2.",
+        "Laravel 8 supports PHP versions 7.3 - 8.1.",
+        "Laravel 7 supports PHP versions 7.2 - 8.0.",
+        "Laravel 6 supports PHP versions 7.2 - 8.0.",
+        "Laravel 5.8 supports PHP versions 7.1 - 7.3.",
+        "Laravel 5.5 supports PHP versions 7.0 - 7.1."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://github.com/laravel/framework/issues/59564",
+      "title": "Laravel 13.3+ requires PHP 8.4 due to Symfony 8 transitive dependency · Issue #59564 · laravel/framework · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13.3.0+ requires PHP 8.4 due to transitive dependencies on symfony/error-handler ^8.0 and symfony/console ^8.0.",
+        "Laravel 13 officially advertises PHP 8.3 as the minimum requirement.",
+        "Users running PHP 8.3 with Laravel 13.3+ will encounter dependency errors.",
+        "A workaround is to upgrade to PHP 8.4.",
+        "Another workaround is to pin Symfony to version 7.4 in composer.json: composer require symfony/console:\"^7.4\" symfony/error-handler:\"^7.4\".",
+        "Staying on Laravel 12 is an option, which fully supports PHP 8.3 until August 2026."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://en.wikipedia.org/wiki/Laravel",
+      "title": "Laravel - Wikipedia",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 is scheduled for release on March 17, 2026.",
+        "Laravel 13 will have bug fixes until Q3 2027.",
+        "Laravel 13 will have security fixes until March 17, 2028.",
+        "Laravel 13 will require PHP versions 8.3 – 8.5.",
+        "Laravel 12 is scheduled for release on February 24, 2025.",
+        "Laravel 12 will have bug fixes until August 13, 2026.",
+        "Laravel 12 will have security fixes until February 24, 2027.",
+        "Laravel 12 will require PHP version 8.2.",
+        "Laravel 11 was released on March 12, 2024.",
+        "Laravel 11 will have bug fixes until September 3, 2025."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://itmarkerz.co.in/laravel-versions",
+      "title": "Laravel Version History 2026 — Laravel 13 Current, PHP...",
+      "kind": "research_citation",
+      "claims": [
+        "The current stable Laravel version is Laravel 13.",
+        "Laravel 13 was released on March 17, 2026.",
+        "Laravel 13 requires PHP 8.3+.",
+        "Laravel 13 has zero breaking changes.",
+        "Laravel 13 requires PHP 8.3–8.4.",
+        "Laravel 13 receives bug fixes until September 2027.",
+        "Laravel 13 receives security fixes until February 2028."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://laravel.com/framework/docs/deployment",
+      "title": "Deployment | Laravel 13.x - The clean stack for Artisans and agents",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel framework requires PHP >= 8.3",
+        "Laravel framework requires Ctype PHP Extension",
+        "Laravel framework requires cURL PHP Extension",
+        "Laravel framework requires DOM PHP Extension",
+        "Laravel framework requires Fileinfo PHP Extension",
+        "Laravel framework requires Filter PHP Extension",
+        "Laravel framework requires Hash PHP Extension",
+        "Laravel framework requires Mbstring PHP Extension",
+        "Laravel framework requires OpenSSL PHP Extension",
+        "Laravel framework requires PCRE PHP Extension"
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://stackoverflow.com/questions/40815984/how-to-install-all-required-php-extensions-for-laravel",
+      "title": "How to install all required PHP extensions for Laravel? - Stack Overflow",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 requires PHP 8.3 - PHP 8.5.",
+        "Laravel 13 requires the following PHP extensions: BCMath, Ctype, cURL, DOM, Fileinfo, JSON, Mbstring, OpenSSL, PCRE, PDO, Tokenizer, and XML.",
+        "The following PHP extensions are frequently required by Laravel's internal helpers and many third-party packages for translation and localization: php-intl.",
+        "The default testing suite in most Laravel applications requires the php-sqlite3 extension."
+      ]
+    },
+    {
+      "position": 7,
+      "url": "https://www.herodevs.com/blog-posts/php-end-of-life-dates-support-timeline-for-every-version-2026",
+      "title": "HeroDevs Blog | PHP End-of-Life Dates: Support Timeline for Every Version (2026)",
+      "kind": "research_citation",
+      "claims": [
+        "PHP 8.3 will continue receiving critical security patches through December 31, 2027.",
+        "PHP 8.4 is the recommended version for production environments as of March 2026, and will remain supported through December 31, 2028."
+      ]
+    },
+    {
+      "position": 8,
+      "url": "https://www.php.net/supported-versions.php",
+      "title": "PHP: Supported Versions",
+      "kind": "research_citation",
+      "claims": [
+        "PHP 8.3 will reach its end of security support on December 31, 2027.",
+        "PHP 8.4 will reach its end of security support on December 31, 2028."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "Which PHP versions does Laravel 13 support?",
+  "decision": {
+    "route": "research",
+    "reason": "Asks about a specific version; needs several sources.",
+    "packages": [
+      "laravel/framework"
+    ],
+    "version_mentioned": {
+      "package": "laravel/framework",
+      "version": "13"
+    }
+  },
+  "cached": false,
+  "started_at": "2026-10-06T10:35:16.135228Z",
+  "ended_at": "2026-10-06T10:37:04.115093Z",
+  "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+  "question_id": "q09",
+  "strategy": "routed",
+  "expected_route": "research",
+  "duration_ms": 107979
+}

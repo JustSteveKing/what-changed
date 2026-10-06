@@ -1,0 +1,41 @@
+{
+  "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+  "strategy": "routed",
+  "research_mode": "balanced",
+  "started_at": "2026-10-06T10:25:07.769385Z",
+  "ended_at": "2026-10-06T10:49:05.075642Z",
+  "git_commit": "24543a5010c1e16ce77efb3fa60370c99fc9e158",
+  "git_dirty": false,
+  "python": "3.13.14",
+  "os": "Darwin 25.5.0 arm64",
+  "packages": {
+    "tabstack": "2.8.5",
+    "pydantic": "2.13.5",
+    "httpx": "0.28.1",
+    "pytest": "9.1.1",
+    "mypy": "2.4.0"
+  },
+  "github_token_set": true,
+  "question_order": [
+    "q06",
+    "q20",
+    "q01",
+    "q02",
+    "q03",
+    "q04",
+    "q05",
+    "q07",
+    "q08",
+    "q09",
+    "q10",
+    "q11",
+    "q12",
+    "q13",
+    "q14",
+    "q15",
+    "q16",
+    "q17",
+    "q18",
+    "q19"
+  ]
+}

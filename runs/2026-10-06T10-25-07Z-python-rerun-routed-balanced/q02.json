@@ -1,0 +1,37 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The latest stable version of pestphp/pest on Packagist is v5.3.0, released 2026-10-01T16:58:48+00:00.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://repo.packagist.org/p2/pestphp/pest.json",
+      "title": "Packagist metadata for pestphp/pest",
+      "kind": "packagist_metadata",
+      "claims": [
+        "Latest stable version of pestphp/pest is v5.3.0, released 2026-10-01T16:58:48+00:00."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Public Packagist and GitHub endpoints; no cost is reported.",
+  "question": "What's the current version of Pest?",
+  "decision": {
+    "route": "direct",
+    "reason": "Asks for the latest version of one package.",
+    "lookup": {
+      "kind": "packagist_latest_stable",
+      "package": "pestphp/pest"
+    }
+  },
+  "cached": false,
+  "started_at": "2026-10-06T10:29:05.732670Z",
+  "ended_at": "2026-10-06T10:29:05.906773Z",
+  "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+  "question_id": "q02",
+  "strategy": "routed",
+  "expected_route": "direct",
+  "duration_ms": 174
+}

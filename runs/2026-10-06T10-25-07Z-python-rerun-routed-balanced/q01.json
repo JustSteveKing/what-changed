@@ -1,0 +1,37 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The latest stable version of livewire/livewire on Packagist is v4.4.7, released 2026-09-28T18:12:51+00:00.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://repo.packagist.org/p2/livewire/livewire.json",
+      "title": "Packagist metadata for livewire/livewire",
+      "kind": "packagist_metadata",
+      "claims": [
+        "Latest stable version of livewire/livewire is v4.4.7, released 2026-09-28T18:12:51+00:00."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Public Packagist and GitHub endpoints; no cost is reported.",
+  "question": "What is the latest stable version of livewire/livewire?",
+  "decision": {
+    "route": "direct",
+    "reason": "Asks for the latest version of one package.",
+    "lookup": {
+      "kind": "packagist_latest_stable",
+      "package": "livewire/livewire"
+    }
+  },
+  "cached": false,
+  "started_at": "2026-10-06T10:29:05.523007Z",
+  "ended_at": "2026-10-06T10:29:05.730320Z",
+  "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+  "question_id": "q01",
+  "strategy": "routed",
+  "expected_route": "direct",
+  "duration_ms": 207
+}

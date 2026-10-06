@@ -1,0 +1,157 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The latest stable releases for the core Livewire framework, **v4.4.7** and **v3.8.10**, were both issued on **September 28, 2026**. These are minor updates primarily focused on bug fixes and stability within their respective major versions [1]. The most significant changes and new features were introduced with **Livewire 4**, which had its initial release on **August 18, 2025**. This major overhaul brought a suite of enhancements designed to improve developer experience, optimize performance, and expand the framework's capabilities for building dynamic Laravel applications [2][3].\n\n## Key Innovations in Livewire 4\n\nLivewire 4 introduced foundational shifts and powerful new features:\n\n*   **Single-File Components & Enhanced Structure**: Components can now consolidate PHP logic, Blade templates, CSS, and JavaScript into a single file, streamlining development and improving organization. This also includes automatic scoping of styles to the component, preventing unintended style leakage [2][4][5]. For larger components, a multi-file format keeps related files within a single directory [2].\n*   **Islands Architecture**: A standout feature, Islands allow for isolated regions within a component to update independently. This prevents full parent re-renders, significantly boosting performance by processing and updating only the necessary parts of the DOM [2][4][3].\n*   **Modern UI Features**:\n    *   **Optimistic UI**: New directives such as `wire:show`, `wire:text`, and `wire:bind` enable immediate client-side interface feedback, making applications feel more responsive without waiting for a server round-trip [2][4].\n    *   **View Transitions API**: The `wire:transition` directive now leverages the browser's native View Transitions API for smooth, hardware-accelerated animations, deprecating previous custom modifiers [6][2][4].\n    *   **Drag-and-Drop**: Built-in drag-and-drop sorting functionality is provided through the `wire:sort` directive, simplifying the implementation of sortable lists [2][4].\n*   **Performance & Rendering Optimizations**: Livewire 4 includes a **Blaze compiler** that can make Blade component rendering up to **20 times faster**. Additionally, a new diffing algorithm reduces DOM updates by **60%**, contributing to faster page loads and smoother interactions [3][7][8].\n*   **Routing Enhancements**: A new `Route::livewire()` method simplifies routing for full-page components, allowing them to be referenced by name rather than class [6][2][4].\n\n## Breaking Changes and Upgrade Considerations\n\nWhile Livewire 4 largely aimed for backward compatibility, some changes require attention during upgrades from v3:\n\n*   **`wire:model` Behavior**: Modifiers like `.blur` and `.change` now control when client-side state syncs, not just when network requests are sent. To retain the previous behavior of syncing on blur or change events, developers must add the `.live` modifier (e.g., `wire:model.live.blur`) [6]. Furthermore, `wire:model` now ignores child events by default; the `.deep` modifier is required to capture them [6][5].\n*   **Configuration Updates**: Several keys in `config/livewire.php` were renamed, such as 'layout' to 'component_layout' and 'lazy_placeholder' to 'component_placeholder'. The `smart_wire_keys` option now defaults to `true` [6].\n*   **Upgrade Process**: The general upgrade path involves updating your `composer.json` file to `livewire/livewire:^4.0` and clearing the application cache using `php artisan optimize:clear` [6][4].\n\n## Conclusion: A More Powerful and Efficient Framework\n\nLivewire 4 represents a substantial advancement for building dynamic interfaces within the Laravel ecosystem, prioritizing both developer experience and application performance. The introduction of single-file components, the innovative Islands architecture, and significant rendering optimizations collectively contribute to a more efficient and streamlined development process. The ongoing minor releases, such as **v4.4.7** and **v3.8.10**, continue to refine and stabilize these foundational changes, ensuring a robust and performant framework for developers [1].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://github.com/livewire/livewire/releases",
+      "title": "Releases · livewire/livewire · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire v4.4.7 was released on September 28, 2026.",
+        "Livewire v3.8.10 was released on September 28, 2026.",
+        "Livewire v4.4.6 was released on September 21, 2026.",
+        "Livewire v4.4.5 was released on September 14, 2026.",
+        "Livewire v3.8.9 was released on September 14, 2026.",
+        "Livewire v4.4.4 was released on September 7, 2026.",
+        "Livewire v3.8.8 was released on September 7, 2026.",
+        "Livewire v4.4.3 was released on August 31, 2026.",
+        "Livewire v3.8.7 was released on August 31, 2026.",
+        "Livewire v4.4.2 was released on August 24, 2026."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://laravel-news.com/everything-new-in-livewire-4",
+      "title": "Everything new in Livewire 4",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire 4 introduces view-based components where PHP, Blade, CSS, and JavaScript can reside in a single file.",
+        "Livewire 4 introduces `Route::livewire()` for referencing components by name instead of class.",
+        "Livewire 4 introduces namespaces like `pages::` and `layouts::` by default.",
+        "Component JavaScript and CSS can now be added directly within `<script>` and `<style>` tags in Livewire 4 components.",
+        "Livewire 4 introduces Islands, which are isolated regions within a component that update independently.",
+        "Livewire 4 introduces slots and attribute forwarding for components.",
+        "Livewire 4 adds drag-and-drop sorting functionality with the `wire:sort` directive.",
+        "Livewire 4 adds smooth transitions using the `wire:transition` directive and the browser's View Transitions API.",
+        "Livewire 4 introduces Optimistic UI directives: `wire:show`, `wire:text`, `wire:bind`, and `$dirty`.",
+        "Livewire 4 automatically adds a `data-loading` attribute to elements triggering network requests, in addition to `wire:loading`."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://laravel.com/blog/livewire-4-is-here-the-artisan-of-the-day-is-caleb-porzio",
+      "title": "Livewire 4 Is Here! The Artisan of the Day Is Caleb Porzio. | Laravel - The clean stack for Artisans and agents",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire 4 was released on August 18, 2025.",
+        "Livewire 4 introduces single-file components as the default.",
+        "Livewire 4 includes new directories for better project structure: `components/`, `pages/`, and `layouts/`.",
+        "Livewire 4 supports lightning bolt file extensions (⚡).",
+        "Livewire 4 integrates PHP 8.4 property hooks with native getters and setters.",
+        "Livewire 4 adds support for slots and `wire:ref` for targeting child components.",
+        "Livewire 4 introduces smarter loading states using the `data-loading` attribute.",
+        "Livewire 4 features a Blaze compiler that makes Blade components render up to 20x faster.",
+        "Livewire 4 introduces 'Islands' for independent rendering of component parts using `<x-island>` tags."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://www.phparch.com/2026/07/livewire-4s-islands-architecture-build-faster-uis-without-the-javascript-overhead/",
+      "title": "Livewire 4&#039;s Islands Architecture: Build Faster UIs Without the JavaScript Overhead | PHP Architect",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire v4 was released in January 2026.",
+        "Livewire v4 introduces an islands architecture, single-file components as the default format, scoped styles, built-in drag-and-drop sorting, and optimistic UI directives.",
+        "The upgrade path from Livewire v3 to v4 is smooth, with existing components still working.",
+        "Livewire v4 embraces a single-file component format that includes PHP logic, Blade template, CSS, and JavaScript in one place.",
+        "The `<style>` block in Livewire v4's single-file components is automatically scoped to that component.",
+        "Livewire v4's islands architecture allows isolated regions within a component to update independently without triggering a full parent re-render.",
+        "Livewire v4 introduces `Route::livewire()` with a name-based syntax for routing.",
+        "Livewire v4 adds directives like `wire:show`, `wire:text`, `wire:bind`, and `$dirty` for optimistic UI updates.",
+        "Livewire v4 includes `wire:sort` for built-in drag and drop functionality.",
+        "Livewire v4 integrates with the browser’s View Transitions API through the `wire:transition` directive."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://sadiqueali.medium.com/i-upgraded-to-livewire-v4-heres-the-one-breaking-change-that-will-catch-you-off-guard-c75003457233",
+      "title": "Medium",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire v4 introduces single-file components as the default, consolidating PHP class and Blade file into one.",
+        "Livewire v4 removes the two-file structure for components.",
+        "Livewire v4 addresses clunky slot workarounds.",
+        "Livewire v4 eliminates blocking requests.",
+        "Livewire v4 includes a change to `wire:model` that is identified as a breaking change."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://livewire.laravel.com/docs/4.x/upgrading",
+      "title": "Upgrade Guide | Laravel Livewire",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire v4 introduces improvements and optimizations while maintaining backward compatibility wherever possible.",
+        "Livewire v4 breaking changes are primarily configuration updates and method signature changes that only affect advanced usage.",
+        "To upgrade to Livewire v4, update composer.json to require livewire/livewire:^4.0 and clear application cache with php artisan optimize:clear.",
+        "In v4.1, wire:model modifiers like .blur and .change now control when client-side state syncs, not just network timing. To retain previous behavior, add .live before them (e.g., wire:model.live.blur).",
+        "In v4, config/livewire.php has renamed keys: 'layout' to 'component_layout' and 'lazy_placeholder' to 'component_placeholder'.",
+        "In v4, 'smart_wire_keys' now defaults to true (was false in v3).",
+        "In v4, new config options include 'component_locations', 'component_namespaces', 'make_command' defaults, and 'csp_safe'.",
+        "In v4, the recommended routing approach for full-page components is Route::livewire('/path', Component::class).",
+        "In v4, wire:model now ignores child events by default; to capture child events, use the .deep modifier (e.g., wire:model.deep).",
+        "In v4, wire:transition uses the browser's native View Transitions API and modifiers like .opacity, .scale, .duration, and .origin are no longer supported."
+      ]
+    },
+    {
+      "position": 7,
+      "url": "https://sadiqueali.medium.com/livewire-v4-in-2026-whats-new-migration-guide-and-why-it-s-a-game-changer-for-reactive-uis-58f6cff4a417",
+      "title": "Medium",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire v4 is set to be released in 2026.",
+        "Livewire v4 features a new diffing algorithm that reduces DOM updates by 60%.",
+        "Livewire v4 includes smarter caching for component state.",
+        "Livewire v4 introduces bridges to Vue and React components for hybrid stacks.",
+        "Livewire v4 simplifies lifecycle hooks such as mount, hydrate, and dehydrate.",
+        "Livewire v4 offers stronger TypeScript support for frontend bindings.",
+        "Livewire v4 allows components to persist state across sessions."
+      ]
+    },
+    {
+      "position": 8,
+      "url": "https://sadiqueali.medium.com/livewire-4-the-update-that-actually-changes-everything-118ebb41b5d4",
+      "title": "Medium",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire 4 launched in January 2026.",
+        "Livewire 4 introduces single-file components, Islands, the Blaze compiler, and wire:transition.",
+        "Livewire 4 aims to remove friction by offering better defaults and less boilerplate.",
+        "Livewire 4 includes performance features that can make dashboards load nearly instantly, compared to previous load times of 2.5 seconds."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What changed in the latest Livewire release?",
+  "decision": {
+    "route": "research",
+    "reason": "Asks what changed or how a change affects code; needs several sources.",
+    "packages": [
+      "livewire/livewire"
+    ],
+    "version_mentioned": null
+  },
+  "cached": false,
+  "started_at": "2026-10-06T10:27:03.867131Z",
+  "ended_at": "2026-10-06T10:29:05.519728Z",
+  "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+  "question_id": "q20",
+  "strategy": "routed",
+  "expected_route": "research",
+  "duration_ms": 121652
+}

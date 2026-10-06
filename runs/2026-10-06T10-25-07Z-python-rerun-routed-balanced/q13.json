@@ -1,0 +1,135 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "### Opening: Pest 4's Impact on Snapshot Testing\n\nPest 4 introduces two primary changes affecting snapshot testing: a breaking change in how snapshot names are generated, requiring users to regenerate existing snapshots, and an expansion of capabilities to include advanced pixel-level UI visual testing [1][2]. These developments necessitate a migration step for current users while opening new avenues for comprehensive testing.\n\n### A Necessary Update: Snapshot Name Generation\n\nA significant internal modification in Pest 4 alters the way snapshot names are generated for the `toMatchSnapshot` expectation [1][3]. This change means that any snapshot files previously created with earlier versions of Pest—built-in snapshot testing was first introduced in Pest 2.9 \"Spicy Summer\" [4]—will no longer be recognized or validated by Pest 4. To resolve this, developers upgrading to Pest 4 must **regenerate all their existing snapshot files** by executing their test suite with the `--update-snapshots` command. This command will create new snapshot files that align with Pest 4's naming convention, ensuring tests can pass successfully [5][6].\n\n### Expanding Horizons: Pixel-Level UI Snapshotting\n\nBeyond the naming convention adjustment, Pest 4 significantly enhances snapshot testing by introducing **pixel-level UI change assertion** capabilities [2]. This new feature allows developers to detect subtle visual regressions in their application's user interface. It provides visual comparison tools such as **Diff Mode**, which highlights precise differences between the current and stored visual snapshots, and **Slider Mode**, enabling a smooth, swipe-based comparison for easy identification of changes [2]. These advanced visual testing features are underpinned by Pest 4's integration of Playwright for robust browser testing, offering a powerful solution for end-to-end visual validation [7].\n\n### Conclusion: Adapting to Pest 4's Snapshot Enhancements\n\nIn summary, Pest 4's impact on snapshot testing is twofold: it mandates a **one-time regeneration of existing snapshot files** due to a change in naming conventions, and it introduces powerful **new pixel-level UI snapshotting features**. While the core mechanism of snapshot comparison and updating via `--update-snapshots` remains a consistent practice from earlier versions [6], developers must address the breaking change in snapshot name generation during their upgrade process. Embracing these enhancements allows for more robust and comprehensive testing, particularly in visual regression detection [1][2].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://pestphp.com/docs/upgrade-guide",
+      "title": "Upgrade Guide | Pest - The elegant PHP Testing Framework",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 4 requires PHP 8.3.0 or greater.",
+        "To migrate from Pest 3 to Pest 4, update the pestphp/pest dependency to ^4.0 in composer.json.",
+        "All other Pest-maintained plugins should be updated to version ^4.0 in composer.json when migrating to Pest 4.",
+        "Pest 4 changes the way snapshot names are generated for `toMatchSnapshot`.",
+        "To update snapshot names in Pest 4, use the --update-snapshots option: ./vendor/bin/pest --update-snapshots.",
+        "Pest 4 is built on top of PHPUnit 12.",
+        "The `pestphp/pest-plugin-watch` and `pestphp/pest-plugin-faker` plugins have been archived and removed from Pest 4."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://redberry.international/laravel-pest-4/",
+      "title": "Exploring Pest 4: What’s New and How It Feels in Practice",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 4 introduces Test Sharding to split test suites into parallel shards for faster execution.",
+        "Pest 4 introduces Snapshot Testing for asserting UI changes at the pixel level.",
+        "Pest 4 integrates Playwright for end-to-end browser testing.",
+        "Pest 4 introduces Smoke Testing to quickly verify core functionality.",
+        "Test Sharding in Pest 4 reduced a 10-second test suite to 2 seconds in a Laracon demo.",
+        "A project with 400 browser tests reportedly runs in 20 seconds using sharding in Pest 4.",
+        "Snapshot testing in Pest 4 offers Diff Mode to highlight changes and Slider Mode to swipe between old and new states."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://v4.pestphp.com/docs/upgrade-guide",
+      "title": "Upgrade Guide | Pest - The elegant PHP Testing Framework",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 4 changes the way snapshot names are generated.",
+        "Users will need to update their snapshot names using the --update-snapshots option when upgrading to Pest 4.",
+        "Pest 4 is built on top of PHPUnit 12.",
+        "The pestphp/pest-plugin-watch and pestphp/pest-plugin-faker plugins have been archived and are no longer maintained.",
+        "The functionality provided by the pestphp/pest-plugin-watch and pestphp/pest-plugin-faker plugins has been removed from Pest 4."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://pestphp.com/docs/pest-spicy-summer-release",
+      "title": "Pest&#039;s Spicy Summer Release | Pest - The elegant PHP Testing Framework",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 2.9, codenamed \"Spicy Summer\", includes built-in snapshot testing.",
+        "Snapshot testing in Pest 2.9 allows asserting that the output of a function or method has not changed.",
+        "Snapshot files are created at `tests/.pest/snapshots`.",
+        "Snapshots can be updated using the `--update-snapshots` option.",
+        "Pest 2.9 introduces describe blocks for grouping tests and sharing setup/teardown logic.",
+        "Pest 2.9 improves architectural testing with new expectations.",
+        "Pest 2.9 adds built-in type coverage support.",
+        "Type coverage can be enforced with a minimum percentage using `--min`.",
+        "Pest 2.9 includes a tool called Drift to convert PHPUnit tests to Pest tests.",
+        "Drift can be run using the `--drift` option."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://deepwiki.com/pestphp/docs/1.4-upgrade-guide",
+      "title": "Upgrade Guide | pestphp/docs | DeepWiki",
+      "kind": "research_citation",
+      "claims": [
+        "In Pest 4, `toMatchSnapshot` changes the way snapshot file names are generated, requiring regeneration of existing snapshot files.",
+        "Pest 4 requires PHP 8.3.0 or greater.",
+        "Pest 4 is built on PHPUnit 12.",
+        "The `pestphp/pest-plugin-watch` and `pestphp/pest-plugin-faker` plugins have been archived and are no longer maintained or compatible with Pest 4."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://v4.pestphp.com/docs/snapshot-testing",
+      "title": "Snapshot Testing | Pest - The elegant PHP Testing Framework",
+      "kind": "research_citation",
+      "claims": [
+        "Snapshot testing in Pest compares a given expectation value to a previously stored snapshot of the same value.",
+        "Snapshot files are created in the `tests/.pest/snapshots` directory.",
+        "Tests will fail if the current response differs from the snapshot file.",
+        "Snapshots can be updated using the `--update-snapshots` option.",
+        "Expectation Pipes can be used to handle dynamic data like CSRF tokens by replacing them before snapshotting."
+      ]
+    },
+    {
+      "position": 7,
+      "url": "https://pestphp.com/docs/pest-v4-is-here-now-with-browser-testing",
+      "title": "Pest v4 Is Here — Now with Browser Testing | Pest - The elegant PHP Testing Framework",
+      "kind": "research_citation",
+      "claims": [
+        "Pest v4 introduces browser testing, smoke testing, visual regression testing, and test sharding.",
+        "Pest v4's browser testing features allow for writing elegant, maintainable browser tests with first-class support for Laravel's testing API and parallel execution.",
+        "Pest v4's browser testing is Playwright-based.",
+        "To use browser testing in Pest v4, install the Pest Browser Plugin (`composer require pestphp/pest-plugin-browser --dev`), install Playwright (`npm install playwright@latest`), and install Playwright binaries (`npx playwright install`).",
+        "Pest v4 introduces Test Sharding, which allows splitting the test suite into smaller chunks, useful for large applications or browser tests, and can be run using the `--shard` option (e.g., `./vendor/bin/pest --shard=1/4`).",
+        "Pest v4 introduces a new type coverage engine that is significantly faster, with type coverage now being 2x faster on the first run and instant on subsequent runs.",
+        "Type Coverage in Pest v4 now supports Sharding, allowing it to be run with the `--shard` option.",
+        "Pest v4 introduces profanity checking, enabled by adding the `--profanity` option when running Pest (`./vendor/bin/pest --profanity`).",
+        "Pest v4 allows conditional skipping of tests using `skipLocally()` or `skipOnCi()`.",
+        "Pest v4 is built on top of PHPUnit 12."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What changed in Pest 4 that affects snapshot tests?",
+  "decision": {
+    "route": "research",
+    "reason": "Asks what changed or how a change affects code; needs several sources.",
+    "packages": [
+      "pestphp/pest"
+    ],
+    "version_mentioned": {
+      "package": "pestphp/pest",
+      "version": "4"
+    }
+  },
+  "cached": false,
+  "started_at": "2026-10-06T10:42:44.126890Z",
+  "ended_at": "2026-10-06T10:44:08.699805Z",
+  "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+  "question_id": "q13",
+  "strategy": "routed",
+  "expected_route": "research",
+  "duration_ms": 84572
+}

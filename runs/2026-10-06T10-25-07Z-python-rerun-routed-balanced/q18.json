@@ -1,0 +1,23 @@
+{
+  "terminal_state": "declined",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The question asks about a future or unreleased version.",
+  "sources": [],
+  "error": null,
+  "cost": null,
+  "cost_note": "No outbound call was made.",
+  "question": "When will Pest 6 be released?",
+  "decision": {
+    "route": "decline",
+    "reason": "The question asks about a future or unreleased version."
+  },
+  "cached": false,
+  "started_at": "2026-10-06T10:49:05.073863Z",
+  "ended_at": "2026-10-06T10:49:05.073978Z",
+  "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+  "question_id": "q18",
+  "strategy": "routed",
+  "expected_route": "decline",
+  "duration_ms": 0
+}

@@ -1,0 +1,182 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "Livewire 4 introduces fundamental architectural changes, alongside significant behavioral shifts in key directives, necessitating updates for existing Livewire 3 components [1][2][3]. These changes affect component structure, routing, data binding, and offer substantial performance enhancements.\n\n## Core Structural and Configuration Adjustments\n\nLivewire 4 significantly alters how components are structured and configured. The default component creation now favors **single-file components (SFCs)**, which consolidate PHP logic, Blade templates, CSS, and JavaScript into one file. For more complex components, **multi-file components (MFCs)** allow organizing these elements within a single directory [2][4][5]. This marks a departure from Livewire 3's traditional two-file structure.\n\nRouting for full-page components has evolved, with `Route::livewire()` becoming the recommended approach over `Route::get()`. This new method references components by name or new namespaces like `pages::` [1][2][6]. Configuration keys in `config/livewire.php` have been renamed (e.g., `layout` to `component_layout`, `lazy_placeholder` to `component_placeholder`), and new keys like `component_locations` and `component_namespaces` have been added to support the new component organization [1][6][7]. Additionally, component tags, which were more lenient in Livewire 3, must now be explicitly closed in Livewire 4 to ensure proper rendering and slot support [1].\n\n## Key Directive Behavior Modifications\n\nThe behavior of several core Livewire directives has been modified, directly impacting how existing components function. The `wire:model` directive no longer captures events from child elements by default, requiring the **`.deep` modifier** to restore this previous functionality [1][3]. Furthermore, `wire:model` modifiers like `.blur` and `.change` now control client-side state synchronization, not just network timing. To retain the Livewire 3 behavior (where these modifiers also triggered a network request), the **`.live` modifier** must be prepended (e.g., `wire:model.live.blur`) [1][3].\n\nThe `wire:transition` directive has been re-engineered to leverage the browser's native **View Transitions API**, which means previous modifiers like `.opacity`, `.scale`, `.duration`, and `.origin` are no longer supported [1][8][3]. Similarly, `wire:scroll` has been replaced by `wire:navigate:scroll` for preserving scroll positions across `wire:navigate` requests [1]. Livewire 4 also introduces new directives such as `wire:sort` for drag-and-drop, `wire:intersect`, and `wire:ref` [2][6][7].\n\n## Method Signature Updates and Performance Improvements\n\nSeveral method signatures have been updated. The `stream()` method's parameter order has changed, and the `mount()` method now includes an additional `$slots` parameter for internal Livewire functionality [3][6][7]. JavaScript hooks commonly used in Livewire 3, such as `Livewire.hook('commit', ...)`, have been deprecated in favor of a new, more granular interceptor system (e.g., `Livewire.interceptMessage(...)`) [6][7].\n\nLivewire 4 delivers significant performance gains through automatic enhancements like **non-blocking polling** for `wire:poll` and **parallel live updates** for `wire:model.live` [4][3]. A notable addition is the **Blaze compiler**, which optimizes Blade component rendering for up to **20x faster performance** by pre-rendering static parts at compile time. The introduction of **'Islands'** allows for independently updating expensive component parts, drastically improving page load times and reducing overall component overhead [4][9].\n\nMigrating existing Livewire 3 components to Livewire 4 requires careful attention to these structural, behavioral, and functional changes. While some adjustments are straightforward, others demand a more thorough review of component logic and configuration to fully leverage the new features and performance optimizations.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://livewire.laravel.com/docs/4.x/upgrading",
+      "title": "Upgrade Guide | Laravel Livewire",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire v4 introduces changes primarily to configuration updates and method signature changes that affect advanced usage.",
+        "The `wire:model` modifier behavior changed in v4.1, where modifiers like `.blur` and `.change` now control client-side state sync, not just network timing. To retain previous behavior, add `.live` before the modifier (e.g., `wire:model.live.blur`).",
+        "Configuration keys have been renamed or reorganized: `layout` is now `component_layout`, and `lazy_placeholder` is now `component_placeholder`.",
+        "The default for `smart_wire_keys` changed to `true` in v4, from `false` in v3.",
+        "New configuration options include `component_locations`, `component_namespaces`, `make_command` defaults, and `csp_safe`.",
+        "The recommended routing approach for full-page components changed from `Route::get('/dashboard', Dashboard::class)` to `Route::livewire('/dashboard', Dashboard::class)`.",
+        "`wire:model` now ignores child events by default; to capture child events, use the `.deep` modifier.",
+        "The `wire:scroll` directive is replaced by `wire:navigate:scroll` in v4 for preserving scroll across `wire:navigate` requests.",
+        "Component tags must be closed in v4; unclosed tags were rendered in v3.",
+        "In v4, `wire:transition` uses the browser's native View Transitions API, removing support for modifiers like `.opacity`, `.scale`, `.duration`, and `.origin`."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://laravel-news.com/everything-new-in-livewire-4",
+      "title": "Everything new in Livewire 4",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire 4 introduces view-based components where PHP, Blade, CSS, and JavaScript can reside in a single file.",
+        "Livewire 4 supports a multi-file format for components, organizing them into a single directory.",
+        "Livewire 4 introduces `Route::livewire()` for referencing components by name.",
+        "Livewire 4 introduces namespaces like `pages::` for page components and `layouts::` for layouts.",
+        "Component JavaScript and CSS can now be added directly within component templates using `<script>` and `<style>` tags.",
+        "Livewire 4 introduces Islands, which are isolated regions within a component that update independently.",
+        "Livewire 4 introduces slots and attribute forwarding for components, similar to Blade components.",
+        "Livewire 4 adds built-in drag-and-drop sorting functionality using the `wire:sort` directive.",
+        "Livewire 4 introduces the `wire:transition` directive for hardware-accelerated animations using the View Transitions API.",
+        "Livewire 4 introduces Optimistic UI directives like `wire:show`, `wire:text`, and `wire:bind` for immediate interface updates."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://github.com/livewire/livewire/blob/4.x/docs/upgrading.md",
+      "title": "livewire/docs/upgrading.md at 4.x · livewire/livewire · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "In Livewire v4, the wire:model modifier behavior changed: modifiers like .blur and .change now control when client-side state syncs, not just network timing.",
+        "To retain the previous behavior of wire:model modifiers (.blur, .change) in Livewire v4, add the .live modifier before them (e.g., wire:model.live.blur).",
+        "In Livewire v4, wire:model now ignores child events by default, only listening for events originating directly on the element itself.",
+        "To restore the old behavior of wire:model capturing events from child elements in Livewire v4, add the .deep modifier (e.g., wire:model.deep).",
+        "In Livewire v4, the wire:transition directive now uses the browser's native View Transitions API and all modifiers have been removed.",
+        "Livewire v4 includes performance improvements: non-blocking polling for wire:poll and parallel live updates for wire:model.live.",
+        "In Livewire v4, when replacing an entire array or object from the frontend, update hooks consolidate changes into a single update instead of granular updates for each index.",
+        "The stream() method signature in Livewire v4 changed: the parameter order is now content, replace, el (formerly to).",
+        "The mount() method signature in Livewire v4 changed to include an additional slots parameter.",
+        "Livewire v4 supports bracket notation in wire:model expressions for accessing nested properties (e.g., wire:model=\"foo['bar']\")."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://laravel.com/blog/livewire-4-is-here-the-artisan-of-the-day-is-caleb-porzio",
+      "title": "Livewire 4 Is Here! The Artisan of the Day Is Caleb Porzio. | Laravel - The clean stack for Artisans and agents",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire 4 introduces a new default way to create components, unifying the experience.",
+        "Livewire 4 defaults to single-file components, allowing class and view to reside together.",
+        "Livewire 4 introduces new directories: `components/`, `pages/`, and `layouts/` for better project structure.",
+        "Livewire 4 supports using the lightning bolt emoji (⚡) in filenames for Livewire components.",
+        "Livewire 4 integrates PHP 8.4 property hooks, replacing updating hooks with native getters and setters.",
+        "Livewire 4 adds slots and refs to components, enabling them to accept slots like Blade components and target child components with `wire:ref`.",
+        "Livewire 4 implements smarter loading states by adding a `data-loading` attribute to elements triggering requests.",
+        "Livewire 4 improves performance by ensuring background polls do not block user interactions.",
+        "Livewire 4 features the Blaze compiler, which optimizes Blade components for up to 20x faster rendering.",
+        "Livewire 4 introduces 'Islands' to render expensive component parts independently, significantly improving page load times."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://sadiqueali.medium.com/i-upgraded-to-livewire-v4-heres-the-one-breaking-change-that-will-catch-you-off-guard-c75003457233",
+      "title": "Medium",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire v4 introduces single-file components as the default when running `php artisan make:livewire`.",
+        "Livewire v4 removes the need for the two-file structure (PHP class and Blade file) for components.",
+        "Livewire v4 addresses clunky slot workarounds.",
+        "Livewire v4 eliminates blocking requests.",
+        "Livewire v4 includes a change to `wire:model` that is described as a breaking change."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://medium.com/@anishregmi19/livewire-v3-v4-upgrade-steps-practical-guide-0c7a254499c8",
+      "title": "Medium",
+      "kind": "research_citation",
+      "claims": [
+        "To upgrade to Livewire v4 (Beta), update the composer dependency to `livewire/livewire:^4.0@beta`.",
+        "After updating the composer dependency for Livewire v4, clear relevant caches using `php artisan config:clear`, `php artisan view:clear`, and `php artisan cache:clear`.",
+        "Verify the Livewire v4 installation by running `php artisan livewire --version`, which should display `4.x.x-beta`.",
+        "In `config/livewire.php`, the key `'layout'` is renamed to `'component_layout'`, and `'lazy_placeholder'` is renamed to `'component_placeholder'`.",
+        "The `'smart_wire_keys'` option in `config/livewire.php` should be set to `true` to enable smart wire:key.",
+        "New options to add to `config/livewire.php` include `'component_locations'`, `'component_namespaces'`, `'make_command'`, and `'csp_safe'`.",
+        "Routing in `routes/web.php` should switch from `Route::get('/dashboard', Dashboard::class);` to `Route::livewire('/dashboard', Dashboard::class);` or `Route::livewire('/dashboard', 'pages::dashboard');` for view-based components.",
+        "The `stream()` method syntax changes from `$this->stream(to: '#container', content: 'Hello');` to `$this->stream(content: 'Hello', el: '#container');`.",
+        "The `mount()` method signature for extending Livewire internals changes from `public function mount($name, $params = [], $key = null)` to `public function mount($name, $params = [], $key = null, $slots = [])`.",
+        "Deprecated JS hooks like `Livewire.hook('commit', ...)` should be replaced with interceptors such as `Livewire.interceptMessage(...)`."
+      ]
+    },
+    {
+      "position": 7,
+      "url": "https://medium.com/@hohuukhanh994/livewire-v3-v4-upgraded-steps-by-step-practival-guide-5d364f0bb7e8",
+      "title": "Medium",
+      "kind": "research_citation",
+      "claims": [
+        "In Livewire v4, the `layout` configuration key has been renamed to `component_layout`.",
+        "In Livewire v4, the `lazy_placeholder` configuration key has been renamed to `component_placeholder`.",
+        "Livewire v4 introduces new configuration options: `component_locations`, `component_namespaces`, `make_command`, and `csp_safe`.",
+        "In Livewire v4, the routing for Livewire components in `routes/web.php` is recommended to switch from `Route::get('/dashboard', Dashboard::class);` to `Route::livewire('/dashboard', Dashboard::class);` or `Route::livewire('/dashboard', 'pages::dashboard');` for view-based components.",
+        "If using `$this->stream()` in Livewire v4, the syntax changes from `$this->stream(to: '#container', content: 'Hello');` to `$this->stream(content: 'Hello', el: '#container');`.",
+        "The `mount` method signature in Livewire v4 now includes an additional `$slots` parameter: `public function mount($name, $params = [], $key = null, $slots = [])`.",
+        "Deprecated JS hooks like `Livewire.hook('commit', ...)` should be replaced with `Livewire.interceptMessage(...)` in Livewire v4.",
+        "Deprecated JS hooks like `Livewire.hook('request', ...)` should be replaced with `Livewire.interceptRequest(...)` in Livewire v4.",
+        "Livewire v4 introduces new directives such as `wire:sort`, `wire:intersect`, `wire:ref`, `.renderless`, and `.preserve-scroll`."
+      ]
+    },
+    {
+      "position": 8,
+      "url": "https://deepwiki.com/livewire/livewire/13-migration-guide",
+      "title": "Migration Guide | livewire/livewire | DeepWiki",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire V4 introduces single-file components (SFC) and multi-file components (MFC).",
+        "The V4 compilation system uses `SingleFileComponentCompiler` to convert SFCs/MFCs to runnable classes.",
+        "V4 component namespaces allow custom directory mappings like `pages::` and `layouts::`.",
+        "V3 key `layout` is renamed to `component_layout` in V4.",
+        "V3 key `lazy_placeholder` is renamed to `component_placeholder` in V4.",
+        "V4 introduces new configuration keys: `component_locations`, `component_namespaces`, `make_command`, and `csp_safe`.",
+        "The default for `smart_wire_keys` changed to `true` in V4.",
+        "In V4, `Route::livewire()` is the recommended method for routing to components.",
+        "In V4, `wire:model` only responds to events on the element itself, requiring the `.bubble` modifier to restore V3 event bubbling behavior.",
+        "V4 uses the native View Transitions API for `wire:transition`, removing all transition modifiers."
+      ]
+    },
+    {
+      "position": 9,
+      "url": "https://sadiqueali.medium.com/livewire-4-the-update-that-actually-changes-everything-118ebb41b5d4",
+      "title": "Medium",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire 4 launched in January 2026.",
+        "Livewire 4 introduces single-file components, consolidating PHP, Blade, and JavaScript into one file.",
+        "Livewire 4 includes Islands, the Blaze compiler, and wire:transition features.",
+        "Livewire 4 aims to remove friction with better defaults and less boilerplate.",
+        "Livewire 4 offers performance improvements, making dashboards that previously took 2.5 seconds load nearly instantly."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What changed in Livewire 4 that affects existing Livewire 3 components?",
+  "decision": {
+    "route": "research",
+    "reason": "Asks what changed or how a change affects code; needs several sources.",
+    "packages": [
+      "livewire/livewire"
+    ],
+    "version_mentioned": {
+      "package": "livewire/livewire",
+      "version": "4"
+    }
+  },
+  "cached": false,
+  "started_at": "2026-10-06T10:37:04.117836Z",
+  "ended_at": "2026-10-06T10:39:08.211026Z",
+  "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+  "question_id": "q10",
+  "strategy": "routed",
+  "expected_route": "research",
+  "duration_ms": 124093
+}

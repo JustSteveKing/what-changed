@@ -1,0 +1,30 @@
+{
+  "terminal_state": "declined",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "Packagist lists no tagged release of laravel/framework matching 14.",
+  "sources": [],
+  "error": null,
+  "cost": null,
+  "cost_note": "No outbound call was made.",
+  "question": "What changed in Laravel 14?",
+  "decision": {
+    "route": "research",
+    "reason": "Asks what changed or how a change affects code; needs several sources.",
+    "packages": [
+      "laravel/framework"
+    ],
+    "version_mentioned": {
+      "package": "laravel/framework",
+      "version": "14"
+    }
+  },
+  "cached": false,
+  "started_at": "2026-10-06T10:49:04.809739Z",
+  "ended_at": "2026-10-06T10:49:05.072354Z",
+  "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+  "question_id": "q17",
+  "strategy": "routed",
+  "expected_route": "research",
+  "duration_ms": 262
+}

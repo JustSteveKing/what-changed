@@ -1,0 +1,37 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The latest stable version of laravel/framework on Packagist is v13.34.0, released 2026-09-29T12:46:21+00:00.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://repo.packagist.org/p2/laravel/framework.json",
+      "title": "Packagist metadata for laravel/framework",
+      "kind": "packagist_metadata",
+      "claims": [
+        "Latest stable version of laravel/framework is v13.34.0, released 2026-09-29T12:46:21+00:00."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Public Packagist and GitHub endpoints; no cost is reported.",
+  "question": "What is the latest version of laravel/framework?",
+  "decision": {
+    "route": "direct",
+    "reason": "Asks for the latest version of one package.",
+    "lookup": {
+      "kind": "packagist_latest_stable",
+      "package": "laravel/framework"
+    }
+  },
+  "cached": false,
+  "started_at": "2026-10-06T10:29:06.597760Z",
+  "ended_at": "2026-10-06T10:29:06.848037Z",
+  "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+  "question_id": "q05",
+  "strategy": "routed",
+  "expected_route": "direct",
+  "duration_ms": 250
+}

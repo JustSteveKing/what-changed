@@ -1,0 +1,148 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "In Laravel 13, specific modifications to queue events can indeed break existing event listeners, primarily due to changes in property names within the `JobAttempted` and `QueueBusy` events. While Laravel 13 was designed with minimal breaking changes, these particular updates require direct action for listeners interacting with the affected event properties [1][2][3].\n\n## Specific Breaking Changes for Queue Event Listeners\n\nTwo key changes directly impact existing queue event listeners:\n\n*   **`JobAttempted` Event Modification**: The `Illuminate\\Queue\\Events\\JobAttempted` event no longer uses the boolean property `$exceptionOccurred`. Instead, it now exposes an `$exception` object, which will be `null` if no exception occurred [1][2]. Listeners that previously checked `$event->exceptionOccurred` will need to be updated. For instance, code expecting a boolean should now check `$event->exception !== null` to determine if an exception occurred, or directly handle the `$event->exception` object for more detailed error information.\n*   **`QueueBusy` Event Property Renamed**: For enhanced consistency across queue events, the `Illuminate\\Queue\\Events\\QueueBusy` event's `$connection` property has been renamed to `$connectionName` [1][3]. Any listener that references `$event->connection` must be updated to use `$event->connectionName` to avoid runtime errors.\n\n## Broader Queue System Enhancements and New Features\n\nBeyond these breaking changes, Laravel 13 introduces several new features and enhancements to the queue system, which, while not breaking existing listeners, offer new capabilities:\n\n*   **New Events and Attributes**: A `JobInterrupted` event is now available [4], and new queue-oriented PHP attributes like `#[Tries]`, `#[Backoff]`, `#[Timeout]`, and `#[FailOnTimeout]` allow for more declarative job configuration [5].\n*   **Queue Inspection and Routing**: The `Illuminate\\Contracts\\Queue\\Queue` contract has been extended with methods for inspecting queue sizes, including `pendingSize`, `delayedSize`, `reservedSize`, and `creationTimeOfOldestPendingJob` [1]. Developers can also leverage `Queue::route()` for class-based queue routing, centralizing job dispatching logic [5].\n*   **Debounced Listeners and Worker Handling**: Laravel 13.26 introduced \"debounced listeners\" for more efficient event handling [6], and Laravel 13.34 improved robustness by counting worker crashes toward `maxExceptions` [4].\n\n## Reconciling Conflicting Claims on Breaking Changes\n\nSome sources indicated that Laravel 13 would have \"zero breaking changes\" or offer a \"10-minute upgrade path\" from Laravel 12 [7][8]. While this holds true for many applications, the specific property renames in `JobAttempted` and `QueueBusy` events are indeed **breaking changes** for any code directly referencing the old property names [3][1][2]. This highlights that \"breaking changes\" can be interpreted differently, distinguishing between broad architectural shifts and specific API property modifications.\n\n## Conclusion for Listener Compatibility\n\nTo ensure full compatibility and prevent unexpected behavior, developers should carefully review any custom listeners interacting with the `JobAttempted` and `QueueBusy` events. Updating property accessors to use `$event->exception` (or `$event->exception !== null`) and `$event->connectionName` respectively is crucial. While the upgrade process is generally smooth, these targeted changes are essential for maintaining the integrity of queue event handling in Laravel 13.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://laravel.com/framework/docs/upgrade",
+      "title": "Upgrade Guide | Laravel 13.x - The clean stack for Artisans and agents",
+      "kind": "research_citation",
+      "claims": [
+        "The Illuminate\\Queue\\Events\\JobAttempted event now exposes the exception object (or null) via $exception, replacing the previous boolean $exceptionOccurred property.",
+        "The Illuminate\\Queue\\Events\\QueueBusy event property $connection has been renamed to $connectionName for consistency with other queue events.",
+        "The Illuminate\\Contracts\\Queue\\Queue contract now includes queue size inspection methods: pendingSize, delayedSize, reservedSize, and creationTimeOfOldestPendingJob."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://ortamarco.me/en/blog/what-breaks-upgrading-to-laravel-13/",
+      "title": "Laravel 13 Breaking Changes: The Real List | Marco Orta",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 12 stopped receiving bug fixes on August 13, 2026.",
+        "Laravel 12 stops receiving security patches on February 24, 2027.",
+        "Laravel 13 requires PHP 8.3 minimum and supports up to PHP 8.5.",
+        "The CSRF middleware VerifyCsrfToken is renamed to PreventRequestForgery in Laravel 13.",
+        "The default cache configuration in Laravel 13 includes `serializable_classes => false`.",
+        "Laravel 13 validates that `uniqueBy` isn't empty for `upsert` with MySQL or MariaDB.",
+        "The default cache prefixes in Laravel 13 move from underscore to hyphen.",
+        "The `JobAttempted` event in Laravel 13 exposes the exception object instead of a boolean.",
+        "The `QueueBusy` event in Laravel 13 renames the `$connection` property to `$connectionName`.",
+        "Routes with an explicit domain are evaluated before routes without one in Laravel 13."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://ortamarco.me/en/blog/what-breaks-upgrading-to-laravel-13",
+      "title": "Laravel 13 Breaking Changes: The Real List | Marco Orta",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 12 stopped receiving bug fixes on August 13, 2026.",
+        "Laravel 13 requires PHP 8.3 minimum and supports up to 8.5.",
+        "The CSRF middleware `VerifyCsrfToken` is renamed to `PreventRequestForgery` in Laravel 13 and performs origin verification by reading the browser’s `Sec-Fetch-Site` header.",
+        "The default `cache` configuration in Laravel 13 includes `serializable_classes => false`.",
+        "Laravel 13 validates that `uniqueBy` isn’t empty for `upsert` operations with MySQL or MariaDB, throwing `InvalidArgumentException` instead of generating invalid SQL.",
+        "The default prefixes for cache, Redis, and session in Laravel 13 change from underscore to hyphen.",
+        "The `JobAttempted` event in Laravel 13 swaps the boolean `exceptionOccurred` property for the `exception` object.",
+        "The `QueueBusy` event in Laravel 13 renames the `$connection` property to `$connectionName`.",
+        "Container::call in Laravel 13 respects nullable defaults, returning null if the default is null.",
+        "Routes with an explicit domain are evaluated before routes without one in Laravel 13."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://laravel-news.com/tag/releases/",
+      "title": "Laravel Releases: Latest Version (13.x), Changelog &amp; Release Notes",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13.34 counts worker crashes toward maxExceptions.",
+        "Laravel 13.34 notifies interruptible jobs before a timeout.",
+        "Laravel 13.34 adds job durations to JobProcessed.",
+        "Laravel 13.33 adds tags to Cache::memo().",
+        "Laravel 13.32 adds a Mercure broadcast driver.",
+        "Laravel 13.32 adds Storage::copyToDisk() and moveToDisk().",
+        "Laravel 13.32 adds enum support in queue pause/resume.",
+        "Laravel 13.31 adds Queue::totalSize() to count every job on a connection.",
+        "Laravel 13.31 adds a JobInterrupted event.",
+        "Laravel 13.25 adds queue:pause --all across every connection."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://laravel.com/framework/docs/releases",
+      "title": "Release Notes | Laravel 13.x - The clean stack for Artisans and agents",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 release date: March 17th, 2026",
+        "Laravel 13 bug fixes provided until: March 17th, 2028",
+        "Laravel 13 security fixes provided until: Q3 2027",
+        "Laravel 13 requires a minimum PHP version of 8.3.",
+        "Laravel 13 introduces queue routing by class via Queue::route(...).",
+        "Laravel 13 adds controller and authorization attributes like #[Middleware] and #[Authorize].",
+        "Laravel 13 adds queue-oriented job controls like #[Tries], #[Backoff], #[Timeout], and #[FailOnTimeout]."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://www.youtube.com/watch?v=8PLwC-Ye-Bk",
+      "title": "New in Laravel 13.26: Debounced Listeners, Queue::forward() &amp; Read-Through Filesystem - YouTube",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 7,
+      "url": "https://www.krishaweb.com/blog/laravel-13-key-features/",
+      "title": "Laravel 13 Features (2026): What Changed and Why It Matters for Your Next Project",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 was released on March 17, 2026.",
+        "Laravel 13 requires PHP 8.3 as the minimum version.",
+        "Laravel 13 has zero breaking changes from Laravel 12.",
+        "Laravel 13 includes a production-stable, first-party AI SDK supporting text generation, tool-calling agents, image creation, audio synthesis, and embeddings.",
+        "The Laravel AI SDK supports OpenAI, Anthropic, and Gemini as first-party providers.",
+        "Laravel 13 introduces semantic vector search in the query builder using PostgreSQL with pgvector via the whereVectorSimilarTo() method.",
+        "Laravel 13 allows the use of PHP Attributes as an optional alternative to class property declarations across various framework locations.",
+        "Laravel 13 includes first-party Passkey authentication support through Fortify and new starter kits, utilizing the WebAuthn protocol.",
+        "Laravel 13 introduces Cache::touch() to extend cache entry TTL without changing the value, reducing operations from three to one.",
+        "Laravel 13 adds a database driver for Reverb scaling, making Redis no longer mandatory."
+      ]
+    },
+    {
+      "position": 8,
+      "url": "https://medium.com/@ed.sav/laravel-13-whats-new-what-changed-and-how-to-upgrade-from-laravel-12-dcd964024504",
+      "title": "Medium",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 was released on March 17, 2026.",
+        "Laravel 13 introduces a production-stable Laravel AI SDK for text generation, image synthesis, audio generation, embeddings, and vector store integrations.",
+        "Laravel 13 has zero breaking changes.",
+        "Laravel 13 offers a 10-minute upgrade path for most applications from Laravel 12."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What changed in Laravel 13 queue events that could break my listeners?",
+  "decision": {
+    "route": "research",
+    "reason": "Asks what changed or how a change affects code; needs several sources.",
+    "packages": [
+      "laravel/framework"
+    ],
+    "version_mentioned": {
+      "package": "laravel/framework",
+      "version": "13"
+    }
+  },
+  "cached": false,
+  "started_at": "2026-10-06T10:31:37.349405Z",
+  "ended_at": "2026-10-06T10:35:16.131756Z",
+  "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+  "question_id": "q08",
+  "strategy": "routed",
+  "expected_route": "research",
+  "duration_ms": 218782
+}

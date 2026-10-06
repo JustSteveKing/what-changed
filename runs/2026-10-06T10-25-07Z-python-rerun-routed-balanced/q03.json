@@ -1,0 +1,38 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The latest GitHub release of filamentphp/filament is v5.9.0, published 2026-09-26T19:40:26Z.\n\nRelease notes:\n\n## New Features\n* feat: Add strict hierarchical breadcrumbs option by @ahmed-rashad-alnaggar in https://github.com/filamentphp/filament/pull/20153\n* Add Rich Editor block icons, grid layout, search, and sticky controls by @imliam in https://github.com/filamentphp/filament/pull/20448\n* Add minimal custom block controls to the Rich Editor by @imliam in https://github.com/filamentphp/filament/pull/20449\n* Add search to Builder block picker by @KianAcquoy in https://github.com/filamentphp/filament/pull/20469\n* Allow customizing the table filters reset action by @devhoussam1998 in https://github.com/filamentphp/filament/pull/20476\n* fix: Resolve nested resource index URLs to parent relation pages by @OccTherapist in https://github.com/filamentphp/filament/pull/20479\n* feat(actions): add `enum()` to `ImportColumn` by @MadBox-99 in https://github.com/filamentphp/filament/pull/20482\n* Feature: nested action parent data by @webard in https://github.com/filamentphp/filament/pull/20502\n* feat: add button size helper to ToggleButtons component by @getupkid in https://github.com/filamentphp/filament/pull/20517\n* Feature: full-width toggle buttons by @caseydwyer in https://github.com/filamentphp/filament/pull/20520\n* feat: add rich content faker by @danharrin in https://github.com/filamentphp/filament/pull/20537\n* feat: Add Markdown faker by @danharrin in https://github.com/filamentphp/filament/pull/20558\n* Add opt-in CSP nonce support for scripts by @m-develops in https://github.com/filamentphp/filament/pull/20301\n* Add table content render hooks by @mortalkiller in https://github.com/filamentphp/filament/pull/20566\n* feat: import testing helpers by @danharrin in https://github.com/filamentphp/filament/pull/20560\n* feat: export testing helpers by @danharrin in https://github.com/filamentphp/filament/pull/20562\n\n## What's Changed\n* chore(deps): bump WyriHaximus/github-action-get-previous-tag from 2.0.0 to 2.1.0 by @dependabot[bot] in https://github.com/filamentphp/filament/pull/20540\n* chore(deps): bump WyriHaximus/github-action-get-previous-tag from 2.0.0 to 2.1.0 by @dependabot[bot] in https://github.com/filamentphp/filament/pull/20541\n* chore(deps): bump zizmorcore/zizmor-action from 0.6.3 to 0.6.4 by @dependabot[bot] in https://github.com/filamentphp/filament/pull/20543\n* chore(deps): bump zizmorcore/zizmor-action from 0.6.3 to 0.6.4 by @dependabot[bot] in https://github.com/filamentphp/filament/pull/20544\n* Fix incorrect `InvalidArgumentException` import in `HasRecordActions` by @ukeloop in https://github.com/filamentphp/filament/pull/20555\n* fix: ensure heading levels are at least 1 by @ukeloop in https://github.com/filamentphp/filament/pull/20556\n* chore: remove unused imports by @ukeloop in https://github.com/filamentphp/filament/pull/20557\n* fix: scope null relationship groups without bypassing filters by @people-sea in https://github.com/filamentphp/filament/pull/20563\n* fix: fail with an install hint when a make command needs a panel and none are registered by @SulimanAbdulrazzaq in https://github.com/filamentphp/filament/pull/20568\n\n## New Contributors\n* @m-develops made their first contribution in https://github.com/filamentphp/filament/pull/20301\n* @SulimanAbdulrazzaq made their first contribution in https://github.com/filamentphp/filament/pull/20568\n\n**Full Changelog**: https://github.com/filamentphp/filament/compare/v5.8.4...v5.9.0\n",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://github.com/filamentphp/filament/releases/tag/v5.9.0",
+      "title": "v5.9.0",
+      "kind": "github_release",
+      "claims": [
+        "Latest release of filamentphp/filament is v5.9.0, published 2026-09-26T19:40:26Z."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Public Packagist and GitHub endpoints; no cost is reported.",
+  "question": "When was the latest Filament release published?",
+  "decision": {
+    "route": "direct",
+    "reason": "Asks for the date or notes of the latest release of one package.",
+    "lookup": {
+      "kind": "github_latest_release",
+      "package": "filament/filament",
+      "repo": "filamentphp/filament"
+    }
+  },
+  "cached": false,
+  "started_at": "2026-10-06T10:29:05.908944Z",
+  "ended_at": "2026-10-06T10:29:06.259458Z",
+  "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+  "question_id": "q03",
+  "strategy": "routed",
+  "expected_route": "direct",
+  "duration_ms": 350
+}

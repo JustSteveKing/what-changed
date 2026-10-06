@@ -1,0 +1,128 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "## Laravel 13 Queue Worker Changes: A Comprehensive Overview\n\nThe latest stable release, Laravel 13, introduces significant changes to queue workers, ranging from a critical breaking change in job serialization to substantial enhancements in control, visibility, and configuration. These updates aim to improve performance, provide more granular control over job processing, and streamline queue management.\n\n### Critical Breaking Change: New Job Serialization Format\n\nA key breaking change in Laravel 13 is the adoption of a **new, more compact serialization format for job payloads** [1]. This means that any jobs queued by a Laravel 12 application will fail if processed by a Laravel 13 worker due to incompatibility in deserialization. To ensure a smooth upgrade and prevent job failures, all existing queues must be completely drained before deploying Laravel 13 workers [1].\n\n### Enhanced Control and Visibility for Queue Workers\n\nLaravel 13 significantly improves the control and visibility developers have over queue worker operations:\n\n*   **Timeout Notifications and Opt-Out:** Jobs can now be notified when a timeout is imminent, providing an opportunity for graceful shutdown or partial completion. Additionally, workers can be configured to **opt out of being killed** upon a job timeout, offering more resilient handling for specific long-running tasks [2][3].\n*   **Worker Crash Handling:** Worker crashes can now be configured to count towards a job's `maxExceptions` limit, preventing jobs from retrying indefinitely after unexpected terminations and improving error reporting [2][4].\n*   **Job Duration in Events:** The `JobProcessed` event now includes the **duration of the job**, offering valuable performance metrics for analysis and optimization [2].\n*   **Improved Queue Management Commands:** The `queue:flush` Artisan command has gained a `--queue` option, allowing developers to clear specific queues rather than all of them. Furthermore, the `queue:work` command now outputs the **reason for a worker stopping**, which greatly assists in debugging and operational monitoring [2][3].\n*   **Advanced Queue Inspection:** The `Queue` contract has been extended with new methods such as `totalSize`, `pendingSize`, `delayedSize`, `reservedSize`, and `creationTimeOfOldestPendingJob`. These methods provide comprehensive tools for inspecting and managing queue contents, offering deeper insights into queue health and backlog [2].\n\n### Refined Queue Events and Centralized Configuration\n\nSeveral queue-related events have been updated for better consistency and utility in Laravel 13:\n\n*   The `JobAttempted` event now provides the actual **`exception` object** instead of a boolean `exceptionOccurred` property, offering more detailed context about job failures [5].\n*   For consistency across events, the `QueueBusy` event's `$connection` property has been renamed to **`$connectionName`** [5].\n*   Queue configuration has been streamlined through the introduction of a new **`Queue::route()` method**, centralizing how queues are defined and managed within the application [BGc8m].\n\n### Broader Context and Ecosystem Improvements\n\nBeyond the core framework, the Laravel ecosystem also sees advancements benefiting queue workers. Laravel Cloud's managed queues, for instance, have received significant improvements. These include **dynamic scaling based on queue depth**, scaling down to zero when idle to save costs, faster worker wake-up times (under one second), support for FIFO queues, and extended support for long-running jobs (up to an hour on the Pro class) [6]. It's also important to note that Laravel 13 requires a minimum PHP version of **8.3 or 8.4+**, which might necessitate environment upgrades for workers [1][5]. Understanding these changes is crucial for a successful upgrade to Laravel 13, ensuring optimal performance and stability for queue-driven applications.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://www.phpeveryday.com/articles/laravel-13-2026-release-new-features-and-upgrade-guide",
+      "title": "Laravel 13 (2026) Release: New Features and Upgrade Guide - PHP Everyday",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 introduces typed configuration retrieval, allowing developers to declare expected types for configuration values.",
+        "The query builder in Laravel 13 uses prepared statement caching by default, potentially improving performance by 15-25% on read-heavy workloads.",
+        "Eloquent in Laravel 13 handles backed enums, nullable enums, and enum arrays more gracefully with new casting capabilities like `AsEnumCollection`.",
+        "In Laravel 13, the `app/Http/Kernel.php` file is removed, and all middleware configuration is moved to `bootstrap/app.php`.",
+        "New Artisan commands in Laravel 13 include `make:dto`, `analyse`, and `route:conflicts`.",
+        "Laravel 13 requires a minimum of PHP 8.4, dropping support for PHP 8.2 and 8.3.",
+        "Deprecated methods removed in Laravel 13 include `Route::controller()`, `$request->has()` with array syntax, `Model::unguard()`, and `Str::slug()` with a custom separator as a second positional argument.",
+        "Job payloads in Laravel 13 use a more compact serialization format, meaning jobs queued by Laravel 12 will fail on a Laravel 13 worker.",
+        "The default items per page for `Model::paginate()` in Laravel 13 is 25, changed from 15.",
+        "To upgrade to Laravel 13, Composer dependencies must be updated to require PHP `^8.4` and `laravel/framework` `^13.0`."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://github.com/laravel/framework/blob/13.x/CHANGELOG.md",
+      "title": "framework/CHANGELOG.md at 13.x · laravel/framework · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "[13.x] Include duration in JobProcessed event by @jackbayliss in [#61672](https://github.com/laravel/framework/pull/61672)",
+        "[13.x] Notify job when a timeout is going to occur by @jackbayliss in [#61651](https://github.com/laravel/framework/pull/61651)",
+        "[13.x] Add --queue option to queue:flush by @jackbayliss in [#61630](https://github.com/laravel/framework/pull/61630)",
+        "[13.x] Adjust some worker docblocks by @jackbayliss in [#61683](https://github.com/laravel/framework/pull/61683)",
+        "[13.x] Display error in `queue:restart` when worker isn't restartable by @jackbayliss in [#61706](https://github.com/laravel/framework/pull/61706)",
+        "[13.x] Allow jobs to count worker crashes towards maxExceptions by @williamjulianvicary in [#61737](https://github.com/laravel/framework/pull/61737)",
+        "[13.x] Drop restart_syscalls from pcntl_signal in Worker by @jackbayliss in [#61590](https://github.com/laravel/framework/pull/61590)",
+        "[13.x] Ability to opt out of killing the worker on job timeout by @jackbayliss in [#61591](https://github.com/laravel/framework/pull/61591)",
+        "[13.x] Make the worker timed out exit code reachable by @kieranbrown in [#61622](https://github.com/laravel/framework/pull/61622)",
+        "[13.x] Add totalSize method to Queue by @jackbayliss in [#61373](https://github.com/laravel/framework/pull/61373)"
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://releasebot.io/updates/laravel/laravel-framework",
+      "title": "Laravel Updates by Laravel - September 2026 - Releasebot",
+      "kind": "research_citation",
+      "claims": [
+        "[13.x] Adjust some worker docblocks by @jackbayliss in #61683",
+        "[13.x] Display error in queue:restart when worker isn't restartable by @jackbayliss in #61706",
+        "[13.x] Allow jobs to count worker crashes towards maxExceptions by @williamjulianvicary in #61737",
+        "[13.x] Drop restart_syscalls from pcntl_signal in Worker by @jackbayliss in #61590",
+        "[13.x] Ability to opt out of killing the worker on job timeout by @jackbayliss in #61591",
+        "[13.x] Make the worker timed out exit code reachable by @kieranbrown in #61622",
+        "[13.x] Output the worker stop reason in queue:work by @jackbayliss in #61339",
+        "[13.x] Include connection and queue on WorkerStopping when worker is killed by @jackbayliss in #61408",
+        "[13.x] Add JobReleased event to Worker by @jackbayliss in #61108",
+        "[13.x] Fix QueueWorkerTest by @jackbayliss in #61134"
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://releasebot.io/updates/laravel",
+      "title": "Laravel Release Notes - September 2026 Latest Updates - Releasebot",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel v13.34.0 was released on September 29, 2026.",
+        "Laravel v12.69.3 was released on September 29, 2026.",
+        "Laravel Framework 13.x updates in September 2026 included features like Semantic and Hybrid Search for Typesense, reliable MariaDB Vector Queries, and an Eloquent Vector Cast.",
+        "Laravel Framework 13.x updates in September 2026 included features like copying or moving files between disks, choosing which commands run during development, and Mercure Broadcasting in Laravel Echo.",
+        "Laravel Framework 13.x updates in September 2026 included features like chunking collections by adjacent values, one-time mail and notification assertions, and storing SQL NULL with Collection and Array Object Casts.",
+        "Laravel Framework 13.x updates in September 2026 included features like requesting in-place MySQL index changes, counting worker crashes toward a job's exception limit, and building AI providers from runtime configuration.",
+        "Laravel Framework 13.x updates in September 2026 included features like logarithmic queue auto-scaling in Horizon and using Meilisearch's native embedders with Scout."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://ortamarco.me/en/blog/what-breaks-upgrading-to-laravel-13",
+      "title": "Laravel 13 Breaking Changes: The Real List | Marco Orta",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 requires PHP 8.3 minimum and supports up to PHP 8.5.",
+        "The CSRF middleware VerifyCsrfToken is renamed to PreventRequestForgery in Laravel 13 and adds origin verification through the Sec-Fetch-Site header.",
+        "The default cache configuration in Laravel 13 includes `serializable_classes => false`.",
+        "Laravel 13 validates that `uniqueBy` is not empty for `upsert` operations with MySQL or MariaDB, throwing `InvalidArgumentException` instead of generating invalid SQL.",
+        "The default cache prefixes in Laravel 13 change from underscore to hyphen (e.g., `myapp_cache_` to `myapp-cache-`).",
+        "The `JobAttempted` event in Laravel 13 swaps the `exceptionOccurred` boolean property for the `exception` object.",
+        "The `QueueBusy` event in Laravel 13 renames the `$connection` property to `$connectionName`.",
+        "Container::call in Laravel 13 respects nullable defaults, matching constructor injection behavior.",
+        "Routes with an explicit domain are evaluated before routes without one in Laravel 13.",
+        "Laravel 13 collection serialization restores eager-loaded relations."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://laravel.com/blog/everything-we-announced-at-laracon-us-2026",
+      "title": "Everything we announced at Laracon US 2026 | Laravel - The clean stack for Artisans and agents",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel Cloud's managed queues scale based on queue depth and scale back to zero when the queue empties, stopping payment for unused capacity.",
+        "Idle workers in managed queues now wake up in under one second, an improvement from approximately 30 seconds.",
+        "Managed queues now support first-in, first-out (FIFO) queues for strict message ordering.",
+        "Managed queues now support long-running jobs of up to an hour on the new Pro class.",
+        "Managed queues allow preemptive scaling of capacity on a schedule for known high-demand windows."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What changed in the latest Laravel release that affects queue workers?",
+  "decision": {
+    "route": "research",
+    "reason": "Asks what changed or how a change affects code; needs several sources.",
+    "packages": [
+      "laravel/framework"
+    ],
+    "version_mentioned": null
+  },
+  "cached": false,
+  "started_at": "2026-10-06T10:25:07.791582Z",
+  "ended_at": "2026-10-06T10:27:03.863454Z",
+  "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+  "question_id": "q06",
+  "strategy": "routed",
+  "expected_route": "research",
+  "duration_ms": 116071
+}

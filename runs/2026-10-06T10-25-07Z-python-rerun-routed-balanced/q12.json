@@ -1,0 +1,127 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "Upgrading to **Pest 5** primarily involves adjusting to new version requirements for PHP and PHPUnit, which in turn introduce several breaking changes, especially concerning mocking behaviors and assertion methods. While Pest itself aims for minimal API-level breaking changes, the underlying dependency updates necessitate modifications to existing test suites [1][2].\n\n### Understanding the Core Requirements for Pest 5\nA fundamental requirement for Pest 5 is **PHP 8.4 or greater** [1][3][4]. This is a hard minimum, meaning older PHP versions (8.1, 8.2, or 8.3) are not supported, and upgrading PHP should precede any Pest 5 installation [2]. Pest 5 is also built directly on **PHPUnit 13**, a significant version update that carries its own set of breaking changes [1][2][5]. Consequently, all Pest-maintained plugins, such as `pestphp/pest` and `pestphp/pest-plugin-laravel`, must be updated to version `^5.0` in the `composer.json` file [1][6].\n\n### Impact of PHPUnit 13 on Testing Practices\nThe shift to PHPUnit 13 introduces **stricter mocking rules**, which are the main source of potential issues [2]. Patterns like `any()` and `with*()` used without an explicit `expects()` call are now hard-deprecated. Previously, these silently allowed any number of calls without verifying order, but in PHPUnit 13, they emit deprecation warnings [2]. For instance, `$mock->method('handle')->with($this->equalTo($payload));` will now trigger a warning, requiring explicit expectation setting like `$mock->expects($this->once())->method('handle')->with($this->equalTo($payload));` or using a stub if no verification is needed [2].\n\nEven Laravel's `createPartialMock()` helper can trigger these deprecation notices due to its internal implementation, requiring developers to bypass the wrapper and use PHPUnit's `getMockBuilder()` directly [2].\n\nFurthermore, several assertion methods have been **removed** in PHPUnit 13, leading to fatal errors if not updated. Examples include `isType('string')` (replaced by `isString()` or `assertIsString()`) and `assertContainsOnly('string', ...)` (replaced by `assertContainsOnlyString(...)`). The `withConsecutive()` method, removed in PHPUnit 10, now has proper replacements in PHPUnit 13 such as `withParameterSetsInOrder()` or `withParameterSetsInAnyOrder()` [2].\n\n### Plugin-Specific and New Feature Considerations\nFor users of the **Pest Laravel plugin**, version 5 mandates **Laravel 13.23 or newer** [2]. This is a critical point for Laravel applications, as `composer update` will refuse to install the Pest 5 Laravel plugin if an older Laravel version is detected, effectively blocking the Pest upgrade until Laravel is also updated [2].\n\nPest 5 also introduces the **Test Impact Analysis (TIA) engine**, a new feature designed to significantly speed up test execution by running only affected tests [3]. However, for TIA to function and record its dependency baseline, a **code coverage driver** like PCOV or Xdebug must be installed and enabled. Without it, TIA will not activate, and tests will continue to run at full length without warning [2][3].\n\n### Navigating the Upgrade Path\nThe upgrade primarily involves updating PHP, PHPUnit, and Pest dependencies. Beyond dependency updates, existing test suites will require thorough review and refactoring to align with PHPUnit 13's stricter rules and removed assertion methods. While `phpunit.xml` and Pest configuration files generally remain unchanged, the underlying PHPUnit changes are the main source of breaking behavior [2]. It is recommended to fix PHPUnit deprecation warnings on the current version before attempting the Pest 5 upgrade to isolate issues [2].\n\nIn essence, while Pest 5's direct API changes are minimal, its dependency on PHP 8.4+ and PHPUnit 13 brings substantial shifts, particularly in how mocks are handled and specific assertions are used. Developers should plan for these dependency upgrades and allocate time for refactoring existing tests to ensure compatibility and leverage new features like TIA effectively.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://pestphp.com/docs/upgrade-guide",
+      "title": "Upgrade Guide | Pest - The elegant PHP Testing Framework",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 5 requires PHP 8.4.0 or greater.",
+        "To migrate from Pest 4 to Pest 5, update the \"pestphp/pest\" dependency to \"^5.0\".",
+        "All other Pest-maintained plugins should be updated to version \"^5.0\" when migrating to Pest 5.",
+        "Pest 5 is built on top of PHPUnit 13.",
+        "Pest 4 requires PHP 8.3.0 or greater.",
+        "To migrate from Pest 3 to Pest 4, update the \"pestphp/pest\" dependency to \"^4.0\".",
+        "All other Pest-maintained plugins should be updated to version \"^4.0\" when migrating to Pest 4.",
+        "If using `toMatchSnapshot` in Pest 4, snapshot names are generated differently and require updating with the `--update-snapshots` option.",
+        "Pest 4 is built on top of PHPUnit 12.",
+        "The `pestphp/pest-plugin-watch` and `pestphp/pest-plugin-faker` plugins have been archived and removed in Pest 4."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://ortamarco.me/en/blog/what-breaks-upgrading-to-pest-5",
+      "title": "Pest 5 Upgrade: What Actually Breaks | Marco Orta",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 5 requires PHP 8.4.0 or greater as a hard minimum.",
+        "Pest 5 ships built directly on top of PHPUnit 13.",
+        "The official Pest Laravel plugin for v5 currently requires Laravel 13.23 or newer.",
+        "PHPUnit 13 hard-deprecates patterns like `any()` and `with*()` without `expects()`.",
+        "Laravel's `createPartialMock()` helper triggers the `with*() without expects()` deprecation on PHPUnit 13.",
+        "Several assertion methods like `isType('string')` and `assertContainsOnly('string', ...)` were removed in PHPUnit 13.",
+        "The `withConsecutive()` method was removed in PHPUnit 10 and replaced with `withParameterSetsInOrder()` or `withParameterSetsInAnyOrder()` in PHPUnit 13.",
+        "Pest 5's Test Impact Analysis (TIA) requires PCOV or Xdebug to record its baseline dependency graph.",
+        "Pest 5 upgrade guide documents no changes to `phpunit.xml` or any Pest configuration file."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://laravel-news.com/pest-5",
+      "title": "Pest 5 Released With Test Impact Analysis, Agent Verification, and Evals",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 5 requires PHP 8.4 and PHPUnit 13.",
+        "Pest 5 includes a TIA (Test Impact Analysis) engine that re-runs only affected tests and replays the rest from cache.",
+        "The Agent plugin allows AI coding agents to verify changes within the test suite.",
+        "The Evals plugin scores LLM output using deterministic checks and AI-powered scorers through the expect() API.",
+        "The PHPStan plugin adds support for Pest syntax to PHPStan.",
+        "The Rector plugin provides 60 rules for refactoring raw PHP assertions into Pest matchers and handling version upgrades.",
+        "Pest 5 introduces new expectations for emails, ULIDs, IP addresses, and other formats.",
+        "Time-balanced sharding, introduced in Pest v4.6.0, distributes tests across CI machines based on recorded runtime.",
+        "Upgrading to Pest 5 requires PHP 8.4 or greater and PHPUnit 13.",
+        "The Tia Engine requires PCOV or Xdebug to record its baseline, and CI baseline sharing works on GitHub with an authenticated GitHub CLI."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://pestphp.com/docs/installation",
+      "title": "Installation | Pest - The elegant PHP Testing Framework",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 5,
+      "url": "https://redberry.international/news/pest-5-announced-laracon-us-2026",
+      "title": "Pest 5 Announced and Shipped at Laracon US 2026 | Redberry",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 5 was announced and shipped at Laracon US 2026.",
+        "Pest 5 is built on PHP 8.4 and PHPUnit 13.",
+        "Pest 5 features include the Tia Engine for Test Impact Analysis, the Agent plugin for AI coding agents, Evals for testing LLM agents, a first-party PHPStan plugin, automated refactoring with Rector, and time-balanced sharding.",
+        "The Tia Engine can reduce test run times significantly, demonstrated by a drop from 200 seconds to 5 seconds for the Laravel Cloud suite.",
+        "Evals are a first-party plugin for testing LLM agents through the expect() API, covering aspects like LLM-as-judge and factual accuracy.",
+        "The first-party PHPStan plugin addresses issues with Pest's functional API, reducing false positives.",
+        "Automated refactoring with Rector converts raw PHP assertions into Pest's matchers.",
+        "Time-balanced sharding in Pest 5 splits CI suites by execution time, improving shard balance.",
+        "Pest 5 includes new expectations such as toBeEmail(), toBeUlid(), and toBeIpAddress().",
+        "Upgrading to Pest 5 typically involves changing the version in composer.json from \"^4.0\" to \"^5.0\" and requires PHP 8.4 or greater."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://github.com/jasonmccreary/pest-docs/blob/5.x/upgrade-guide.md",
+      "title": "pest-docs/upgrade-guide.md at 5.x · jasonmccreary/pest-docs · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 5 requires PHP 8.4.0 or greater.",
+        "To upgrade from Pest 4 to Pest 5, update the `pestphp/pest` dependency to `^5.0` in `composer.json`.",
+        "To upgrade from Pest 4 to Pest 5, update `pestphp/pest-plugin-laravel` to `^5.0` in `composer.json`.",
+        "Pest 5 is built on top of PHPUnit 13.",
+        "Pest 4 requires PHP 8.3.0 or greater.",
+        "To upgrade from Pest 3 to Pest 4, update the `pestphp/pest` dependency to `^4.0` in `composer.json`.",
+        "To upgrade from Pest 3 to Pest 4, update `pestphp/pest-plugin-laravel` to `^4.0` in `composer.json`.",
+        "In Pest 4, snapshot names are generated differently, requiring the use of the `--update-snapshots` option.",
+        "Pest 4 is built on top of PHPUnit 12.",
+        "The `pestphp/pest-plugin-watch` and `pestphp/pest-plugin-faker` plugins have been archived and are no longer maintained as of Pest 4."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What are the breaking changes when upgrading to Pest 5?",
+  "decision": {
+    "route": "research",
+    "reason": "Asks what changed or how a change affects code; needs several sources.",
+    "packages": [
+      "pestphp/pest"
+    ],
+    "version_mentioned": {
+      "package": "pestphp/pest",
+      "version": "5"
+    }
+  },
+  "cached": false,
+  "started_at": "2026-10-06T10:40:42.705741Z",
+  "ended_at": "2026-10-06T10:42:44.124058Z",
+  "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+  "question_id": "q12",
+  "strategy": "routed",
+  "expected_route": "research",
+  "duration_ms": 121418
+}

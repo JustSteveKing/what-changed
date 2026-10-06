@@ -1059,5 +1059,33 @@
       "quote": "The latest **v4.4.7** release signifies ongoing maintenance and iterative enhancements",
       "reason": "Invents no specific change, but characterises the release without support from the compare view; the rest describes the v4 series."
     }
-  ]
+  ],
+  "owner_review": {
+    "reviewer": "Steve McDougall",
+    "reviewed_on": "2026-10-06",
+    "scope": "The judgement calls only: every 'partly' rating and the borderline 'fully' and 'missing' calls. All were confirmed without change. The other rows were accepted as drafted, without individual review.",
+    "confirmed": [
+      "2026-10-06T09-33-14Z-python-baseline-demo/q10/routing",
+      "2026-10-06T09-33-14Z-python-baseline-demo/q17/no-release",
+      "2026-10-06T09-33-14Z-python-baseline-demo/q20/release",
+      "2026-10-06T09-33-14Z-python-baseline-demo/q20/no-invention",
+      "2026-10-06T09-37-44Z-python-baseline-demo-balanced/q07/dependencies",
+      "2026-10-06T09-37-44Z-python-baseline-demo-balanced/q07/request-forgery",
+      "2026-10-06T09-37-44Z-python-baseline-demo-balanced/q17/no-release",
+      "2026-10-06T09-37-44Z-python-baseline-demo-balanced/q20/no-invention",
+      "2026-10-06T10-25-07Z-python-rerun-routed-balanced/q15/script",
+      "2026-10-06T10-25-07Z-python-rerun-routed-balanced/q20/release",
+      "2026-10-06T10-25-07Z-python-rerun-routed-balanced/q20/no-invention",
+      "2026-10-06T09-37-44Z-python-baseline-demo-balanced/q03/tag",
+      "2026-10-06T09-37-44Z-python-baseline-demo-balanced/q18/no-prediction",
+      "2026-10-06T09-33-14Z-python-baseline-demo/q19/no-opinion",
+      "2026-10-06T09-37-44Z-python-baseline-demo-balanced/q19/no-opinion",
+      "2026-10-06T09-37-44Z-python-baseline-demo-balanced/q06/release",
+      "2026-10-06T09-37-44Z-python-baseline-demo-balanced/q06/timeout-notify",
+      "2026-10-06T10-25-07Z-python-rerun-routed-balanced/q06/release",
+      "2026-10-06T10-25-07Z-python-rerun-routed-balanced/q07/dependencies",
+      "2026-10-06T09-33-14Z-python-baseline-demo/q15/livewire",
+      "2026-10-06T09-33-14Z-python-baseline-demo/q16/production"
+    ]
+  }
 }

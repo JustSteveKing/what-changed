@@ -1,0 +1,1 @@
+uv run src/demo.py "$Q"  0.21s user 0.04s system 1% cpu 14.733 total

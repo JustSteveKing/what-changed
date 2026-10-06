@@ -1,0 +1,29 @@
+[project]
+name = "what-changed"
+version = "1.0.0"
+description = "What changed? answerer for PHP and Laravel packages. Companion repo: demo to production."
+requires-python = "==3.13.*"
+license = "MIT"
+dependencies = [
+    "tabstack==2.8.5",
+    "pydantic==2.13.5",
+    "httpx==0.28.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest==9.1.1",
+    "mypy==2.4.0",
+]
+
+[tool.uv]
+package = false
+
+[tool.mypy]
+strict = true
+python_version = "3.13"
+mypy_path = "src"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]

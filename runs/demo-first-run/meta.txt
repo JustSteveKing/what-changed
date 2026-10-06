@@ -1,0 +1,4 @@
+question: What changed in the latest Laravel release that affects queue workers?
+started: 2026-10-06T09:28:36Z
+ended: 2026-10-06T09:28:51Z
+implementation: python (src/demo.py)

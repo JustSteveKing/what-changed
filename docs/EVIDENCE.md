@@ -134,13 +134,13 @@ Kept separate from the measurements above.
 - The 12 research questions went through the same Research call in both runs; the production changes added a deadline, cancellation, no retries, logging and storage around that call, and none of them fired in this run (no timeouts, cancellations or errors). Differences in those 12 answers are run-to-run variation from the provider, not an effect of this repository's changes. Two runs per configuration is not enough to say how large that variation usually is.
 - The deterministic checks cannot see answer quality. q20 passes every check in all three runs without saying what changed in v4.4.7.
 
-## Model-drafted answer scores (draft, not yet reviewed)
+## Answer scores
 
-At the owner's request, a first-pass rating of every required element in all three Python runs was drafted by a model (Claude Opus 5.5, `claude-opus-5-5`) on 2026-10-06, for the owner to review by hand. This departs from the original plan of human-only scoring, and these numbers are not human scores.
+Every required element in all three runs has a rating in the run's `scoring.csv` (`fully`, `partly` or `missing`). How the ratings were made:
 
-- Source of truth: `eval/scoring-draft-model.json` (132 rows: 44 elements times 3 runs), each with a rating (`fully`, `partly`, `missing`), the exact text from the stored answer it rests on, and a one-line reason.
-- `eval/score_draft.py` refuses to run unless every element has a row and every quote is an exact substring of the stored answer; `tests/test_score_draft.py` checks the committed draft the same way. A rating can still be wrong; a quote cannot be invented.
-- Output: `scoring-draft-model.csv` in each run directory. The human sheets (`scoring.csv`) are untouched and blank.
+- A model (Claude Opus 5.5, `claude-opus-5-5`) drafted all 132 ratings (44 elements times 3 runs) on 2026-10-06, at the owner's request. This departs from the original plan of human-only scoring. Each draft row has the exact text from the stored answer it rests on and a one-line reason; source of truth `eval/scoring-draft-model.json`, per-run copies in `scoring-draft-model.csv`.
+- `eval/score_draft.py` refuses to run unless every element has a row and every quote is an exact substring of the stored answer; `tests/test_score_draft.py` checks the committed file the same way. A rating can still be wrong; a quote cannot be invented.
+- The owner (Steve McDougall) reviewed the 21 judgement calls on 2026-10-06: every `partly` rating and the borderline `fully` and `missing` calls. All 21 were confirmed without change. The other 111 ratings were accepted as drafted, without individual review. The `reviewer_notes` column in each `scoring.csv` says which applies to each row.
 - Elements were rated one question at a time across all three runs. Where an element lists several facts, `fully` required all of them.
 
 | Run | fully | partly | missing |
@@ -155,4 +155,4 @@ At the owner's request, a first-pass rating of every required element in all thr
 | research, q06 to q16 and q20 (32 elements) | 14 fully, 3 partly, 15 missing | 25 fully, 3 partly, 4 missing | 23 fully, 3 partly, 6 missing |
 | decline, q17 to q19 (3 elements) | 1 fully, 1 partly, 1 missing | 1 fully, 1 partly, 1 missing | 3 fully, 0 partly, 0 missing |
 
-Reading the draft (subject to the owner's review): the direct and decline subsets improved because the route changed (the two direct misses in both baselines are q04, answered about the wrong Inertia package). The research subset went from 25 to 23 `fully` between the balanced baseline and the re-run; those questions went through the same Research call, so that is provider variation, not an effect of the changes, and it went down rather than up. No run says the official v4.4.7 release notes are not itemised (q20 `thin-notes` is `missing` in all three).
+Reading the scores: the direct and decline subsets improved because the route changed (the two direct misses in both baselines are q04, answered about the wrong Inertia package). The research subset went from 25 to 23 `fully` between the balanced baseline and the re-run; those questions went through the same Research call, so that is provider variation, not an effect of the changes, and it went down rather than up. No run says the official v4.4.7 release notes are not itemised (q20 `thin-notes` is `missing` in all three).

@@ -15,7 +15,8 @@ Scope: the evidence is three evaluation runs of 20 questions each on one morning
 | Every cited source carries at least one claim | fail | Re-run: 15 / 17 non-declined answers (q08, q12 each have one source with no claims). Fast mode returns no claims at all (`docs/VERIFIED.md`) |
 | Research answers cite official sources | fail | Not controlled by this application. Non-official domains were cited in every run, e.g. re-run q06 cites `releasebot.io`, `phpeveryday.com` and `ortamarco.me` |
 | The application detects an answer that is thin or incomplete | fail | q20 ("latest Livewire release") was not marked incomplete in any run; `incomplete` only fires on an empty report or no sources |
-| Answer quality is scored by a person against official sources | fail | Three `scoring.csv` sheets (44 rows each) are blank. A model-drafted first pass exists for review (`eval/scoring-draft-model.json`); it is not a human score |
+| Answer quality is scored against official sources | pass | All 132 required elements in the three runs are rated in `scoring.csv`. Ratings were drafted by a model with a verbatim quote from the answer for each, checked by `eval/score_draft.py`; see `docs/EVIDENCE.md` |
+| Every rating was checked by a person | fail | The owner reviewed the 21 judgement calls (all confirmed); the other 111 ratings were accepted as drafted. `reviewer_notes` in each `scoring.csv` marks which is which |
 | The evaluation set records its sources and when each answer can change | pass | `eval/questions.json` (schema-validated, `freshness` and `groundTruthCheckedOn` on every question) |
 | Direct answers match the source of truth at run time | pass | Re-run q01 to q05 report v4.4.7, v5.3.0, v5.9.0, v3.5.1 and v13.34.0, the values Packagist and GitHub returned that day |
 

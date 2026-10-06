@@ -1,0 +1,108 @@
+{
+  "provenance": "Derived from research-completed.json by removing the final complete event, so the stream ends after writing:end with no terminal event. Not observed from the live API.",
+  "recorded_at": "2026-10-06T10:24:18.038095Z",
+  "events": [
+    {
+      "event": "start",
+      "data": {
+        "message": "Starting research",
+        "timestamp": 1791282237317.0
+      }
+    },
+    {
+      "event": "planning:start",
+      "data": {
+        "hasPrefetchedContext": false,
+        "message": "Planning research strategy",
+        "timestamp": 1791282237317.0
+      }
+    },
+    {
+      "event": "planning:end",
+      "data": {
+        "complexity": "simple",
+        "message": "Planning complete: 5 queries",
+        "objective": "Identify changes in the most recent Laravel release (2026) that specifically impact queue workers.",
+        "plan": "Fast path: direct answer from search excerpts",
+        "queries": [
+          "Laravel 2026 queue worker changes",
+          "Laravel 2026 queue supervisor update",
+          "Laravel 2026 background job processing",
+          "Laravel 2026 queue driver enhancements",
+          "Laravel 2026 queue worker performance"
+        ],
+        "questions": [],
+        "timestamp": 1791282238488.0
+      }
+    },
+    {
+      "event": "iteration:start",
+      "data": {
+        "iteration": 1.0,
+        "maxIterations": 1.0,
+        "message": "Starting iteration 1 of 1",
+        "queries": [
+          "Laravel 2026 queue worker changes",
+          "Laravel 2026 queue supervisor update",
+          "Laravel 2026 background job processing",
+          "Laravel 2026 queue driver enhancements",
+          "Laravel 2026 queue worker performance"
+        ],
+        "timestamp": 1791282238488.0
+      }
+    },
+    {
+      "event": "searching:start",
+      "data": {
+        "iteration": 1.0,
+        "message": "Searching with 5 queries",
+        "queries": [
+          "Laravel 2026 queue worker changes",
+          "Laravel 2026 queue supervisor update",
+          "Laravel 2026 background job processing",
+          "Laravel 2026 queue driver enhancements",
+          "Laravel 2026 queue worker performance"
+        ],
+        "timestamp": 1791282238488.0
+      }
+    },
+    {
+      "event": "searching:end",
+      "data": {
+        "iteration": 1.0,
+        "message": "Found 8 URLs",
+        "timestamp": 1791282240609.0,
+        "urlsFound": 8.0,
+        "urlsNew": 8.0
+      }
+    },
+    {
+      "event": "iteration:end",
+      "data": {
+        "isLast": true,
+        "iteration": 1.0,
+        "message": "Iteration 1 complete (fast mode)",
+        "timestamp": 1791282240609.0,
+        "stopReason": "max_iterations"
+      }
+    },
+    {
+      "event": "writing:start",
+      "data": {
+        "attempt": 1.0,
+        "isRevision": false,
+        "maxAttempts": 1.0,
+        "message": "Writing report",
+        "timestamp": 1791282240609.0
+      }
+    },
+    {
+      "event": "writing:end",
+      "data": {
+        "attempt": 1.0,
+        "message": "Report draft complete",
+        "timestamp": 1791282248608.0
+      }
+    }
+  ]
+}

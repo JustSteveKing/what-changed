@@ -1,0 +1,93 @@
+{
+  "provenance": "Constructed. The first events of research-completed.json up to searching:end, followed by an error event built to match V1ResearchEventError in the tabstack Python SDK 2.8.5 (types/research_event.py). The error name and message are placeholders; a real streamed error was not observed.",
+  "recorded_at": "2026-10-06T10:24:18.038095Z",
+  "events": [
+    {
+      "event": "start",
+      "data": {
+        "message": "Starting research",
+        "timestamp": 1791282237317.0
+      }
+    },
+    {
+      "event": "planning:start",
+      "data": {
+        "hasPrefetchedContext": false,
+        "message": "Planning research strategy",
+        "timestamp": 1791282237317.0
+      }
+    },
+    {
+      "event": "planning:end",
+      "data": {
+        "complexity": "simple",
+        "message": "Planning complete: 5 queries",
+        "objective": "Identify changes in the most recent Laravel release (2026) that specifically impact queue workers.",
+        "plan": "Fast path: direct answer from search excerpts",
+        "queries": [
+          "Laravel 2026 queue worker changes",
+          "Laravel 2026 queue supervisor update",
+          "Laravel 2026 background job processing",
+          "Laravel 2026 queue driver enhancements",
+          "Laravel 2026 queue worker performance"
+        ],
+        "questions": [],
+        "timestamp": 1791282238488.0
+      }
+    },
+    {
+      "event": "iteration:start",
+      "data": {
+        "iteration": 1.0,
+        "maxIterations": 1.0,
+        "message": "Starting iteration 1 of 1",
+        "queries": [
+          "Laravel 2026 queue worker changes",
+          "Laravel 2026 queue supervisor update",
+          "Laravel 2026 background job processing",
+          "Laravel 2026 queue driver enhancements",
+          "Laravel 2026 queue worker performance"
+        ],
+        "timestamp": 1791282238488.0
+      }
+    },
+    {
+      "event": "searching:start",
+      "data": {
+        "iteration": 1.0,
+        "message": "Searching with 5 queries",
+        "queries": [
+          "Laravel 2026 queue worker changes",
+          "Laravel 2026 queue supervisor update",
+          "Laravel 2026 background job processing",
+          "Laravel 2026 queue driver enhancements",
+          "Laravel 2026 queue worker performance"
+        ],
+        "timestamp": 1791282238488.0
+      }
+    },
+    {
+      "event": "searching:end",
+      "data": {
+        "iteration": 1.0,
+        "message": "Found 8 URLs",
+        "timestamp": 1791282240609.0,
+        "urlsFound": 8.0,
+        "urlsNew": 8.0
+      }
+    },
+    {
+      "event": "error",
+      "data": {
+        "message": "Research failed",
+        "timestamp": 1791282240610.0,
+        "activity": "searching",
+        "iteration": 1,
+        "error": {
+          "name": "FixtureError",
+          "message": "Constructed error event for replay tests"
+        }
+      }
+    }
+  ]
+}

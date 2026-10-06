@@ -187,3 +187,16 @@ class RunManifest(Model):
     packages: dict[str, str]
     github_token_set: bool
     question_order: list[str]
+
+
+# A recorded or constructed SSE stream used to replay provider behaviour in tests.
+class ReplayEvent(Model):
+    event: str
+    data: dict[str, object]
+
+
+class ReplayFixture(Model):
+    # Where the events came from: recorded from a live call, or derived/constructed and how.
+    provenance: NonEmpty
+    recorded_at: AwareDatetime
+    events: list[ReplayEvent]

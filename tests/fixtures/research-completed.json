@@ -1,0 +1,188 @@
+{
+  "provenance": "Recorded from a live Tabstack Research call (mode: fast, tabstack 2.8.5) with eval/record_fixture.py. Query: 'What changed in the latest Laravel release that affects queue workers?'",
+  "recorded_at": "2026-10-06T10:23:57.018385Z",
+  "events": [
+    {
+      "event": "start",
+      "data": {
+        "message": "Starting research",
+        "timestamp": 1791282237317.0
+      }
+    },
+    {
+      "event": "planning:start",
+      "data": {
+        "hasPrefetchedContext": false,
+        "message": "Planning research strategy",
+        "timestamp": 1791282237317.0
+      }
+    },
+    {
+      "event": "planning:end",
+      "data": {
+        "complexity": "simple",
+        "message": "Planning complete: 5 queries",
+        "objective": "Identify changes in the most recent Laravel release (2026) that specifically impact queue workers.",
+        "plan": "Fast path: direct answer from search excerpts",
+        "queries": [
+          "Laravel 2026 queue worker changes",
+          "Laravel 2026 queue supervisor update",
+          "Laravel 2026 background job processing",
+          "Laravel 2026 queue driver enhancements",
+          "Laravel 2026 queue worker performance"
+        ],
+        "questions": [],
+        "timestamp": 1791282238488.0
+      }
+    },
+    {
+      "event": "iteration:start",
+      "data": {
+        "iteration": 1.0,
+        "maxIterations": 1.0,
+        "message": "Starting iteration 1 of 1",
+        "queries": [
+          "Laravel 2026 queue worker changes",
+          "Laravel 2026 queue supervisor update",
+          "Laravel 2026 background job processing",
+          "Laravel 2026 queue driver enhancements",
+          "Laravel 2026 queue worker performance"
+        ],
+        "timestamp": 1791282238488.0
+      }
+    },
+    {
+      "event": "searching:start",
+      "data": {
+        "iteration": 1.0,
+        "message": "Searching with 5 queries",
+        "queries": [
+          "Laravel 2026 queue worker changes",
+          "Laravel 2026 queue supervisor update",
+          "Laravel 2026 background job processing",
+          "Laravel 2026 queue driver enhancements",
+          "Laravel 2026 queue worker performance"
+        ],
+        "timestamp": 1791282238488.0
+      }
+    },
+    {
+      "event": "searching:end",
+      "data": {
+        "iteration": 1.0,
+        "message": "Found 8 URLs",
+        "timestamp": 1791282240609.0,
+        "urlsFound": 8.0,
+        "urlsNew": 8.0
+      }
+    },
+    {
+      "event": "iteration:end",
+      "data": {
+        "isLast": true,
+        "iteration": 1.0,
+        "message": "Iteration 1 complete (fast mode)",
+        "timestamp": 1791282240609.0,
+        "stopReason": "max_iterations"
+      }
+    },
+    {
+      "event": "writing:start",
+      "data": {
+        "attempt": 1.0,
+        "isRevision": false,
+        "maxAttempts": 1.0,
+        "message": "Writing report",
+        "timestamp": 1791282240609.0
+      }
+    },
+    {
+      "event": "writing:end",
+      "data": {
+        "attempt": 1.0,
+        "message": "Report draft complete",
+        "timestamp": 1791282248608.0
+      }
+    },
+    {
+      "event": "complete",
+      "data": {
+        "message": "Research complete",
+        "metadata": {
+          "executedQueries": [
+            [
+              "Laravel 2026 queue worker changes",
+              "Laravel 2026 queue supervisor update",
+              "Laravel 2026 background job processing",
+              "Laravel 2026 queue driver enhancements",
+              "Laravel 2026 queue worker performance"
+            ]
+          ],
+          "mode": "fast",
+          "prompt": "What changed in the latest Laravel release that affects queue workers?",
+          "queryComplexity": "simple",
+          "researchObjective": "Identify changes in the most recent Laravel release (2026) that specifically impact queue workers.",
+          "researchPlan": "Fast path: direct answer from search excerpts (simple complexity, 150-300 words)",
+          "researchQuestions": [],
+          "totalPagesAnalyzed": 4.0,
+          "citedPages": [
+            {
+              "id": "Z9kkAs",
+              "claims": [],
+              "sourceQueries": [
+                "Laravel 2026 queue worker changes",
+                "Laravel 2026 queue supervisor update",
+                "Laravel 2026 background job processing",
+                "Laravel 2026 queue driver enhancements",
+                "Laravel 2026 queue worker performance"
+              ],
+              "url": "https://laravel-news.com/laravel-12-37-0",
+              "title": "Background Queue Connection in Laravel 12.37"
+            },
+            {
+              "id": "5WCuYG",
+              "claims": [],
+              "sourceQueries": [
+                "Laravel 2026 queue worker changes",
+                "Laravel 2026 queue supervisor update",
+                "Laravel 2026 background job processing",
+                "Laravel 2026 queue driver enhancements",
+                "Laravel 2026 queue worker performance"
+              ],
+              "url": "https://laravel.com/blog/everything-we-announced-at-laracon-us-2026",
+              "title": "Everything we announced at Laracon US 2026"
+            },
+            {
+              "id": "t7PyCO",
+              "claims": [],
+              "sourceQueries": [
+                "Laravel 2026 queue worker changes",
+                "Laravel 2026 queue supervisor update",
+                "Laravel 2026 background job processing",
+                "Laravel 2026 queue driver enhancements",
+                "Laravel 2026 queue worker performance"
+              ],
+              "url": "https://laravel.com/framework/docs/12.x/queues",
+              "title": "Queues | Laravel 12.x - The clean stack for Artisans and agents"
+            },
+            {
+              "id": "KLyUnE",
+              "claims": [],
+              "sourceQueries": [
+                "Laravel 2026 queue worker changes",
+                "Laravel 2026 queue supervisor update",
+                "Laravel 2026 background job processing",
+                "Laravel 2026 queue driver enhancements",
+                "Laravel 2026 queue worker performance"
+              ],
+              "url": "https://laravel.com/docs/queues",
+              "title": "Queues - Laravel 11.x - The PHP Framework For Web Artisans"
+            }
+          ]
+        },
+        "report": "The latest Laravel releases introduce several enhancements affecting queue workers, particularly in version 12.37.0 and within the Laravel Cloud managed services. Laravel 12.37.0 brought a **new background queue driver** that utilizes `Concurrently::defer()`, enabling jobs to be serialized and executed from a PHP process, which is better suited for heavier or longer-running tasks [1]. Furthermore, significant improvements were announced for **managed queues** on Laravel Cloud, including idle workers now waking up in **under one second** (a reduction from approximately 30 seconds), the addition of **first-in, first-out (FIFO) queues** to ensure strict message ordering for critical operations, support for **long-running jobs up to an hour** on the new Pro class, and the capability to **preemptively scale capacity** based on a schedule for known peak demand periods [2]. While the fundamental behavior of `queue:work` as a long-lived process that requires restarts for code changes remains consistent [3][4], these updates offer more robust and efficient options for managing background processing.",
+        "timestamp": 1791282248608.0
+      }
+    }
+  ]
+}

@@ -22,7 +22,8 @@
     ],
     "freshness": "Changes with every Livewire release. On 2026-10-05 the highest stable version on Packagist was v4.4.7. The reviewer checks against Packagist at run time, not this note.",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": []
+    "flags": [],
+    "notes": []
   },
   {
     "id": "q02",
@@ -46,7 +47,8 @@
     ],
     "freshness": "Changes with every Pest release. On 2026-10-05 the highest stable version on Packagist was v5.3.0.",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": []
+    "flags": [],
+    "notes": []
   },
   {
     "id": "q03",
@@ -70,7 +72,8 @@
     ],
     "freshness": "Changes with every Filament release. On 2026-10-05 the latest GitHub release was v5.9.0, published 2026-09-26T19:40:26Z.",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": []
+    "flags": [],
+    "notes": []
   },
   {
     "id": "q04",
@@ -94,8 +97,9 @@
     ],
     "freshness": "Changes with every inertia-laravel release. On 2026-10-05 the latest was v3.5.1 (one change, PR #918).",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": [
-      "'Inertia' is routed to the Laravel adapter, inertiajs/inertia-laravel. A reader may mean the client packages (@inertiajs/*), which have separate releases. Decide whether to keep this phrasing."
+    "flags": [],
+    "notes": [
+      "'Inertia' is deliberately left ambiguous. The router maps it to the Laravel adapter, inertiajs/inertia-laravel, which is the expected package; answers about the @inertiajs client packages are scored as missing. Decision confirmed by the owner on 2026-10-06."
     ]
   },
   {
@@ -115,7 +119,8 @@
     ],
     "freshness": "Laravel tags minor and patch releases as often as weekly (laravel.com/docs/13.x/releases, Versioning Scheme). On 2026-10-05 the highest stable version was v13.34.0.",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": []
+    "flags": [],
+    "notes": []
   },
   {
     "id": "q06",
@@ -154,8 +159,9 @@
     ],
     "freshness": "Written against v13.34.0 (published 2026-09-29). If a newer laravel/framework release exists at run time, the 'latest' is different and these elements no longer apply; the reviewer must score against that release's notes or mark the question stale.",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": [
-      "High staleness risk: Laravel can release weekly, so v13.34.0 may not be the latest when the baseline runs. Also, which of the v13.34.0 items count as 'affects queue workers' is a judgement call; I chose the four that change worker or job runtime behaviour and left out queue:flush --queue and Queue::isPaused() enum support. Please confirm or edit."
+    "flags": [],
+    "notes": [
+      "Elements are pinned to v13.34.0. The four required items are the ones that change worker or job runtime behaviour; queue:flush --queue and Queue::isPaused() enum support were deliberately left out. Re-pin the elements when laravel/framework releases again. Decision confirmed by the owner on 2026-10-06."
     ]
   },
   {
@@ -185,7 +191,8 @@
     ],
     "freshness": "Stable unless the upgrade guide is edited. The guide lists exactly three high impact items as of 2026-10-05.",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": []
+    "flags": [],
+    "notes": []
   },
   {
     "id": "q08",
@@ -209,7 +216,8 @@
     ],
     "freshness": "Stable unless the upgrade guide is edited.",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": []
+    "flags": [],
+    "notes": []
   },
   {
     "id": "q09",
@@ -229,8 +237,9 @@
     ],
     "freshness": "Could change if Laravel 13 adds support for a newer PHP release during its support window (bug fixes until Q3 2027 per the support policy table).",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": [
-      "This is arguably not a 'what changed' question. It routes to research only because it names a version. Keep it as a test of version-specific routing, or replace it."
+    "flags": [],
+    "notes": [
+      "Not strictly a 'what changed' question. Kept on purpose as a test of version-specific routing: it goes to research only because it names a version. Decision confirmed by the owner on 2026-10-06."
     ]
   },
   {
@@ -265,8 +274,9 @@
     ],
     "freshness": "Stable unless the upgrade guide is edited. The guide also lists wire:navigate:scroll and smart_wire_keys under high impact; I did not make those required.",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": [
-      "The guide's high impact section has more items than I made required. Please confirm which ones a reviewer should insist on."
+    "flags": [],
+    "notes": [
+      "The upgrade guide's high impact section also lists wire:navigate:scroll and the smart_wire_keys default; these are optional, not required. Decision confirmed by the owner on 2026-10-06."
     ]
   },
   {
@@ -291,7 +301,8 @@
     ],
     "freshness": "Stable; describes a past release.",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": []
+    "flags": [],
+    "notes": []
   },
   {
     "id": "q12",
@@ -321,7 +332,8 @@
     ],
     "freshness": "Stable unless the upgrade guide is edited.",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": []
+    "flags": [],
+    "notes": []
   },
   {
     "id": "q13",
@@ -346,7 +358,8 @@
     ],
     "freshness": "Stable; describes a past release.",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": []
+    "flags": [],
+    "notes": []
   },
   {
     "id": "q14",
@@ -366,7 +379,8 @@
     ],
     "freshness": "The minimum Livewire version inside 5.x moves over time: filament/support v5.0.0 required livewire/livewire ^4.0, the 5.x branch on 2026-10-05 required ^4.4.7. The yes/no answer is stable.",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": []
+    "flags": [],
+    "notes": []
   },
   {
     "id": "q15",
@@ -395,7 +409,8 @@
     ],
     "freshness": "Stable unless the upgrade guide is edited.",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": []
+    "flags": [],
+    "notes": []
   },
   {
     "id": "q16",
@@ -425,7 +440,8 @@
     ],
     "freshness": "Stable unless the upgrade guide is edited.",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": []
+    "flags": [],
+    "notes": []
   },
   {
     "id": "q17",
@@ -445,7 +461,8 @@
     ],
     "freshness": "Changes when any 14.x tag (including a beta) appears on Packagist. The versioning scheme says major releases ship yearly around Q1, so this question likely expires in early 2027.",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": []
+    "flags": [],
+    "notes": []
   },
   {
     "id": "q18",
@@ -464,7 +481,8 @@
     ],
     "freshness": "Expires once Pest 6 is released.",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": []
+    "flags": [],
+    "notes": []
   },
   {
     "id": "q19",
@@ -484,8 +502,9 @@
     ],
     "freshness": "Does not expire.",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": [
-      "There is no official source for 'should decline'; the sources listed are just the official pages for both packages, because the schema requires one per element. Tell me if you would rather the schema allow no source for decline items."
+    "flags": [],
+    "notes": [
+      "No official source exists for 'should decline'. The linked pages are context for the two packages, not ground truth for declining; the schema requires a source per element. Decision confirmed by the owner on 2026-10-06."
     ]
   },
   {
@@ -516,8 +535,9 @@
     ],
     "freshness": "Written against v4.4.7 (published 2026-09-28). Expires with the next Livewire release; if that release has itemised notes, this question no longer tests an incomplete case and should be replaced or re-pinned.",
     "groundTruthCheckedOn": "2026-10-05",
-    "flags": [
-      "\"incomplete\" here is a reviewer judgement about the answer, not something the application can detect: the app only marks an answer incomplete when the report is empty or cites no sources. A complete-looking answer will pass the deterministic checks. High staleness risk, same as q06."
+    "flags": [],
+    "notes": [
+      "'incomplete' is a reviewer judgement that the application cannot detect: it only marks an answer incomplete when the report is empty or cites no sources, so a complete-looking answer passes the deterministic checks. Re-pin when livewire/livewire releases again. Decision confirmed by the owner on 2026-10-06."
     ]
   }
 ]

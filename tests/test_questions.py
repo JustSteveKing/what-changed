@@ -15,3 +15,7 @@ def test_has_the_agreed_mix_of_5_direct_11_research_and_4_declined_or_incomplete
     assert len([q for q in answered if q.expected_route == "direct"]) == 5
     assert len([q for q in answered if q.expected_route == "research"]) == 11
     assert len([q for q in questions if q.expected_outcome != "answered"]) == 4
+
+
+def test_no_unresolved_flags() -> None:
+    assert [q.id for q in EvalQuestionSet.validate_json(RAW) if q.flags] == []

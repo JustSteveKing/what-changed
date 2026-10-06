@@ -148,6 +148,8 @@ class EvalQuestion(EvalModel):
     ground_truth_checked_on: Annotated[str, StringConstraints(pattern=r"^\d{4}-\d{2}-\d{2}$")]
     # Anything the author could not ground in an official source, for a human to resolve.
     flags: list[str]
+    # Decisions about the question, recorded once a flag is resolved.
+    notes: list[str]
 
 
 def _unique_ids(questions: list[EvalQuestion]) -> list[EvalQuestion]:

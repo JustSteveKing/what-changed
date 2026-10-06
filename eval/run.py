@@ -2,6 +2,7 @@ import asyncio
 import platform
 import subprocess
 import sys
+from dataclasses import replace
 from datetime import UTC, datetime
 from importlib.metadata import version
 from pathlib import Path
@@ -29,7 +30,8 @@ async def main(argv: list[str]) -> int:
     rank = {qid: i for i, qid in enumerate(first)}
     ordered = sorted(questions, key=lambda q: (rank.get(q.id, len(first)), q.id))
 
-    config = load_config()
+    # The runner writes its own run records, so answers are not stored a second time.
+    config = replace(load_config(), answer_store_dir=None)
     started_at = datetime.now(UTC)
     run_id = f"{started_at.strftime('%Y-%m-%dT%H-%M-%S')}Z-python-{label}"
     run_dir = Path("runs") / run_id

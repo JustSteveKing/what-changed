@@ -17,6 +17,7 @@ from what_changed.deadline import Cancelled, TimedOut
 from what_changed.router import find_packages, normalise, route
 from what_changed.routes.direct import PackagistVersion, fetch_packagist_versions, run_direct
 from what_changed.routes.research import run_research
+from what_changed.store import store_answer
 
 # "routed" is the feature. "demo" reproduces the tagged demo (every question goes to one
 # Research call) through this same entry point, so baseline outputs share one shape.
@@ -116,10 +117,13 @@ async def answer(
             cost_note="No cost reported.",
         )
 
-    return ApplicationAnswer(
+    final = ApplicationAnswer(
         question=question,
         decision=decision,
         **result.model_dump(),
         started_at=started_at,
         ended_at=datetime.now(UTC),
     )
+    if config.answer_store_dir is not None:
+        store_answer(final, config.answer_store_dir)
+    return final

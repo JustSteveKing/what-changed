@@ -145,3 +145,28 @@ def _unique_ids(questions: list[EvalQuestion]) -> list[EvalQuestion]:
 EvalQuestionSet: TypeAdapter[list[EvalQuestion]] = TypeAdapter(
     Annotated[list[EvalQuestion], Field(min_length=20, max_length=20), AfterValidator(_unique_ids)]
 )
+
+
+# One file per question per evaluation run, under runs/<run-id>/.
+class RunRecord(ApplicationAnswer):
+    run_id: NonEmpty
+    question_id: Annotated[str, StringConstraints(pattern=r"^q\d{2}$")]
+    strategy: Literal["routed", "demo"]
+    expected_route: Literal["direct", "research", "decline"]
+    duration_ms: Annotated[int, Field(ge=0)]
+
+
+class RunManifest(Model):
+    model_config = ConfigDict(extra="forbid", frozen=False)
+    run_id: NonEmpty
+    strategy: Literal["routed", "demo"]
+    research_mode: Literal["fast", "balanced"]
+    started_at: AwareDatetime
+    ended_at: AwareDatetime | None
+    git_commit: str
+    git_dirty: bool
+    python: str
+    os: str
+    packages: dict[str, str]
+    github_token_set: bool
+    question_order: list[str]

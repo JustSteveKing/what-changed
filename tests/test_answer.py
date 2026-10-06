@@ -149,9 +149,9 @@ def test_error_event_maps_to_failed() -> None:
     assert result.error == AnswerError(name="ResearchError", message="boom")
 
 
-def test_no_terminal_state_when_stream_just_ends() -> None:
+def test_stream_closed_when_stream_just_ends() -> None:
     result = run(collect_research(stream_of([])))
-    assert result.terminal_state is None
+    assert result.terminal_state == "stream_closed"
     assert result.incomplete_reasons == ["The stream ended without a terminal event."]
 
 

@@ -50,7 +50,7 @@ async def collect_research(events: AsyncIterable[ResearchEvent]) -> RouteResult:
 
     # The stream ended without a complete or error event.
     return RouteResult(
-        terminal_state=None,
+        terminal_state="stream_closed",
         incomplete=True,
         incomplete_reasons=["The stream ended without a terminal event."],
         text="",

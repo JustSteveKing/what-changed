@@ -11,6 +11,7 @@ from what_changed.contract import (
     RouteDecision,
     RouteResult,
 )
+from what_changed.deadline import TimedOut
 from what_changed.router import find_packages, normalise, route
 from what_changed.routes.direct import PackagistVersion, fetch_packagist_versions, run_direct
 from what_changed.routes.research import run_research
@@ -97,10 +98,11 @@ async def answer(
     try:
         result = await run_decision(question, decision, config, direct, research, fetch_versions)
     except Exception as error:
+        timed_out = isinstance(error, TimedOut)
         result = RouteResult(
-            terminal_state="failed",
+            terminal_state="timed_out" if timed_out else "failed",
             incomplete=True,
-            incomplete_reasons=["The call threw an error."],
+            incomplete_reasons=["The call timed out." if timed_out else "The call threw an error."],
             text="",
             sources=[],
             error=AnswerError(name=type(error).__name__, message=str(error)),

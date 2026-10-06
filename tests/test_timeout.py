@@ -36,7 +36,7 @@ def test_aborts_a_direct_lookup_that_does_not_respond(monkeypatch: pytest.Monkey
     monkeypatch.setattr(httpx.AsyncClient, "get", never)
     config = replace(TEST_CONFIG, direct_timeout_s=0.05)
     result = run(answer("What is the latest version of livewire/livewire?", config=config))
-    assert result.terminal_state == "failed"
+    assert result.terminal_state == "timed_out"
     assert result.error is not None
     assert (result.error.name, result.error.message) == ("TimedOut", "Packagist (livewire/livewire) timed out after 50 ms")
 

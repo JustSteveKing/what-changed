@@ -78,8 +78,19 @@ class SourceRecord(Model):
     claims: list[str]
 
 
-# None means the call ended without any terminal state being observed.
-TerminalState = Literal["completed", "failed", "declined"]
+TerminalState = Literal["completed", "failed", "stream_closed", "timed_out", "cancelled", "declined"]
+
+# Each terminal state has its own CLI exit code so scripts can tell them apart.
+# 130 follows the shell convention for a process stopped by Ctrl+C (SIGINT).
+EXIT_CODES: dict[TerminalState, int] = {
+    "completed": 0,
+    "failed": 1,
+    "declined": 2,
+    "stream_closed": 3,
+    "timed_out": 4,
+    "cancelled": 130,
+}
+USAGE_EXIT_CODE = 64
 
 
 class AnswerError(Model):
@@ -89,7 +100,7 @@ class AnswerError(Model):
 
 # What a route hands back to answer.py. answer.py adds question, decision and timestamps.
 class RouteResult(Model):
-    terminal_state: TerminalState | None
+    terminal_state: TerminalState
     # True when the call completed but the answer cannot be relied on as a full answer.
     incomplete: bool
     incomplete_reasons: list[str]
@@ -149,6 +160,9 @@ EvalQuestionSet: TypeAdapter[list[EvalQuestion]] = TypeAdapter(
 
 # One file per question per evaluation run, under runs/<run-id>/.
 class RunRecord(ApplicationAnswer):
+    # Optional so run records written before distinct terminal states existed still
+    # parse. In those records None means no terminal event was seen.
+    terminal_state: TerminalState | None  # type: ignore[assignment]
     run_id: NonEmpty
     question_id: Annotated[str, StringConstraints(pattern=r"^q\d{2}$")]
     strategy: Literal["routed", "demo"]

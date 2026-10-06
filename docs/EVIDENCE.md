@@ -15,7 +15,7 @@ This file records what was run, where, and what came out. It measures one featur
 | `mypy` | 2.4.0 (strict) |
 | Lockfile | `uv.lock`, exact pins in `pyproject.toml` |
 | `demo` tag | `44085b3` |
-| Final state | to be recorded in the last commit |
+| Final state | `b5ec876` (the only later commit records this hash) |
 
 ## Runs
 

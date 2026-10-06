@@ -1,0 +1,523 @@
+[
+  {
+    "id": "q01",
+    "question": "What is the latest stable version of livewire/livewire?",
+    "expectedRoute": "direct",
+    "expectedOutcome": "answered",
+    "requiredElements": [
+      {
+        "id": "version",
+        "check": "States a version number that equals the highest stable (non beta, non RC) version listed on Packagist at run time.",
+        "source": "https://packagist.org/packages/livewire/livewire"
+      },
+      {
+        "id": "source",
+        "check": "Cites Packagist or the package's GitHub releases as the source.",
+        "source": "https://packagist.org/packages/livewire/livewire"
+      }
+    ],
+    "officialSources": [
+      "https://packagist.org/packages/livewire/livewire",
+      "https://repo.packagist.org/p2/livewire/livewire.json"
+    ],
+    "freshness": "Changes with every Livewire release. On 2026-10-05 the highest stable version on Packagist was v4.4.7. The reviewer checks against Packagist at run time, not this note.",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": []
+  },
+  {
+    "id": "q02",
+    "question": "What's the current version of Pest?",
+    "expectedRoute": "direct",
+    "expectedOutcome": "answered",
+    "requiredElements": [
+      {
+        "id": "version",
+        "check": "States a version number that equals the highest stable version of pestphp/pest on Packagist at run time.",
+        "source": "https://packagist.org/packages/pestphp/pest"
+      },
+      {
+        "id": "package",
+        "check": "Identifies the package as pestphp/pest (the PHP testing framework).",
+        "source": "https://packagist.org/packages/pestphp/pest"
+      }
+    ],
+    "officialSources": [
+      "https://packagist.org/packages/pestphp/pest"
+    ],
+    "freshness": "Changes with every Pest release. On 2026-10-05 the highest stable version on Packagist was v5.3.0.",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": []
+  },
+  {
+    "id": "q03",
+    "question": "When was the latest Filament release published?",
+    "expectedRoute": "direct",
+    "expectedOutcome": "answered",
+    "requiredElements": [
+      {
+        "id": "tag",
+        "check": "Names the tag returned by GitHub releases/latest for filamentphp/filament at run time.",
+        "source": "https://github.com/filamentphp/filament/releases/latest"
+      },
+      {
+        "id": "date",
+        "check": "Gives the published date of that release, matching GitHub.",
+        "source": "https://github.com/filamentphp/filament/releases/latest"
+      }
+    ],
+    "officialSources": [
+      "https://github.com/filamentphp/filament/releases"
+    ],
+    "freshness": "Changes with every Filament release. On 2026-10-05 the latest GitHub release was v5.9.0, published 2026-09-26T19:40:26Z.",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": []
+  },
+  {
+    "id": "q04",
+    "question": "Show me the release notes for the latest Inertia release",
+    "expectedRoute": "direct",
+    "expectedOutcome": "answered",
+    "requiredElements": [
+      {
+        "id": "tag",
+        "check": "Names the tag returned by GitHub releases/latest for inertiajs/inertia-laravel at run time.",
+        "source": "https://github.com/inertiajs/inertia-laravel/releases/latest"
+      },
+      {
+        "id": "notes",
+        "check": "Includes the release notes body of that release (or states it is empty).",
+        "source": "https://github.com/inertiajs/inertia-laravel/releases/latest"
+      }
+    ],
+    "officialSources": [
+      "https://github.com/inertiajs/inertia-laravel/releases"
+    ],
+    "freshness": "Changes with every inertia-laravel release. On 2026-10-05 the latest was v3.5.1 (one change, PR #918).",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": [
+      "'Inertia' is routed to the Laravel adapter, inertiajs/inertia-laravel. A reader may mean the client packages (@inertiajs/*), which have separate releases. Decide whether to keep this phrasing."
+    ]
+  },
+  {
+    "id": "q05",
+    "question": "What is the latest version of laravel/framework?",
+    "expectedRoute": "direct",
+    "expectedOutcome": "answered",
+    "requiredElements": [
+      {
+        "id": "version",
+        "check": "States a version number that equals the highest stable version of laravel/framework on Packagist at run time.",
+        "source": "https://packagist.org/packages/laravel/framework"
+      }
+    ],
+    "officialSources": [
+      "https://packagist.org/packages/laravel/framework"
+    ],
+    "freshness": "Laravel tags minor and patch releases as often as weekly (laravel.com/docs/13.x/releases, Versioning Scheme). On 2026-10-05 the highest stable version was v13.34.0.",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": []
+  },
+  {
+    "id": "q06",
+    "question": "What changed in the latest Laravel release that affects queue workers?",
+    "expectedRoute": "research",
+    "expectedOutcome": "answered",
+    "requiredElements": [
+      {
+        "id": "release",
+        "check": "Identifies which release is the latest (v13.34.0 when written).",
+        "source": "https://github.com/laravel/framework/releases/tag/v13.34.0"
+      },
+      {
+        "id": "max-exceptions",
+        "check": "Mentions that jobs can count worker crashes towards maxExceptions (PR #61737).",
+        "source": "https://github.com/laravel/framework/releases/tag/v13.34.0"
+      },
+      {
+        "id": "timeout-notify",
+        "check": "Mentions that a job is notified when a timeout is going to occur (PR #61651).",
+        "source": "https://github.com/laravel/framework/releases/tag/v13.34.0"
+      },
+      {
+        "id": "job-duration",
+        "check": "Mentions that the JobProcessed event now includes the job duration (PR #61672).",
+        "source": "https://github.com/laravel/framework/releases/tag/v13.34.0"
+      },
+      {
+        "id": "restart-error",
+        "check": "Mentions that queue:restart displays an error when a worker is not restartable (PR #61706).",
+        "source": "https://github.com/laravel/framework/releases/tag/v13.34.0"
+      }
+    ],
+    "officialSources": [
+      "https://github.com/laravel/framework/releases/tag/v13.34.0"
+    ],
+    "freshness": "Written against v13.34.0 (published 2026-09-29). If a newer laravel/framework release exists at run time, the 'latest' is different and these elements no longer apply; the reviewer must score against that release's notes or mark the question stale.",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": [
+      "High staleness risk: Laravel can release weekly, so v13.34.0 may not be the latest when the baseline runs. Also, which of the v13.34.0 items count as 'affects queue workers' is a judgement call; I chose the four that change worker or job runtime behaviour and left out queue:flush --queue and Queue::isPaused() enum support. Please confirm or edit."
+    ]
+  },
+  {
+    "id": "q07",
+    "question": "What are the high impact changes when upgrading from Laravel 12 to Laravel 13?",
+    "expectedRoute": "research",
+    "expectedOutcome": "answered",
+    "requiredElements": [
+      {
+        "id": "dependencies",
+        "check": "Says to update laravel/framework to ^13.0 (and related dependencies such as phpunit/phpunit ^12.0, pestphp/pest ^4.0).",
+        "source": "https://laravel.com/docs/13.x/upgrade"
+      },
+      {
+        "id": "installer",
+        "check": "Mentions updating the Laravel installer.",
+        "source": "https://laravel.com/docs/13.x/upgrade"
+      },
+      {
+        "id": "request-forgery",
+        "check": "Mentions the CSRF middleware rename from VerifyCsrfToken to PreventRequestForgery, with Sec-Fetch-Site origin verification.",
+        "source": "https://laravel.com/docs/13.x/upgrade"
+      }
+    ],
+    "officialSources": [
+      "https://laravel.com/docs/13.x/upgrade"
+    ],
+    "freshness": "Stable unless the upgrade guide is edited. The guide lists exactly three high impact items as of 2026-10-05.",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": []
+  },
+  {
+    "id": "q08",
+    "question": "What changed in Laravel 13 queue events that could break my listeners?",
+    "expectedRoute": "research",
+    "expectedOutcome": "answered",
+    "requiredElements": [
+      {
+        "id": "job-attempted",
+        "check": "Says JobAttempted now exposes $exception (the exception or null) instead of the boolean $exceptionOccurred.",
+        "source": "https://laravel.com/docs/13.x/upgrade"
+      },
+      {
+        "id": "queue-busy",
+        "check": "Says the QueueBusy event property $connection was renamed to $connectionName.",
+        "source": "https://laravel.com/docs/13.x/upgrade"
+      }
+    ],
+    "officialSources": [
+      "https://laravel.com/docs/13.x/upgrade"
+    ],
+    "freshness": "Stable unless the upgrade guide is edited.",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": []
+  },
+  {
+    "id": "q09",
+    "question": "Which PHP versions does Laravel 13 support?",
+    "expectedRoute": "research",
+    "expectedOutcome": "answered",
+    "requiredElements": [
+      {
+        "id": "php-range",
+        "check": "States PHP 8.3 to 8.5.",
+        "source": "https://laravel.com/docs/13.x/releases"
+      }
+    ],
+    "officialSources": [
+      "https://laravel.com/docs/13.x/releases",
+      "https://github.com/laravel/framework/blob/13.x/composer.json"
+    ],
+    "freshness": "Could change if Laravel 13 adds support for a newer PHP release during its support window (bug fixes until Q3 2027 per the support policy table).",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": [
+      "This is arguably not a 'what changed' question. It routes to research only because it names a version. Keep it as a test of version-specific routing, or replace it."
+    ]
+  },
+  {
+    "id": "q10",
+    "question": "What changed in Livewire 4 that affects existing Livewire 3 components?",
+    "expectedRoute": "research",
+    "expectedOutcome": "answered",
+    "requiredElements": [
+      {
+        "id": "config-keys",
+        "check": "Mentions renamed config keys: layout to component_layout and lazy_placeholder to component_placeholder.",
+        "source": "https://livewire.laravel.com/docs/4.x/upgrading"
+      },
+      {
+        "id": "routing",
+        "check": "Mentions Route::livewire() as the recommended way to route full-page components.",
+        "source": "https://livewire.laravel.com/docs/4.x/upgrading"
+      },
+      {
+        "id": "wire-model-children",
+        "check": "Mentions that wire:model ignores events from child elements by default, with .deep to restore the old behaviour.",
+        "source": "https://livewire.laravel.com/docs/4.x/upgrading"
+      },
+      {
+        "id": "closed-tags",
+        "check": "Mentions that component tags must be closed.",
+        "source": "https://livewire.laravel.com/docs/4.x/upgrading"
+      }
+    ],
+    "officialSources": [
+      "https://livewire.laravel.com/docs/4.x/upgrading"
+    ],
+    "freshness": "Stable unless the upgrade guide is edited. The guide also lists wire:navigate:scroll and smart_wire_keys under high impact; I did not make those required.",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": [
+      "The guide's high impact section has more items than I made required. Please confirm which ones a reviewer should insist on."
+    ]
+  },
+  {
+    "id": "q11",
+    "question": "What changed about wire:model modifiers in Livewire 4.1?",
+    "expectedRoute": "research",
+    "expectedOutcome": "answered",
+    "requiredElements": [
+      {
+        "id": "client-sync",
+        "check": "Says modifiers such as .blur and .change now control when client-side state syncs, not just network timing.",
+        "source": "https://livewire.laravel.com/docs/4.x/upgrading"
+      },
+      {
+        "id": "restore",
+        "check": "Says to add .live before them (for example wire:model.live.blur) to keep the previous behaviour.",
+        "source": "https://livewire.laravel.com/docs/4.x/upgrading"
+      }
+    ],
+    "officialSources": [
+      "https://livewire.laravel.com/docs/4.x/upgrading"
+    ],
+    "freshness": "Stable; describes a past release.",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": []
+  },
+  {
+    "id": "q12",
+    "question": "What are the breaking changes when upgrading to Pest 5?",
+    "expectedRoute": "research",
+    "expectedOutcome": "answered",
+    "requiredElements": [
+      {
+        "id": "php",
+        "check": "Says Pest 5 requires PHP 8.4.0 or greater.",
+        "source": "https://pestphp.com/docs/upgrade-guide"
+      },
+      {
+        "id": "dependencies",
+        "check": "Says to update pestphp/pest and Pest-maintained plugins to ^5.0.",
+        "source": "https://pestphp.com/docs/upgrade-guide"
+      },
+      {
+        "id": "phpunit",
+        "check": "Says Pest 5 is built on PHPUnit 13.",
+        "source": "https://pestphp.com/docs/upgrade-guide"
+      }
+    ],
+    "officialSources": [
+      "https://pestphp.com/docs/upgrade-guide",
+      "https://github.com/pestphp/docs/blob/5.x/upgrade-guide.md"
+    ],
+    "freshness": "Stable unless the upgrade guide is edited.",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": []
+  },
+  {
+    "id": "q13",
+    "question": "What changed in Pest 4 that affects snapshot tests?",
+    "expectedRoute": "research",
+    "expectedOutcome": "answered",
+    "requiredElements": [
+      {
+        "id": "names",
+        "check": "Says Pest 4 changes how snapshot names are generated.",
+        "source": "https://pestphp.com/docs/upgrade-guide"
+      },
+      {
+        "id": "update",
+        "check": "Says to regenerate snapshots with --update-snapshots.",
+        "source": "https://pestphp.com/docs/upgrade-guide"
+      }
+    ],
+    "officialSources": [
+      "https://pestphp.com/docs/upgrade-guide",
+      "https://github.com/pestphp/docs/blob/5.x/upgrade-guide.md"
+    ],
+    "freshness": "Stable; describes a past release.",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": []
+  },
+  {
+    "id": "q14",
+    "question": "Does Filament 5 require Livewire 4?",
+    "expectedRoute": "research",
+    "expectedOutcome": "answered",
+    "requiredElements": [
+      {
+        "id": "yes",
+        "check": "Says yes: Filament 5 requires Livewire v4.0 or later.",
+        "source": "https://filamentphp.com/docs/5.x/upgrade-guide"
+      }
+    ],
+    "officialSources": [
+      "https://filamentphp.com/docs/5.x/upgrade-guide",
+      "https://github.com/filamentphp/filament/blob/v5.0.0/packages/support/composer.json"
+    ],
+    "freshness": "The minimum Livewire version inside 5.x moves over time: filament/support v5.0.0 required livewire/livewire ^4.0, the 5.x branch on 2026-10-05 required ^4.4.7. The yes/no answer is stable.",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": []
+  },
+  {
+    "id": "q15",
+    "question": "What do I need to change when upgrading to Filament 5?",
+    "expectedRoute": "research",
+    "expectedOutcome": "answered",
+    "requiredElements": [
+      {
+        "id": "requirements",
+        "check": "Lists the new requirements: PHP 8.2+, Laravel v11.28+, Livewire v4.0+, Tailwind CSS v4.0+.",
+        "source": "https://filamentphp.com/docs/5.x/upgrade-guide"
+      },
+      {
+        "id": "script",
+        "check": "Mentions the automated upgrade script (filament/upgrade ^5.0, then vendor/bin/filament-v5).",
+        "source": "https://filamentphp.com/docs/5.x/upgrade-guide"
+      },
+      {
+        "id": "livewire",
+        "check": "Mentions upgrading Livewire to v4 as part of the upgrade.",
+        "source": "https://filamentphp.com/docs/5.x/upgrade-guide"
+      }
+    ],
+    "officialSources": [
+      "https://filamentphp.com/docs/5.x/upgrade-guide"
+    ],
+    "freshness": "Stable unless the upgrade guide is edited.",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": []
+  },
+  {
+    "id": "q16",
+    "question": "What changed in Inertia 3 for server-side rendering?",
+    "expectedRoute": "research",
+    "expectedOutcome": "answered",
+    "requiredElements": [
+      {
+        "id": "dev-ssr",
+        "check": "Says SSR works during development with the @inertiajs/vite plugin and npm run dev, without a separate Node.js server.",
+        "source": "https://inertiajs.com/docs/v3/getting-started/upgrade-guide"
+      },
+      {
+        "id": "production",
+        "check": "Says building the SSR bundle and running the SSR server are still needed for production.",
+        "source": "https://inertiajs.com/docs/v3/getting-started/upgrade-guide"
+      },
+      {
+        "id": "per-route",
+        "check": "Mentions that SSR can be disabled on specific routes.",
+        "source": "https://inertiajs.com/docs/v3/getting-started/upgrade-guide"
+      }
+    ],
+    "officialSources": [
+      "https://inertiajs.com/docs/v3/getting-started/upgrade-guide",
+      "https://github.com/inertiajs/inertia-laravel/releases/tag/v3.0.0"
+    ],
+    "freshness": "Stable unless the upgrade guide is edited.",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": []
+  },
+  {
+    "id": "q17",
+    "question": "What changed in Laravel 14?",
+    "expectedRoute": "research",
+    "expectedOutcome": "declined",
+    "requiredElements": [
+      {
+        "id": "no-release",
+        "check": "Says Laravel 14 has not been released, and does not describe Laravel 14 changes as fact.",
+        "source": "https://packagist.org/packages/laravel/framework"
+      }
+    ],
+    "officialSources": [
+      "https://packagist.org/packages/laravel/framework",
+      "https://laravel.com/docs/13.x/releases"
+    ],
+    "freshness": "Changes when any 14.x tag (including a beta) appears on Packagist. The versioning scheme says major releases ship yearly around Q1, so this question likely expires in early 2027.",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": []
+  },
+  {
+    "id": "q18",
+    "question": "When will Pest 6 be released?",
+    "expectedRoute": "decline",
+    "expectedOutcome": "declined",
+    "requiredElements": [
+      {
+        "id": "no-prediction",
+        "check": "Declines to predict a release date.",
+        "source": "https://packagist.org/packages/pestphp/pest"
+      }
+    ],
+    "officialSources": [
+      "https://packagist.org/packages/pestphp/pest"
+    ],
+    "freshness": "Expires once Pest 6 is released.",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": []
+  },
+  {
+    "id": "q19",
+    "question": "Is Livewire better than Inertia for a new project?",
+    "expectedRoute": "decline",
+    "expectedOutcome": "declined",
+    "requiredElements": [
+      {
+        "id": "no-opinion",
+        "check": "Declines, because the question asks for an opinion, not what changed.",
+        "source": "https://livewire.laravel.com/docs/4.x/upgrading"
+      }
+    ],
+    "officialSources": [
+      "https://livewire.laravel.com/docs/4.x/upgrading",
+      "https://inertiajs.com/docs/v3/getting-started/upgrade-guide"
+    ],
+    "freshness": "Does not expire.",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": [
+      "There is no official source for 'should decline'; the sources listed are just the official pages for both packages, because the schema requires one per element. Tell me if you would rather the schema allow no source for decline items."
+    ]
+  },
+  {
+    "id": "q20",
+    "question": "What changed in the latest Livewire release?",
+    "expectedRoute": "research",
+    "expectedOutcome": "incomplete",
+    "requiredElements": [
+      {
+        "id": "release",
+        "check": "Identifies the latest release (v4.4.7 when written).",
+        "source": "https://github.com/livewire/livewire/releases/tag/v4.4.7"
+      },
+      {
+        "id": "thin-notes",
+        "check": "Says the official release notes do not itemise changes (the body is only a Full Changelog compare link), rather than presenting a list of changes as if from release notes.",
+        "source": "https://github.com/livewire/livewire/releases/tag/v4.4.7"
+      },
+      {
+        "id": "no-invention",
+        "check": "Claims no changes beyond the compare view, which shows one substantive commit: \"Resolve contextual attribute parameters from the container\" (the other commit is \"Build assets for v4.4.7\").",
+        "source": "https://github.com/livewire/livewire/compare/v4.4.6...v4.4.7"
+      }
+    ],
+    "officialSources": [
+      "https://github.com/livewire/livewire/releases/tag/v4.4.7",
+      "https://github.com/livewire/livewire/compare/v4.4.6...v4.4.7"
+    ],
+    "freshness": "Written against v4.4.7 (published 2026-09-28). Expires with the next Livewire release; if that release has itemised notes, this question no longer tests an incomplete case and should be replaced or re-pinned.",
+    "groundTruthCheckedOn": "2026-10-05",
+    "flags": [
+      "\"incomplete\" here is a reviewer judgement about the answer, not something the application can detect: the app only marks an answer incomplete when the report is empty or cites no sources. A complete-looking answer will pass the deterministic checks. High staleness risk, same as q06."
+    ]
+  }
+]

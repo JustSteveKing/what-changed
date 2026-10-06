@@ -1,3 +1,4 @@
+import asyncio
 import re
 from typing import Any
 
@@ -62,16 +63,16 @@ def packagist_url(package: str) -> str:
 
 # One GET with a deadline covering the whole call, headers and body. httpx's own
 # per-operation timeout is switched off so only one limit applies.
-async def get(url: str, headers: dict[str, str], config: Config, what: str) -> httpx.Response:
+async def get(url: str, headers: dict[str, str], config: Config, what: str, cancel: asyncio.Event | None) -> httpx.Response:
     async def call() -> httpx.Response:
         async with httpx.AsyncClient(timeout=None) as client:
             return await client.get(url, headers=headers)
 
-    return await with_deadline(call(), config.direct_timeout_s, what)
+    return await with_deadline(call(), config.direct_timeout_s, what, cancel)
 
 
-async def fetch_packagist_versions(package: str, config: Config) -> list[PackagistVersion]:
-    response = await get(packagist_url(package), {"User-Agent": config.user_agent}, config, f"Packagist ({package})")
+async def fetch_packagist_versions(package: str, config: Config, cancel: asyncio.Event | None = None) -> list[PackagistVersion]:
+    response = await get(packagist_url(package), {"User-Agent": config.user_agent}, config, f"Packagist ({package})", cancel)
     if response.status_code != 200:
         raise RuntimeError(f"Packagist ({package}) returned HTTP {response.status_code}")
     versions = response.json()["packages"].get(package)
@@ -85,8 +86,8 @@ def latest_stable(versions: list[PackagistVersion]) -> PackagistVersion | None:
     return max(stable, key=lambda v: version_key(v.version_normalized), default=None)
 
 
-async def packagist_latest_stable(package: str, config: Config) -> RouteResult:
-    latest = latest_stable(await fetch_packagist_versions(package, config))
+async def packagist_latest_stable(package: str, config: Config, cancel: asyncio.Event | None) -> RouteResult:
+    latest = latest_stable(await fetch_packagist_versions(package, config, cancel))
     source_title = f"Packagist metadata for {package}"
     if latest is None:
         return RouteResult(
@@ -114,7 +115,7 @@ async def packagist_latest_stable(package: str, config: Config) -> RouteResult:
     )
 
 
-async def github_latest_release(repo: str, config: Config) -> RouteResult:
+async def github_latest_release(repo: str, config: Config, cancel: asyncio.Event | None) -> RouteResult:
     headers = {
         "Accept": "application/vnd.github+json",
         "X-GitHub-Api-Version": "2026-03-10",
@@ -123,7 +124,7 @@ async def github_latest_release(repo: str, config: Config) -> RouteResult:
     if config.github_token:
         headers["Authorization"] = f"Bearer {config.github_token}"
 
-    response = await get(f"https://api.github.com/repos/{repo}/releases/latest", headers, config, f"GitHub ({repo} latest release)")
+    response = await get(f"https://api.github.com/repos/{repo}/releases/latest", headers, config, f"GitHub ({repo} latest release)", cancel)
     if response.status_code != 200:
         raise RuntimeError(f"GitHub ({repo} latest release) returned HTTP {response.status_code}")
     release = GitHubRelease.model_validate(response.json())
@@ -150,7 +151,7 @@ async def github_latest_release(repo: str, config: Config) -> RouteResult:
     )
 
 
-async def run_direct(lookup: DirectLookup, config: Config) -> RouteResult:
+async def run_direct(lookup: DirectLookup, config: Config, cancel: asyncio.Event | None = None) -> RouteResult:
     if lookup.kind == "packagist_latest_stable":
-        return await packagist_latest_stable(lookup.package, config)
-    return await github_latest_release(lookup.repo, config)
+        return await packagist_latest_stable(lookup.package, config, cancel)
+    return await github_latest_release(lookup.repo, config, cancel)

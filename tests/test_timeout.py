@@ -24,7 +24,7 @@ def test_aborts_a_research_stream_that_stays_open_past_the_limit() -> None:
         client = AsyncTabstack(api_key="test-key", base_url=server.base_url, max_retries=0)
         started = time.monotonic()
         with pytest.raises(TimedOut, match="Research timed out after 200 ms"):
-            run(run_research("q", config, client))
+            run(run_research("q", config, client=client))
         assert time.monotonic() - started < 2
 
 

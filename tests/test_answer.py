@@ -1,3 +1,4 @@
+import asyncio
 from datetime import UTC, datetime
 
 from what_changed.answer import answer, version_exists
@@ -20,15 +21,15 @@ OK = RouteResult(
 )
 
 
-async def ok_direct(lookup: DirectLookup, config: Config) -> RouteResult:
+async def ok_direct(lookup: DirectLookup, config: Config, cancel: asyncio.Event | None) -> RouteResult:
     return OK
 
 
-async def ok_research(question: str, config: Config) -> RouteResult:
+async def ok_research(question: str, config: Config, cancel: asyncio.Event | None) -> RouteResult:
     return OK
 
 
-async def versions_13(package: str, config: Config) -> list[PackagistVersion]:
+async def versions_13(package: str, config: Config, cancel: asyncio.Event | None) -> list[PackagistVersion]:
     return [PackagistVersion(version="v13.34.0", version_normalized="13.34.0.0")]
 
 
@@ -61,7 +62,7 @@ def test_decline() -> None:
 def test_declines_research_about_a_version_packagist_has_never_tagged() -> None:
     called = []
 
-    async def research(question: str, config: Config) -> RouteResult:
+    async def research(question: str, config: Config, cancel: asyncio.Event | None) -> RouteResult:
         called.append(question)
         return OK
 
@@ -72,7 +73,7 @@ def test_declines_research_about_a_version_packagist_has_never_tagged() -> None:
 
 
 def test_thrown_error_becomes_failed_answer() -> None:
-    async def broken(lookup: DirectLookup, config: Config) -> RouteResult:
+    async def broken(lookup: DirectLookup, config: Config, cancel: asyncio.Event | None) -> RouteResult:
         raise RuntimeError("Packagist (livewire/livewire) returned HTTP 500")
 
     result = ask("What is the latest version of livewire/livewire?", direct=broken)

@@ -1,3 +1,4 @@
+import asyncio
 from collections.abc import Awaitable, Callable
 from datetime import UTC, datetime
 from typing import Literal
@@ -10,8 +11,9 @@ from what_changed.contract import (
     ResearchDecision,
     RouteDecision,
     RouteResult,
+    TerminalState,
 )
-from what_changed.deadline import TimedOut
+from what_changed.deadline import Cancelled, TimedOut
 from what_changed.router import find_packages, normalise, route
 from what_changed.routes.direct import PackagistVersion, fetch_packagist_versions, run_direct
 from what_changed.routes.research import run_research
@@ -20,9 +22,9 @@ from what_changed.routes.research import run_research
 # Research call) through this same entry point, so baseline outputs share one shape.
 Strategy = Literal["routed", "demo"]
 
-RunDirect = Callable[[DirectLookup, Config], Awaitable[RouteResult]]
-RunResearch = Callable[[str, Config], Awaitable[RouteResult]]
-FetchVersions = Callable[[str, Config], Awaitable[list[PackagistVersion]]]
+RunDirect = Callable[[DirectLookup, Config, asyncio.Event | None], Awaitable[RouteResult]]
+RunResearch = Callable[[str, Config, asyncio.Event | None], Awaitable[RouteResult]]
+FetchVersions = Callable[[str, Config, asyncio.Event | None], Awaitable[list[PackagistVersion]]]
 
 
 # True when any tagged version (stable or pre-release) starts with the given version,
@@ -62,6 +64,7 @@ async def run_decision(
     question: str,
     decision: RouteDecision,
     config: Config,
+    cancel: asyncio.Event | None,
     direct: RunDirect,
     research: RunResearch,
     fetch_versions: FetchVersions,
@@ -69,16 +72,16 @@ async def run_decision(
     if decision.route == "decline":
         return declined(decision.reason)
     if decision.route == "direct":
-        return await direct(decision.lookup, config)
+        return await direct(decision.lookup, config, cancel)
 
     # A research call about a version that has never been tagged would answer
     # from speculation, so check Packagist first.
     if decision.version_mentioned is not None:
         package, version = decision.version_mentioned.package, decision.version_mentioned.version
-        versions = await fetch_versions(package, config)
+        versions = await fetch_versions(package, config, cancel)
         if not version_exists(version, [v.version_normalized for v in versions]):
             return declined(f"Packagist lists no tagged release of {package} matching {version}.")
-    return await research(question, config)
+    return await research(question, config, cancel)
 
 
 async def answer(
@@ -86,6 +89,8 @@ async def answer(
     *,
     strategy: Strategy = "routed",
     config: Config | None = None,
+    # Setting this event cancels whatever call is in flight.
+    cancel: asyncio.Event | None = None,
     # Overridable so tests can run without the network.
     direct: RunDirect = run_direct,
     research: RunResearch = run_research,
@@ -96,13 +101,14 @@ async def answer(
     decision = demo_decision(question) if strategy == "demo" else route(question)
 
     try:
-        result = await run_decision(question, decision, config, direct, research, fetch_versions)
+        result = await run_decision(question, decision, config, cancel, direct, research, fetch_versions)
     except Exception as error:
-        timed_out = isinstance(error, TimedOut)
+        state: TerminalState = "timed_out" if isinstance(error, TimedOut) else "cancelled" if isinstance(error, Cancelled) else "failed"
+        reasons = {"timed_out": "The call timed out.", "cancelled": "The call was cancelled.", "failed": "The call threw an error."}
         result = RouteResult(
-            terminal_state="timed_out" if timed_out else "failed",
+            terminal_state=state,
             incomplete=True,
-            incomplete_reasons=["The call timed out." if timed_out else "The call threw an error."],
+            incomplete_reasons=[reasons[state]],
             text="",
             sources=[],
             error=AnswerError(name=type(error).__name__, message=str(error)),

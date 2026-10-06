@@ -1,3 +1,4 @@
+import asyncio
 from collections.abc import AsyncIterable
 
 from tabstack import AsyncTabstack
@@ -61,7 +62,12 @@ async def collect_research(events: AsyncIterable[ResearchEvent]) -> RouteResult:
     )
 
 
-async def run_research(question: str, config: Config, client: AsyncTabstack | None = None) -> RouteResult:
+async def run_research(
+    question: str,
+    config: Config,
+    cancel: asyncio.Event | None = None,
+    client: AsyncTabstack | None = None,
+) -> RouteResult:
     client = client or AsyncTabstack()
 
     async def call() -> RouteResult:
@@ -71,4 +77,5 @@ async def run_research(question: str, config: Config, client: AsyncTabstack | No
 
     # The SDK's timeout is per read, so a stream that keeps sending events is never
     # cut off by it. This deadline covers the whole call.
-    return await with_deadline(call(), config.research_timeout_s, "Research")
+    # Setting `cancel` (Ctrl+C in the CLI) stops it early and closes the stream.
+    return await with_deadline(call(), config.research_timeout_s, "Research", cancel)

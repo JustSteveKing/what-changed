@@ -68,7 +68,12 @@ async def run_research(
     cancel: asyncio.Event | None = None,
     client: AsyncTabstack | None = None,
 ) -> RouteResult:
-    client = client or AsyncTabstack()
+    # No automatic retries for research. A Research call is billed per call, takes
+    # seconds to minutes, and a second attempt can return a different answer from
+    # different sources. Retrying quietly would hide a failure and could double the
+    # spend, so a failed call is reported and the caller decides whether to ask again.
+    # The SDK retries twice by default, so this has to be switched off explicitly.
+    client = client or AsyncTabstack(max_retries=0)
 
     async def call() -> RouteResult:
         stream = await client.agent.research(query=question, mode=config.research_mode)

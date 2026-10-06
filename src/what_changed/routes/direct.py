@@ -8,6 +8,7 @@ from pydantic import BaseModel, ConfigDict
 from what_changed.config import Config
 from what_changed.contract import DirectLookup, RouteResult, SourceRecord
 from what_changed.deadline import with_deadline
+from what_changed.retry import HttpError, RetryPolicy, with_retries
 
 NO_COST_NOTE = "Public Packagist and GitHub endpoints; no cost is reported."
 
@@ -61,20 +62,41 @@ def packagist_url(package: str) -> str:
     return f"https://repo.packagist.org/p2/{package}.json"
 
 
+def parse_retry_after(header: str | None) -> float | None:
+    try:
+        seconds = float(header) if header is not None else None
+    except ValueError:
+        return None
+    return seconds if seconds is not None and seconds >= 0 else None
+
+
 # One GET with a deadline covering the whole call, headers and body. httpx's own
 # per-operation timeout is switched off so only one limit applies.
-async def get(url: str, headers: dict[str, str], config: Config, what: str, cancel: asyncio.Event | None) -> httpx.Response:
+async def get_once(url: str, headers: dict[str, str], config: Config, what: str, cancel: asyncio.Event | None) -> httpx.Response:
     async def call() -> httpx.Response:
         async with httpx.AsyncClient(timeout=None) as client:
             return await client.get(url, headers=headers)
 
-    return await with_deadline(call(), config.direct_timeout_s, what, cancel)
+    response = await with_deadline(call(), config.direct_timeout_s, what, cancel)
+    if response.status_code != 200:
+        raise HttpError(
+            f"{what} returned HTTP {response.status_code}",
+            response.status_code,
+            parse_retry_after(response.headers.get("retry-after")),
+            response.headers.get("x-ratelimit-remaining") == "0",
+        )
+    return response
+
+
+# Direct lookups are cheap, idempotent GETs, so a bounded retry is safe here.
+# Each attempt gets its own deadline.
+async def get(url: str, headers: dict[str, str], config: Config, what: str, cancel: asyncio.Event | None) -> httpx.Response:
+    policy = RetryPolicy(max_attempts=config.direct_max_attempts, base_delay_s=config.direct_retry_base_s, max_delay_s=5.0)
+    return await with_retries(lambda: get_once(url, headers, config, what, cancel), policy, cancel)
 
 
 async def fetch_packagist_versions(package: str, config: Config, cancel: asyncio.Event | None = None) -> list[PackagistVersion]:
     response = await get(packagist_url(package), {"User-Agent": config.user_agent}, config, f"Packagist ({package})", cancel)
-    if response.status_code != 200:
-        raise RuntimeError(f"Packagist ({package}) returned HTTP {response.status_code}")
     versions = response.json()["packages"].get(package)
     if versions is None:
         raise RuntimeError(f"Packagist response did not include {package}")
@@ -125,8 +147,6 @@ async def github_latest_release(repo: str, config: Config, cancel: asyncio.Event
         headers["Authorization"] = f"Bearer {config.github_token}"
 
     response = await get(f"https://api.github.com/repos/{repo}/releases/latest", headers, config, f"GitHub ({repo} latest release)", cancel)
-    if response.status_code != 200:
-        raise RuntimeError(f"GitHub ({repo} latest release) returned HTTP {response.status_code}")
     release = GitHubRelease.model_validate(response.json())
 
     published = f", published {release.published_at}" if release.published_at else ""

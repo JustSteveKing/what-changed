@@ -17,6 +17,7 @@ from what_changed.deadline import Cancelled, TimedOut
 from what_changed.router import find_packages, normalise, route
 from what_changed.routes.direct import PackagistVersion, fetch_packagist_versions, run_direct
 from what_changed.routes.research import run_research
+from what_changed.log import log_request
 from what_changed.store import store_answer
 
 # "routed" is the feature. "demo" reproduces the tagged demo (every question goes to one
@@ -124,6 +125,7 @@ async def answer(
         started_at=started_at,
         ended_at=datetime.now(UTC),
     )
-    if config.answer_store_dir is not None:
-        store_answer(final, config.answer_store_dir)
+    stored = store_answer(final, config.answer_store_dir) if config.answer_store_dir is not None else None
+    if config.request_log_file is not None:
+        log_request(final, stored.id if stored else None, config.request_log_file)
     return final

@@ -19,6 +19,8 @@ class _Env(BaseModel):
     RESEARCH_TIMEOUT_MS: int = Field(default=300_000, gt=0)
     # Set to "off" to stop storing answers.
     ANSWER_STORE_DIR: str = "runs/answers"
+    # Set to "off" to stop request logging.
+    REQUEST_LOG_FILE: str = "runs/requests.jsonl"
 
 
 @dataclass(frozen=True)
@@ -29,6 +31,7 @@ class Config:
     direct_timeout_s: float
     research_timeout_s: float
     answer_store_dir: Path | None
+    request_log_file: Path | None
 
 
 def load_config(env: Mapping[str, str] = os.environ) -> Config:
@@ -45,4 +48,5 @@ def load_config(env: Mapping[str, str] = os.environ) -> Config:
         direct_timeout_s=parsed.DIRECT_TIMEOUT_MS / 1000,
         research_timeout_s=parsed.RESEARCH_TIMEOUT_MS / 1000,
         answer_store_dir=None if parsed.ANSWER_STORE_DIR == "off" else Path(parsed.ANSWER_STORE_DIR),
+        request_log_file=None if parsed.REQUEST_LOG_FILE == "off" else Path(parsed.REQUEST_LOG_FILE),
     )

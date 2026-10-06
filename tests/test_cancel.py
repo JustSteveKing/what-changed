@@ -45,7 +45,7 @@ def test_returns_cancelled_without_calling_out_when_already_cancelled() -> None:
 def test_ctrl_c_in_the_cli_cancels_the_call_and_exits_with_the_cancelled_code() -> None:
     with SseServer(HANGING) as server:
         # A placeholder key: the real one must never reach a child process in tests.
-        env = {**os.environ, "TABSTACK_API_KEY": "test-key", "TABSTACK_BASE_URL": server.base_url, "ANSWER_STORE_DIR": "off"}
+        env = {**os.environ, "TABSTACK_API_KEY": "test-key", "TABSTACK_BASE_URL": server.base_url, "ANSWER_STORE_DIR": "off", "REQUEST_LOG_FILE": "off"}
         child = subprocess.Popen(
             [sys.executable, "-m", "what_changed.cli", "What changed in the latest Laravel release?"],
             env=env,

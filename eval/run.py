@@ -36,6 +36,8 @@ async def main(argv: list[str]) -> int:
     run_id = f"{started_at.strftime('%Y-%m-%dT%H-%M-%S')}Z-python-{label}"
     run_dir = Path("runs") / run_id
     run_dir.mkdir(parents=True)
+    # Request logging stays on, into the run directory.
+    config = replace(config, request_log_file=run_dir / "requests.jsonl")
 
     manifest = RunManifest(
         run_id=run_id,

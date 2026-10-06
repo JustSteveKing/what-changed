@@ -9,7 +9,7 @@ from what_changed.config import Config
 
 T = TypeVar("T")
 
-TEST_CONFIG = Config(research_mode="fast", github_token=None, user_agent="test")
+TEST_CONFIG = Config(research_mode="fast", github_token=None, user_agent="test", direct_timeout_s=1.0, research_timeout_s=1.0)
 
 _events: TypeAdapter[ResearchEvent] = TypeAdapter(ResearchEvent)
 

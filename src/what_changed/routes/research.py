@@ -5,6 +5,7 @@ from tabstack.types.research_event import ResearchEvent
 
 from what_changed.config import Config
 from what_changed.contract import AnswerError, RouteResult, SourceRecord
+from what_changed.deadline import with_deadline
 
 COST_NOTE = "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md."
 
@@ -60,7 +61,14 @@ async def collect_research(events: AsyncIterable[ResearchEvent]) -> RouteResult:
     )
 
 
-async def run_research(question: str, config: Config) -> RouteResult:
-    client = AsyncTabstack()
-    stream = await client.agent.research(query=question, mode=config.research_mode)
-    return await collect_research(stream)
+async def run_research(question: str, config: Config, client: AsyncTabstack | None = None) -> RouteResult:
+    client = client or AsyncTabstack()
+
+    async def call() -> RouteResult:
+        stream = await client.agent.research(query=question, mode=config.research_mode)
+        async with stream:
+            return await collect_research(stream)
+
+    # The SDK's timeout is per read, so a stream that keeps sending events is never
+    # cut off by it. This deadline covers the whole call.
+    return await with_deadline(call(), config.research_timeout_s, "Research")

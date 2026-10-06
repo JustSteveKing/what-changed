@@ -6,6 +6,7 @@ from pydantic import BaseModel, ConfigDict
 
 from what_changed.config import Config
 from what_changed.contract import DirectLookup, RouteResult, SourceRecord
+from what_changed.deadline import with_deadline
 
 NO_COST_NOTE = "Public Packagist and GitHub endpoints; no cost is reported."
 
@@ -59,9 +60,18 @@ def packagist_url(package: str) -> str:
     return f"https://repo.packagist.org/p2/{package}.json"
 
 
+# One GET with a deadline covering the whole call, headers and body. httpx's own
+# per-operation timeout is switched off so only one limit applies.
+async def get(url: str, headers: dict[str, str], config: Config, what: str) -> httpx.Response:
+    async def call() -> httpx.Response:
+        async with httpx.AsyncClient(timeout=None) as client:
+            return await client.get(url, headers=headers)
+
+    return await with_deadline(call(), config.direct_timeout_s, what)
+
+
 async def fetch_packagist_versions(package: str, config: Config) -> list[PackagistVersion]:
-    async with httpx.AsyncClient() as client:
-        response = await client.get(packagist_url(package), headers={"User-Agent": config.user_agent})
+    response = await get(packagist_url(package), {"User-Agent": config.user_agent}, config, f"Packagist ({package})")
     if response.status_code != 200:
         raise RuntimeError(f"Packagist ({package}) returned HTTP {response.status_code}")
     versions = response.json()["packages"].get(package)
@@ -113,8 +123,7 @@ async def github_latest_release(repo: str, config: Config) -> RouteResult:
     if config.github_token:
         headers["Authorization"] = f"Bearer {config.github_token}"
 
-    async with httpx.AsyncClient() as client:
-        response = await client.get(f"https://api.github.com/repos/{repo}/releases/latest", headers=headers)
+    response = await get(f"https://api.github.com/repos/{repo}/releases/latest", headers, config, f"GitHub ({repo} latest release)")
     if response.status_code != 200:
         raise RuntimeError(f"GitHub ({repo} latest release) returned HTTP {response.status_code}")
     release = GitHubRelease.model_validate(response.json())

@@ -14,22 +14,29 @@ This file records what was run, where, and what came out. It measures one featur
 | `pytest` | 9.1.1 |
 | `mypy` | 2.4.0 (strict) |
 | Lockfile | `uv.lock`, exact pins in `pyproject.toml` |
-| `demo` tag | `3256302` |
-| Final state | `6264320` (Makefile added; the only later commit records this hash) |
+| `demo` tag | `d4c6a0f` |
+| Final state | to be recorded in the last commit |
 
 ## Runs
 
 | Date (UTC) | Run | Strategy | Mode | Commit |
 | --- | --- | --- | --- | --- |
-| 2026-10-06 09:28 | `runs/demo-first-run/` | `src/demo.py` directly, one question | fast | `3256302` (before commit) |
-| 2026-10-06 09:33 to 09:37 | `runs/2026-10-06T09-33-14Z-python-baseline-demo/` | `demo` through `answer()` | fast | `66b312a` |
-| 2026-10-06 09:37 to 10:23 | `runs/2026-10-06T09-37-44Z-python-baseline-demo-balanced/` | `demo` through `answer()` | balanced | `66b312a` |
-| 2026-10-06 10:23 | `tests/fixtures/research-completed.json` | `eval/record_fixture.py`, one question, for replay tests | fast | `a78f07d` plus the then-uncommitted recorder |
-| 2026-10-06 10:25 to 10:49 | `runs/2026-10-06T10-25-07Z-python-rerun-routed-balanced/` | `routed` through `answer()` | balanced | `24543a5` |
+| 2026-10-06 09:28 | `runs/demo-first-run/` | `src/demo.py` directly, one question | fast | `d4c6a0f` (before commit) |
+| 2026-10-06 09:33 to 09:37 | `runs/2026-10-06T09-33-14Z-python-baseline-demo/` | `demo` through `answer()` | fast | `22da90a` |
+| 2026-10-06 09:37 to 10:23 | `runs/2026-10-06T09-37-44Z-python-baseline-demo-balanced/` | `demo` through `answer()` | balanced | `22da90a` |
+| 2026-10-06 10:23 | `tests/fixtures/research-completed.json` | `eval/record_fixture.py`, one question, for replay tests | fast | `210f5b1` plus the then-uncommitted recorder |
+| 2026-10-06 10:25 to 10:49 | `runs/2026-10-06T10-25-07Z-python-rerun-routed-balanced/` | `routed` through `answer()` | balanced | `6e06969` |
 
 Notes:
 
-- The balanced baseline's manifest says "working tree dirty". The only uncommitted files at its start were the fast baseline's run records, which had just been written; the code was committed at `66b312a`.
+- Commit hashes in this file refer to the current history. The git history was rewritten on 2026-10-06, after the runs, to make the demo the first commit; file contents at each commit did not change. The run manifests (and the `summary.md` generated from them) still record the hashes from before the rewrite, which no longer exist. They map as follows:
+
+  | Hash in manifest | Current commit |
+  | --- | --- |
+  | `66b312a22ce7d39795c4ed82a4b5a3ee6a9bb1d4` | `22da90a` (Add evaluation runner, deterministic scorer and secret scan test) |
+  | `24543a5010c1e16ce77efb3fa60370c99fc9e158` | `6e06969` (Add replay fixtures for completed, errored and unterminated streams) |
+
+- The balanced baseline's manifest says "working tree dirty". The only uncommitted files at its start were the fast baseline's run records, which had just been written; the code was committed at `22da90a`.
 - Before each baseline and the re-run, Packagist listed `laravel/framework` v13.34.0 and `livewire/livewire` v4.4.7 as latest stable, so the ground truth for q06 and q20 was current.
 - `GITHUB_TOKEN` was set for the re-run only (the demo strategy makes no GitHub calls).
 - Tabstack does not report cost in API responses (`docs/VERIFIED.md`), so every record has `cost: null`. Spend is visible only in the Tabstack console and is not recorded here.
@@ -75,7 +82,7 @@ The fast run fails the claims check on every question because the Research guide
 
 ## Re-run (routed, after the production changes)
 
-Run `2026-10-06T10-25-07Z-python-rerun-routed-balanced`, commit `24543a5`, balanced mode, `GITHUB_TOKEN` set, Tabstack `nocache` left at its default (`false`) as in the baselines. Request log: `requests.jsonl` in the run directory (20 lines; `answer_id` is null because the runner writes its own records instead of using the answer store).
+Run `2026-10-06T10-25-07Z-python-rerun-routed-balanced`, commit `6e06969`, balanced mode, `GITHUB_TOKEN` set, Tabstack `nocache` left at its default (`false`) as in the baselines. Request log: `requests.jsonl` in the run directory (20 lines; `answer_id` is null because the runner writes its own records instead of using the answer store).
 
 ### Measured, side by side with the balanced baseline
 

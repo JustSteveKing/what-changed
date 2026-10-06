@@ -47,6 +47,7 @@ Checked 2026-10-06.
 | --- | --- | --- |
 | Why httpx | Already installed as a dependency of the Tabstack SDK, so no extra package; async, so a whole-call deadline and cancellation can wrap it with `asyncio` | `tabstack` 2.8.5 `requires_dist` |
 | Version | 0.28.1, pinned | `pyproject.toml`, `uv.lock` |
+| Default timeout | `httpx.AsyncClient()` with no `timeout` argument uses `Timeout(timeout=5.0)`: 5 s for each connect, read, write and pool wait. The naive direct route relies on this default; it is a library default, not a deliberate limit | `httpx._config.DEFAULT_TIMEOUT_CONFIG` printed from the installed package; https://www.python-httpx.org/advanced/timeouts/ |
 
 ## Packagist
 

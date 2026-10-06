@@ -16,8 +16,12 @@ dev = [
     "mypy==2.4.0",
 ]
 
-[tool.uv]
-package = false
+[project.scripts]
+what-changed = "what_changed.cli:main"
+
+[build-system]
+requires = ["uv_build==0.11.28"]
+build-backend = "uv_build"
 
 [tool.mypy]
 strict = true
@@ -26,4 +30,4 @@ mypy_path = "src"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["src", "."]
+pythonpath = ["."]

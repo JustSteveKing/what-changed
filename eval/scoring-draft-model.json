@@ -1,0 +1,1063 @@
+{
+  "provenance": "Model-drafted ratings (Claude Opus 5.5, claude-opus-5-5) written on 2026-10-06 at the repository owner's request, as a first pass for human review of the Python runs. Not a human score. Every quote is checked to be an exact substring of the stored answer by eval/score_draft.py.",
+  "rater": "claude-opus-5-5",
+  "drafted_on": "2026-10-06",
+  "rows": [
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q01",
+      "element_id": "version",
+      "rating": "fully",
+      "quote": "The latest stable version of livewire/livewire on Packagist is v4.4.7",
+      "reason": "Matches Packagist."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q01",
+      "element_id": "source",
+      "rating": "fully",
+      "quote": "on Packagist",
+      "reason": "Source record is the Packagist metadata URL."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q02",
+      "element_id": "version",
+      "rating": "fully",
+      "quote": "The latest stable version of pestphp/pest on Packagist is v5.3.0",
+      "reason": "Matches Packagist."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q02",
+      "element_id": "package",
+      "rating": "fully",
+      "quote": "pestphp/pest",
+      "reason": "Names pestphp/pest."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q03",
+      "element_id": "tag",
+      "rating": "fully",
+      "quote": "v5.9.0",
+      "reason": "Matches GitHub releases/latest."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q03",
+      "element_id": "date",
+      "rating": "fully",
+      "quote": "published 2026-09-26T19:40:26Z",
+      "reason": "Matches published_at."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q04",
+      "element_id": "tag",
+      "rating": "fully",
+      "quote": "v3.5.1",
+      "reason": "Matches GitHub releases/latest."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q04",
+      "element_id": "notes",
+      "rating": "fully",
+      "quote": "[3.x] Assert big integers as plain integers in tests",
+      "reason": "Release notes body included verbatim."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q05",
+      "element_id": "version",
+      "rating": "fully",
+      "quote": "The latest stable version of laravel/framework on Packagist is v13.34.0",
+      "reason": "Matches Packagist."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q06",
+      "element_id": "release",
+      "rating": "missing",
+      "quote": "The latest stable release, Laravel 13, introduces significant changes to queue workers",
+      "reason": "Calls 'Laravel 13' the latest release; v13.34.0 is not named."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q06",
+      "element_id": "max-exceptions",
+      "rating": "fully",
+      "quote": "Worker crashes can now be configured to count towards a job's `maxExceptions` limit",
+      "reason": "Stated, attributed to Laravel 13 generally."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q06",
+      "element_id": "timeout-notify",
+      "rating": "fully",
+      "quote": "Jobs can now be notified when a timeout is imminent",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q06",
+      "element_id": "job-duration",
+      "rating": "fully",
+      "quote": "The `JobProcessed` event now includes the **duration of the job**",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q06",
+      "element_id": "restart-error",
+      "rating": "missing",
+      "quote": "",
+      "reason": "No mention of queue:restart."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q07",
+      "element_id": "dependencies",
+      "rating": "missing",
+      "quote": "",
+      "reason": "No dependency version updates (laravel/framework ^13.0 and so on) are given; the answer discusses the PHP requirement instead."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q07",
+      "element_id": "installer",
+      "rating": "missing",
+      "quote": "",
+      "reason": "No mention of updating the Laravel installer."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q07",
+      "element_id": "request-forgery",
+      "rating": "fully",
+      "quote": "This new middleware includes enhanced origin verification using the `Sec-Fetch-Site` header",
+      "reason": "Stated, with the VerifyCsrfToken to PreventRequestForgery rename."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q08",
+      "element_id": "job-attempted",
+      "rating": "fully",
+      "quote": "The `Illuminate\\Queue\\Events\\JobAttempted` event no longer uses the boolean property `$exceptionOccurred`. Instead, it now exposes an `$exception` object",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q08",
+      "element_id": "queue-busy",
+      "rating": "fully",
+      "quote": "the `Illuminate\\Queue\\Events\\QueueBusy` event's `$connection` property has been renamed to `$connectionName`",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q09",
+      "element_id": "php-range",
+      "rating": "fully",
+      "quote": "Laravel 13 officially supports **PHP versions 8.3 through 8.5**",
+      "reason": "Matches 8.3 - 8.5."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q20",
+      "element_id": "release",
+      "rating": "partly",
+      "quote": "The latest stable releases for the core Livewire framework, **v4.4.7** and **v3.8.10**",
+      "reason": "Names v4.4.7 but presents v3.8.10 alongside it as a latest release."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q20",
+      "element_id": "thin-notes",
+      "rating": "missing",
+      "quote": "",
+      "reason": "Does not say the official notes are not itemised."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q20",
+      "element_id": "no-invention",
+      "rating": "partly",
+      "quote": "These are minor updates primarily focused on bug fixes and stability within their respective major versions",
+      "reason": "Invents no specific v4.4.7 change, but characterises it as bug fixes without support from the compare view."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q10",
+      "element_id": "config-keys",
+      "rating": "fully",
+      "quote": "`layout` to `component_layout`, `lazy_placeholder` to `component_placeholder`",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q10",
+      "element_id": "routing",
+      "rating": "fully",
+      "quote": "`Route::livewire()` becoming the recommended approach over `Route::get()`",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q10",
+      "element_id": "wire-model-children",
+      "rating": "fully",
+      "quote": "The `wire:model` directive no longer captures events from child elements by default, requiring the **`.deep` modifier**",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q10",
+      "element_id": "closed-tags",
+      "rating": "fully",
+      "quote": "must now be explicitly closed in Livewire 4",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q11",
+      "element_id": "client-sync",
+      "rating": "fully",
+      "quote": "`wire:model.blur` in Livewire 4.1 will delay both client-side and server-side updates until the input loses focus",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q11",
+      "element_id": "restore",
+      "rating": "fully",
+      "quote": "developers must use `wire:model.live.blur`",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q12",
+      "element_id": "php",
+      "rating": "fully",
+      "quote": "A fundamental requirement for Pest 5 is **PHP 8.4 or greater**",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q12",
+      "element_id": "dependencies",
+      "rating": "fully",
+      "quote": "must be updated to version `^5.0` in the `composer.json` file",
+      "reason": "Stated for pestphp/pest and its plugins."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q12",
+      "element_id": "phpunit",
+      "rating": "fully",
+      "quote": "Pest 5 is also built directly on **PHPUnit 13**",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q13",
+      "element_id": "names",
+      "rating": "fully",
+      "quote": "a breaking change in how snapshot names are generated",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q13",
+      "element_id": "update",
+      "rating": "fully",
+      "quote": "executing their test suite with the `--update-snapshots` command",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q14",
+      "element_id": "yes",
+      "rating": "fully",
+      "quote": "Filament 5 explicitly requires Livewire 4.0 or higher.",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q15",
+      "element_id": "requirements",
+      "rating": "fully",
+      "quote": "Filament 5 mandates **PHP 8.2+**, **Laravel 11.28+**, **Livewire 4.0+**, and **Tailwind CSS 4.0+**",
+      "reason": "All four requirements stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q15",
+      "element_id": "script",
+      "rating": "partly",
+      "quote": "An automated upgrade script (`vendor/bin/filament-v5`) is available",
+      "reason": "Names the script but not the filament/upgrade package that installs it."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q15",
+      "element_id": "livewire",
+      "rating": "fully",
+      "quote": "the primary focus of Filament 5 is compatibility with Livewire v4",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q16",
+      "element_id": "dev-ssr",
+      "rating": "fully",
+      "quote": "enables out-of-the-box SSR during development without a separate Node.js server",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q16",
+      "element_id": "production",
+      "rating": "fully",
+      "quote": "deployments still require building both client-side and server-side bundles using `vite build && vite build --ssr`",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q16",
+      "element_id": "per-route",
+      "rating": "missing",
+      "quote": "",
+      "reason": "No mention of disabling SSR on specific routes."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q17",
+      "element_id": "no-release",
+      "rating": "fully",
+      "quote": "Packagist lists no tagged release of laravel/framework matching 14.",
+      "reason": "Declined before any research call."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q18",
+      "element_id": "no-prediction",
+      "rating": "fully",
+      "quote": "The question asks about a future or unreleased version.",
+      "reason": "Declined by the router."
+    },
+    {
+      "run_id": "2026-10-06T10-25-07Z-python-rerun-routed-balanced",
+      "question_id": "q19",
+      "element_id": "no-opinion",
+      "rating": "fully",
+      "quote": "The question asks for an opinion or comparison, not what changed.",
+      "reason": "Declined by the router."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q01",
+      "element_id": "version",
+      "rating": "fully",
+      "quote": "The latest stable version of livewire/livewire is **v4.4.7**",
+      "reason": "Matches Packagist."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q01",
+      "element_id": "source",
+      "rating": "fully",
+      "quote": "The latest stable version of livewire/livewire is **v4.4.7**, which was released on **September 28, 2026, at 18:37 UTC** [1][2].",
+      "reason": "Citations [1][2] are github.com/livewire/livewire/releases and packagist.org/packages/livewire/livewire."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q01",
+      "element_id": "version",
+      "rating": "fully",
+      "quote": "The latest stable version of `livewire/livewire` is **v4.4.7**",
+      "reason": "Matches Packagist; v3.8.10 is described separately as the v3 branch."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q01",
+      "element_id": "source",
+      "rating": "fully",
+      "quote": "officially released on **September 28, 2026** [1][2][3]",
+      "reason": "Source record includes github.com/livewire/livewire/releases and packagist.org/packages/livewire/livewire."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q02",
+      "element_id": "version",
+      "rating": "fully",
+      "quote": "is **v5.3.0**",
+      "reason": "Matches Packagist (v5.3.0)."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q02",
+      "element_id": "package",
+      "rating": "fully",
+      "quote": "The current version of Pest, the elegant testing framework for PHP developers",
+      "reason": "Identifies the PHP testing framework."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q02",
+      "element_id": "version",
+      "rating": "fully",
+      "quote": "the latest identified patch release being **v5.3.0**",
+      "reason": "Matches Packagist."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q02",
+      "element_id": "package",
+      "rating": "fully",
+      "quote": "The current stable version of the **Pest PHP testing framework is Pest 5**",
+      "reason": "Identifies the PHP testing framework."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q03",
+      "element_id": "tag",
+      "rating": "fully",
+      "quote": "**v5.9.0**",
+      "reason": "Matches GitHub releases/latest."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q03",
+      "element_id": "date",
+      "rating": "fully",
+      "quote": "was published on **September 26, 2026, at 19:40 UTC**",
+      "reason": "Matches published_at 2026-09-26T19:40:26Z."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q03",
+      "element_id": "tag",
+      "rating": "fully",
+      "quote": "the latest stable release is **v5.9.0**",
+      "reason": "Matches GitHub releases/latest for the Filament PHP framework, though the answer leads with Google Filament."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q03",
+      "element_id": "date",
+      "rating": "fully",
+      "quote": "published on **September 26, 2026**",
+      "reason": "Matches published_at."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q04",
+      "element_id": "tag",
+      "rating": "missing",
+      "quote": "The latest detailed release notes available for Inertia.js are for **v3.7.0**",
+      "reason": "Inertia.js client versions (v3.7.0, v3.8.0), not the inertiajs/inertia-laravel latest release v3.5.1 (see the q04 flag)."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q04",
+      "element_id": "notes",
+      "rating": "missing",
+      "quote": "Key improvements in **v3.7.0** include fixes for React's `useForm` submitting stale data",
+      "reason": "Client v3.7.0 changelog, not the inertia-laravel v3.5.1 notes (PR #918)."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q04",
+      "element_id": "tag",
+      "rating": "missing",
+      "quote": "The latest stable release for Inertia.js is **v3.8.0**",
+      "reason": "Client version, not inertiajs/inertia-laravel v3.5.1 (see the q04 flag)."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q04",
+      "element_id": "notes",
+      "rating": "missing",
+      "quote": "Inertia.js v3.8.0 brings several notable features and crucial fixes:",
+      "reason": "Client v3.8.0 changes, not the inertia-laravel v3.5.1 notes."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q05",
+      "element_id": "version",
+      "rating": "fully",
+      "quote": "The latest version of `laravel/framework` is **v13.34.0**",
+      "reason": "Matches Packagist."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q05",
+      "element_id": "version",
+      "rating": "fully",
+      "quote": "the latest stable release being **v13.34.0**",
+      "reason": "Matches Packagist."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q06",
+      "element_id": "release",
+      "rating": "missing",
+      "quote": "The latest developments affecting Laravel queue workers include **quality-of-life improvements** introduced in Laravel **13.26**",
+      "reason": "Points to 13.26 and Laravel Cloud managed queues; v13.34.0 is not named."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q06",
+      "element_id": "max-exceptions",
+      "rating": "missing",
+      "quote": "",
+      "reason": "No mention of maxExceptions."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q06",
+      "element_id": "timeout-notify",
+      "rating": "missing",
+      "quote": "",
+      "reason": "No mention of a timeout notification."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q06",
+      "element_id": "job-duration",
+      "rating": "missing",
+      "quote": "",
+      "reason": "No mention of JobProcessed duration."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q06",
+      "element_id": "restart-error",
+      "rating": "missing",
+      "quote": "",
+      "reason": "No mention of queue:restart."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q06",
+      "element_id": "release",
+      "rating": "fully",
+      "quote": "The latest Laravel 13.x releases, including **v13.34.0** from September 29, 2026",
+      "reason": "Names v13.34.0 among the latest releases."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q06",
+      "element_id": "max-exceptions",
+      "rating": "fully",
+      "quote": "Laravel **v13.34.0** introduced the capability for jobs to count unexpected worker crashes towards their `maxExceptions` limit.",
+      "reason": "Stated and attributed to v13.34.0."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q06",
+      "element_id": "timeout-notify",
+      "rating": "missing",
+      "quote": "",
+      "reason": "Describes opting out of worker termination on timeout, not notifying a job before a timeout."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q06",
+      "element_id": "job-duration",
+      "rating": "missing",
+      "quote": "",
+      "reason": "No mention of JobProcessed duration."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q06",
+      "element_id": "restart-error",
+      "rating": "fully",
+      "quote": "the `queue:restart` command now provides more effective error messages when a worker cannot be restarted",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q07",
+      "element_id": "dependencies",
+      "rating": "fully",
+      "quote": "including `laravel/framework` to `^13.0`, `laravel/tinker` to `^3.0`, `laravel/boost` to `^2.0`, `phpunit/phpunit` to `^12.0`, and `pestphp/pest` to `^4.0`",
+      "reason": "Stated, matching the guide's list."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q07",
+      "element_id": "installer",
+      "rating": "missing",
+      "quote": "",
+      "reason": "No mention of updating the Laravel installer."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q07",
+      "element_id": "request-forgery",
+      "rating": "fully",
+      "quote": "the `VerifyCsrfToken` middleware is renamed to `PreventRequestForgery` and now incorporates origin verification using the `Sec-Fetch-Site` header",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q07",
+      "element_id": "dependencies",
+      "rating": "partly",
+      "quote": "core Composer dependencies such as `laravel/framework`, `laravel/boost`, `laravel/tinker`, `phpunit/phpunit`, and `pestphp/pest` must be updated to their latest major versions",
+      "reason": "Names the packages but gives no version constraints (no ^13.0)."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q07",
+      "element_id": "installer",
+      "rating": "missing",
+      "quote": "",
+      "reason": "No mention of updating the Laravel installer."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q07",
+      "element_id": "request-forgery",
+      "rating": "partly",
+      "quote": "The `VerifyCsrfToken` middleware has been renamed to `PreventRequestForgery`.",
+      "reason": "Rename and origin verification stated; Sec-Fetch-Site not named."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q08",
+      "element_id": "job-attempted",
+      "rating": "missing",
+      "quote": "",
+      "reason": "No mention of JobAttempted; discusses FIFO messageGroup instead."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q08",
+      "element_id": "queue-busy",
+      "rating": "missing",
+      "quote": "",
+      "reason": "No mention of QueueBusy."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q08",
+      "element_id": "job-attempted",
+      "rating": "fully",
+      "quote": "The `Illuminate\\Queue\\Events\\JobAttempted` event's boolean property `exceptionOccurred` has been replaced. Listeners should now access `$event->exception`",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q08",
+      "element_id": "queue-busy",
+      "rating": "fully",
+      "quote": "the `$connection` property has been renamed to `$connectionName`",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q09",
+      "element_id": "php-range",
+      "rating": "fully",
+      "quote": "Laravel 13 supports PHP versions ranging from **8.3 to 8.5**",
+      "reason": "Matches 8.3 - 8.5."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q09",
+      "element_id": "php-range",
+      "rating": "fully",
+      "quote": "Laravel 13 officially supports PHP versions **8.3, 8.4, and 8.5**",
+      "reason": "Matches 8.3 - 8.5."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q10",
+      "element_id": "config-keys",
+      "rating": "missing",
+      "quote": "",
+      "reason": "No mention of the renamed config keys."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q10",
+      "element_id": "routing",
+      "rating": "partly",
+      "quote": "`Volt::route()` with `Route::livewire()` for routing",
+      "reason": "Mentions Route::livewire only as a Volt migration step, not as the recommended routing for full-page components."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q10",
+      "element_id": "wire-model-children",
+      "rating": "missing",
+      "quote": "",
+      "reason": "No mention of wire:model ignoring child events."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q10",
+      "element_id": "closed-tags",
+      "rating": "missing",
+      "quote": "",
+      "reason": "No mention of closing component tags."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q10",
+      "element_id": "config-keys",
+      "rating": "fully",
+      "quote": "such as `layout` to `component_layout` and `lazy_placeholder` to `component_placeholder`",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q10",
+      "element_id": "routing",
+      "rating": "fully",
+      "quote": "the recommended approach for full-page Livewire components is now `Route::livewire('/path', Component::class)`",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q10",
+      "element_id": "wire-model-children",
+      "rating": "fully",
+      "quote": "To restore the Livewire 3 behavior of capturing events from child elements, the `.deep` modifier must be explicitly added",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q10",
+      "element_id": "closed-tags",
+      "rating": "fully",
+      "quote": "all Livewire component tags must now be **explicitly closed**",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q11",
+      "element_id": "client-sync",
+      "rating": "fully",
+      "quote": "`.blur` and `.change` now control **client-side state synchronization**, not just network timing",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q11",
+      "element_id": "restore",
+      "rating": "fully",
+      "quote": "developers must now explicitly add the `.live` modifier before `.blur` or `.change` (e.g., `wire:model.live.blur`)",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q11",
+      "element_id": "client-sync",
+      "rating": "fully",
+      "quote": "**Livewire 4.1, these modifiers now control both the timing of client-side state synchronization and the network request itself**",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q11",
+      "element_id": "restore",
+      "rating": "fully",
+      "quote": "developers must now explicitly prepend the `.live` modifier. For instance, `wire:model.live.blur`",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q12",
+      "element_id": "php",
+      "rating": "fully",
+      "quote": "Pest 5 requires **PHP 8.4.0** or greater",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q12",
+      "element_id": "dependencies",
+      "rating": "fully",
+      "quote": "all `pestphp/pest` and related plugins, such as `pestphp/pest-plugin-laravel`, must be updated to version `^5.0`",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q12",
+      "element_id": "phpunit",
+      "rating": "fully",
+      "quote": "adapting to underlying PHPUnit 13 changes",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q12",
+      "element_id": "php",
+      "rating": "fully",
+      "quote": "Pest 5 mandates **PHP 8.4.0 or greater** as a hard minimum",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q12",
+      "element_id": "dependencies",
+      "rating": "fully",
+      "quote": "Projects must also update the main `pestphp/pest` dependency to `^5.0` in their `composer.json` file.",
+      "reason": "Stated, plugins included."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q12",
+      "element_id": "phpunit",
+      "rating": "fully",
+      "quote": "its underlying PHPUnit 13 requirement",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q13",
+      "element_id": "names",
+      "rating": "fully",
+      "quote": "the primary change affecting snapshot tests is an alteration in how **snapshot names are generated**",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q13",
+      "element_id": "update",
+      "rating": "fully",
+      "quote": "users must run the command `./vendor/bin/pest --update-snapshots`",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q13",
+      "element_id": "names",
+      "rating": "fully",
+      "quote": "a modification to how **snapshot names are generated**",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q13",
+      "element_id": "update",
+      "rating": "fully",
+      "quote": "it is essential to run the test suite with the `--update-snapshots` option",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q14",
+      "element_id": "yes",
+      "rating": "fully",
+      "quote": "Yes, Filament 5 **requires Livewire 4**.",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q14",
+      "element_id": "yes",
+      "rating": "fully",
+      "quote": "**Filament v5** explicitly requires **Livewire v4.0+**",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q15",
+      "element_id": "requirements",
+      "rating": "fully",
+      "quote": "**PHP 8.2+**, **Laravel v11.28+**, **Livewire v4.0+**, and **Tailwind CSS v4.0+**",
+      "reason": "All four requirements stated."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q15",
+      "element_id": "script",
+      "rating": "fully",
+      "quote": "`composer require filament/upgrade:\"^5.0\" -W --dev` (or `~5.0` for Windows PowerShell) [1]. Next, run `vendor/bin/filament-v5`",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q15",
+      "element_id": "livewire",
+      "rating": "fully",
+      "quote": "**Livewire v4.0+**",
+      "reason": "Livewire v4 stated as a requirement of the upgrade."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q15",
+      "element_id": "requirements",
+      "rating": "fully",
+      "quote": "**PHP 8.2+**, **Laravel v11.28+**, **Livewire v4.0+**, and **Tailwind CSS v4.0+**",
+      "reason": "All four requirements stated."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q15",
+      "element_id": "script",
+      "rating": "fully",
+      "quote": "Execute the upgrade script: `vendor/bin/filament-v5`.",
+      "reason": "Stated, with the filament/upgrade package."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q15",
+      "element_id": "livewire",
+      "rating": "fully",
+      "quote": "primarily driven by its integration with Livewire 4",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q16",
+      "element_id": "dev-ssr",
+      "rating": "missing",
+      "quote": "",
+      "reason": "Discusses Node.js 22, runtime options and the page data script element; nothing on SSR working in development without a separate server."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q16",
+      "element_id": "production",
+      "rating": "missing",
+      "quote": "",
+      "reason": "Does not say the SSR bundle and server are still needed in production."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q16",
+      "element_id": "per-route",
+      "rating": "missing",
+      "quote": "",
+      "reason": "No mention of disabling SSR on specific routes."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q16",
+      "element_id": "dev-ssr",
+      "rating": "fully",
+      "quote": "This eliminates the previous necessity of running a separate Node.js server specifically for development",
+      "reason": "Stated, with the @inertiajs/vite plugin."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q16",
+      "element_id": "production",
+      "rating": "fully",
+      "quote": "building both client-side and server-side bundles for deployment using commands like `vite build && vite build --ssr`",
+      "reason": "Stated, with inertia:start-ssr for production."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q16",
+      "element_id": "per-route",
+      "rating": "fully",
+      "quote": "on a **per-route basis**",
+      "reason": "Stated."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q17",
+      "element_id": "no-release",
+      "rating": "partly",
+      "quote": "has not yet officially shipped or announced a final feature list",
+      "reason": "Says it is unreleased, but then lists specific changes in definite terms, e.g. Route::query() 'will be treated as read requests'."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q17",
+      "element_id": "no-release",
+      "rating": "partly",
+      "quote": "Laravel 14, anticipated for release in **Q1 2027**, is set to introduce a range of significant updates",
+      "reason": "Implies it is unreleased, but states requirements and changes as settled."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q18",
+      "element_id": "no-prediction",
+      "rating": "fully",
+      "quote": "The available sources do not provide a release date for \"Pest 6.\"",
+      "reason": "Gives no date."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q18",
+      "element_id": "no-prediction",
+      "rating": "fully",
+      "quote": "there are currently no announced plans for a version 6",
+      "reason": "Gives no date for Pest PHP 6, but opens with PEST 6.05 (2003), an unrelated project."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q19",
+      "element_id": "no-opinion",
+      "rating": "missing",
+      "quote": "For a new project, neither Livewire nor Inertia is definitively \"better,\"",
+      "reason": "Avoids a verdict but gives a full comparison rather than declining."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q19",
+      "element_id": "no-opinion",
+      "rating": "missing",
+      "quote": "The optimal choice hinges on specific project requirements, existing team expertise, and the desired level of frontend interactivity.",
+      "reason": "Gives a full comparison rather than declining."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q20",
+      "element_id": "release",
+      "rating": "partly",
+      "quote": "The highest version listed is **v4.4.7**",
+      "reason": "Treats 'Livewire v4' as the latest release and only names v4.4.7 in passing at the end."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q20",
+      "element_id": "thin-notes",
+      "rating": "missing",
+      "quote": "",
+      "reason": "Does not say the official notes are not itemised."
+    },
+    {
+      "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+      "question_id": "q20",
+      "element_id": "no-invention",
+      "rating": "partly",
+      "quote": "The latest significant release for Livewire, a full-stack framework for Laravel, is **Livewire v4**",
+      "reason": "Claims nothing specific about v4.4.7, but answers 'what changed' with the v4 upgrade guide instead."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q20",
+      "element_id": "release",
+      "rating": "fully",
+      "quote": "The most recent stable release for Livewire is **v4.4.7**, which was published on **September 28, 2026**",
+      "reason": "Stated; v3.8.10 is mentioned separately as the v3 line."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q20",
+      "element_id": "thin-notes",
+      "rating": "missing",
+      "quote": "",
+      "reason": "Does not say the official notes are not itemised."
+    },
+    {
+      "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+      "question_id": "q20",
+      "element_id": "no-invention",
+      "rating": "partly",
+      "quote": "The latest **v4.4.7** release signifies ongoing maintenance and iterative enhancements",
+      "reason": "Invents no specific change, but characterises the release without support from the compare view; the rest describes the v4 series."
+    }
+  ]
+}

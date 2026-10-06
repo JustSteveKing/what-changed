@@ -1,0 +1,139 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "## Latest Inertia.js Release: Version 3.8.0\n\nThe latest stable release for Inertia.js is **v3.8.0**, which was officially released on **October 1, 2026** [1][2]. This update introduces several enhancements, including a new `WhenMounted` component for server-side rendering, opt-in support for `BigInt` values, and various improvements to form handling and navigation stability.\n\n### Understanding Inertia.js\n\nInertia.js is a \"modern monolith\" framework that simplifies the process of building single-page applications (SPAs) by allowing developers to use server-side routing and controllers with client-side frameworks like React, Vue, or Svelte, all without the need for a separate API [3][4]. Instead of returning a traditional HTML template, the backend returns a page component with its data, and Inertia.js acts as the \"glue\" that connects the two, enabling a seamless SPA experience [3]. The current major iteration, Inertia.js v3, was initially released on March 26, 2026 [5].\n\n### Key Features and Fixes in v3.8.0\n\nInertia.js v3.8.0 brings several notable features and crucial fixes:\n\n*   **`WhenMounted` Component for SSR**: A new `WhenMounted` component allows developers to safely render browser-only code within applications that utilize server-side rendering (SSR). This component renders a `fallback` content on the server and then displays its children components once they are mounted in the browser, preventing \"window is not defined\" errors during SSR [2].\n*   **Opt-in `BigInt` Support**: The release introduces opt-in support for native `BigInt` values, enabling Inertia.js to handle integers that exceed JavaScript's safe integer range without rounding issues. This feature requires the `inertia-laravel v3.5.0` adapter and can be enabled globally or per response, improving data integrity for large numerical identifiers like Snowflake IDs [2][6].\n*   **Improved Form Callbacks**: The form component has been enhanced to forward critical callbacks, including `onHttpException`, `onNetworkError`, `onBeforeUpdate`, and `onFlash`, directly to the visit. This ensures that these callbacks are triggered consistently, even during HTTP errors or network failures during form submissions [2].\n*   **Optimistic Response Fixes**: To address issues with out-of-order optimistic updates, v3.8.0 now assigns an ID to optimistic requests. This prevents older, successful responses from inadvertently reverting newer updates if they arrive late, ensuring a more reliable user experience [2].\n*   **Enhanced Navigation History**: A fix for back and forward navigation across application deploys has been implemented. Inertia.js now compares asset versions when reloading a document from history state. If the versions differ, it renders the freshly loaded page, preventing issues where an older JavaScript bundle might display outdated or incorrect page props from a previous deploy [2].\n\n### Enhancing the Modern Monolith\n\nThese updates in Inertia.js v3.8.0 collectively aim to refine the developer experience and strengthen the \"modern monolith\" approach. By addressing common challenges in areas like server-side rendering, data handling, and form interactions, Inertia.js continues to streamline SPA development, allowing developers to build robust, interactive web applications while leveraging familiar server-side patterns [7].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://github.com/inertiajs/inertia/releases",
+      "title": "Releases · inertiajs/inertia · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "Inertia.js version v3.8.0 was released on October 1, 2026.",
+        "Inertia.js version v3.7.1 was released on September 11, 2026.",
+        "Inertia.js version v2.3.28 was released on September 11, 2026.",
+        "Inertia.js version v3.7.0 was released on August 18, 2026.",
+        "Inertia.js version v3.6.1 was released on July 7, 2026.",
+        "Inertia.js version v3.6.0 was released on July 2, 2026.",
+        "Inertia.js version v3.5.0 was released on June 25, 2026.",
+        "Inertia.js version v2.3.27 was released on June 25, 2026.",
+        "Inertia.js version v3.4.0 was released on June 11, 2026.",
+        "Inertia.js version v2.3.26 was released on June 10, 2026."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://laravel-news.com/inertia-3-8-0",
+      "title": "WhenMounted and BigInt Props in Inertia.js v3.8",
+      "kind": "research_citation",
+      "claims": [
+        "Inertia.js v3.8.0 was released on October 2, 2026.",
+        "Inertia.js v3.8.0 includes a WhenMounted component for rendering browser-only code under server-side rendering.",
+        "Inertia.js v3.8.0 includes opt-in support for integers beyond JavaScript's safe range as native BigInt values.",
+        "The WhenMounted component renders its fallback on the server and its children once the component has mounted in the browser.",
+        "The WhenMounted component was contributed by Evan Burrell.",
+        "Support for BigInt values requires inertia-laravel v3.5.0.",
+        "The Form component in Inertia.js v3.8.0 now forwards onHttpException, onNetworkError, onBeforeUpdate, and onFlash callbacks to the visit.",
+        "Optimistic requests in Inertia.js v3.8.0 now carry an ID to prevent out-of-order responses from reverting newer updates.",
+        "Inertia.js v3.8.0 fixes back and forward navigation across deploys by comparing asset versions.",
+        "The complete list of changes for v3.8.0 can be found on GitHub at https://github.com/inertiajs/inertia/compare/v3.7.1...v3.8.0 and the release notes are directly from the GitHub release at https://github.com/inertiajs/inertia/releases/tag/v3.8.0."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://github.com/inertiajs",
+      "title": "Inertia.js · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "Inertia.js allows developers to build single-page applications using React, Vue, or Svelte without building a separate API.",
+        "Inertia.js connects the backend (routing, controllers, models, authorization, validation) with the frontend by returning a page component with its data instead of a template.",
+        "Inertia.js supports features like forms, file uploads with progress, server-side validation, optimistic updates, partial reloads, prefetching, polling, infinite scroll, server-side rendering, code splitting, view transitions, history encryption, and DevTools.",
+        "Inertia.js uses adapters for different frameworks; the React, Vue, and Svelte adapters are in the inertiajs/inertia repository.",
+        "The official Laravel adapter for Inertia.js is maintained in the inertiajs/inertia-laravel repository.",
+        "Community adapters exist for Rails, Phoenix, Django, Symfony, AdonisJS, Go, and .NET.",
+        "Laravel starter kits are built on Inertia.js.",
+        "The Inertia.js documentation is available at https://inertiajs.com/docs/v3/getting-started.",
+        "A demo application for Inertia.js v3, built with Laravel and Vue, is available at https://demo-v3.inertiajs.com/ and its source code is in the inertiajs/demo-v3 repository.",
+        "The inertiajs/inertia repository has 8,127 stars and was last updated on Oct 2, 2026."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://kinsta.com/blog/inertia-js/",
+      "title": "The Ultimate Guide to Inertia.js",
+      "kind": "research_citation",
+      "claims": [
+        "Inertia.js is a strategy or technique for developing SPAs, not a JavaScript framework.",
+        "Inertia.js supports Vue, React, and Svelte for frontend frameworks.",
+        "Inertia.js supports Laravel and Rails for backend frameworks.",
+        "Inertia.js allows developers to build SPAs using existing server-side frameworks without the associated complexity.",
+        "Inertia.js works by intercepting click events on links, sending XHR requests to the server, and receiving JSON responses with component names and data.",
+        "Inertia.js solves SPA complexities by eliminating the need to create separate REST or GraphQL APIs and front-end state management systems.",
+        "Inertia.js addresses SEO concerns by offering a server-side rendering (SSR) feature that converts JSON data to HTML using a Node.js environment.",
+        "Inertia.js provides a `Head` component for adding titles and meta data to pages.",
+        "Inertia.js offers a form helper that allows submitting forms using methods like POST, PUT, PATCH, and DELETE without page refreshes.",
+        "Inertia.js has a `useRemember` feature to save and restore user form inputs to the history state."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://inertiajs.com/docs/v3/getting-started",
+      "title": "Introduction - Inertia.js Documentation",
+      "kind": "research_citation",
+      "claims": [
+        "Inertia.js v3 was released on March 26, 2026.",
+        "The 2.x version of Inertia.js receives bug fixes until September 26, 2026.",
+        "The 2.x version of Inertia.js receives security fixes until March 26, 2027."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://laravel-news.com/updates-to-inertiajs-and-the-laravel-adapter",
+      "title": "Updates to Inertia.js and the Laravel Adapter",
+      "kind": "research_citation",
+      "claims": [
+        "Inertia.js v2 and the Laravel adapter have received updates.",
+        "The `inertia.ensure_pages_exist` setting in the Laravel adapter throws an exception if a page component does not exist.",
+        "The `inertia:check-ssr` command is available in the Inertia Laravel adapter to check the status of the SSR server.",
+        "The form helper in Inertia.js now has a `resetAndClearErrors()` function.",
+        "Client-side visit callbacks `onSuccess()`, `onError()`, and `onFinish()` can now be defined for manual visits.",
+        "Testing partial reloads can be done using `reloadOnly()` and `reloadExcept()` methods.",
+        "The Inertia.js v3.8.0 update includes 'WhenMounted' and 'BigInt Props'."
+      ]
+    },
+    {
+      "position": 7,
+      "url": "https://laravel.com/blog/inertia-v3-whats-changed-since-the-first-beta",
+      "title": "Inertia v3: What's Changed Since the First Beta | Laravel - The clean stack for Artisans and agents",
+      "kind": "research_citation",
+      "claims": [
+        "Inertia v3 has simplified layout props by removing the `useLayoutProps` hook and passing them directly as component props.",
+        "Inertia v3 now supports Vite 8 and has dropped support for Vite 6.",
+        "Inertia v3 replaced `lodash-es` with `es-toolkit`, raising the minimum JavaScript target from ES2020 to ES2022.",
+        "The Laravel adapter for Inertia v3 now ships with `<x-inertia::app>` and `<x-inertia::head>` Blade components as alternatives to the `@inertia` and `@inertiaHead` directives.",
+        "The `createInertiaApp` function in Inertia v3 accepts a `withApp` callback for modifying the root app instance before rendering.",
+        "The `setLayoutProps()` function in Inertia v3 now accepts an optional layout name as its first argument, replacing `setLayoutPropsFor()`."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "Show me the release notes for the latest Inertia release",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "inertiajs/inertia-laravel"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:51:10.897882Z",
+  "ended_at": "2026-10-06T09:52:15.424573Z",
+  "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+  "question_id": "q04",
+  "strategy": "demo",
+  "expected_route": "direct",
+  "duration_ms": 64526
+}

@@ -1,0 +1,55 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The current version of Pest, the elegant testing framework for PHP developers, is **v5.3.0**, which was published on Packagist.org on **October 1, 2026, at 18:09 UTC** [1]. While development continues under `5.x-dev`, **v5.3.0** represents the latest stable release [1]. The major version, Pest 5, became available on **July 28, 2026**, offering compatibility with PHP **8.4** and later [2][3][4].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://packagist.org/packages/pestphp/pest",
+      "title": "pestphp/pest - Packagist.org",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 2,
+      "url": "https://pestphp.com/docs/support-policy",
+      "title": "Support Policy | Pest - The elegant PHP Testing Framework",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 3,
+      "url": "https://pestphp.com/",
+      "title": "Pest | The elegant testing framework for PHP developers and AI agents",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 4,
+      "url": "https://github.com/pestphp/pest",
+      "title": "GitHub - pestphp/pest: The elegant testing framework for PHP developers and AI agents. · GitHub",
+      "kind": "research_citation",
+      "claims": []
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What's the current version of Pest?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "pestphp/pest"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:34:09.462207Z",
+  "ended_at": "2026-10-06T09:34:19.291771Z",
+  "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+  "question_id": "q02",
+  "strategy": "demo",
+  "expected_route": "direct",
+  "duration_ms": 9829
+}

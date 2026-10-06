@@ -1,0 +1,207 @@
+[
+  {
+    "question_id": "q01",
+    "route_matched": false,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 0,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q02",
+    "route_matched": false,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 0,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q03",
+    "route_matched": false,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 0,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q04",
+    "route_matched": false,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 0,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q05",
+    "route_matched": false,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 0,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q06",
+    "route_matched": true,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 0,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q07",
+    "route_matched": true,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 0,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q08",
+    "route_matched": true,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 0,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q09",
+    "route_matched": true,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 0,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q10",
+    "route_matched": true,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 0,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q11",
+    "route_matched": true,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 0,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q12",
+    "route_matched": true,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 0,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q13",
+    "route_matched": true,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [
+      [
+        "https://pestphp.com/docs/upgrade-guide/",
+        "https://pestphp.com/docs/upgrade-guide"
+      ]
+    ],
+    "empty_sources": false,
+    "sources_with_empty_claims": 0,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q14",
+    "route_matched": true,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 1,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q15",
+    "route_matched": true,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 1,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q16",
+    "route_matched": true,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 0,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q17",
+    "route_matched": true,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 0,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q18",
+    "route_matched": false,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 0,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q19",
+    "route_matched": false,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 0,
+    "terminal_state_present": true
+  },
+  {
+    "question_id": "q20",
+    "route_matched": true,
+    "source_present": true,
+    "malformed_urls": [],
+    "duplicate_url_variants": [],
+    "empty_sources": false,
+    "sources_with_empty_claims": 0,
+    "terminal_state_present": true
+  }
+]

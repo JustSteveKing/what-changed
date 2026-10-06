@@ -1,0 +1,55 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "Livewire 4 introduces several changes that affect existing Livewire 3 components, primarily concerning client-side behavior and JavaScript integration, though most applications can upgrade with minimal adjustments [1][2][3]. A key change is the modified behavior of `wire:model` modifiers like `.blur` and `.change`; these now control when client-side state syncs, not just network requests. To retain the Livewire 3 behavior, developers must prepend `.live` to these modifiers (e.g., `wire:model.live.blur`) [1][4]. While the old JavaScript `$js()` syntax for calling methods from PHP (`$wire.$js('methodName', ...)`) remains backward compatible, the recommended new syntax is `$wire.$js.methodName` or `this.$js.methodName` [1][4]. Additionally, the `commit` and `request` JavaScript hooks are deprecated, replaced by a new, more granular interceptor system (`Livewire.interceptMessage` or `$wire.intercept`), though the old hooks still function for backward compatibility [1][4]. For applications using Volt, Livewire 4 now supports single-file components, requiring migration steps such as replacing `Livewire\\Volt\\Component` with `Livewire\\Component` in imports, `Volt::route()` with `Route::livewire()` for routing, and `Volt::test()` with `Livewire::test()` in test files [1][4]. Upgrading also requires updating `composer.json` to `livewire/livewire:^4.0` and clearing the application cache [1][4].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://livewire.laravel.com/docs/4.x/upgrading",
+      "title": "Upgrade Guide | Laravel - Livewire",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 2,
+      "url": "https://laravel-news.com/everything-new-in-livewire-4",
+      "title": "Everything new in Livewire 4",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 3,
+      "url": "https://saasykit.com/blog/whats-new-in-livewire-v40",
+      "title": "What's new in Livewire v4.0",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 4,
+      "url": "https://github.com/livewire/livewire/blob/4.x/docs/upgrading.md",
+      "title": "livewire/docs/upgrading.md at 4.x · livewire/livewire · GitHub",
+      "kind": "research_citation",
+      "claims": []
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What changed in Livewire 4 that affects existing Livewire 3 components?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "livewire/livewire"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:35:25.633516Z",
+  "ended_at": "2026-10-06T09:35:35.548364Z",
+  "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+  "question_id": "q10",
+  "strategy": "demo",
+  "expected_route": "research",
+  "duration_ms": 9914
+}

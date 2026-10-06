@@ -1,0 +1,110 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "### Filament 5's Core Dependency: Livewire 4\n\n**Filament v5** explicitly requires **Livewire v4.0+**, a distinction that serves as its primary differentiator from its predecessor, Filament v4 [1][2][3]. While Filament v4 is built upon Livewire v3, Filament v5 was released specifically to integrate with the significant architectural changes and enhancements introduced in Livewire v4 [4][5]. Beyond this critical Livewire compatibility, Filament v5 maintains functional parity with Filament v4, meaning that new features and updates are developed and released concurrently for both versions [1][3][4]. This approach allows developers to choose their Livewire version without sacrificing access to the latest Filament features.\n\n### The Significance of Livewire 4 Integration\n\nFilament's adoption of Livewire 4 is a strategic move, aligning the UI framework with the latest advancements in Livewire development and offering developers access to several key improvements. Livewire 4 introduces features such as **Islands**, which allow for isolated, independently re-rendering components, and **asynchronous actions** (`wire:click.async`), enabling non-blocking operations for improved user experience [1]. Other notable enhancements include non-blocking polling, parallel `wire:model.live` requests, deferred components (`<livewire:component defer />`), and a built-in `wire:sort` directive for drag-and-drop sorting without external JavaScript libraries [1]. These changes ensure Filament projects can leverage Livewire's performance optimizations and new capabilities, though some community discussions suggest that a direct performance benefit from Livewire 4 may depend on specific usage, such as employing the Islands feature [6]. Livewire 4 itself requires Laravel v10+ and PHP v8.1+ [7].\n\n### Practical Upgrade Considerations for Developers\n\nDevelopers planning to transition to Filament v5 must account for the underlying shift to Livewire v4. While Filament provides an automated upgrade script (`composer require filament/upgrade:\"^5.0\" -W --dev` followed by `vendor/bin/filament-v5`) to streamline the migration of its own components, developers with custom Livewire code face additional steps [1][3]. Due to several breaking changes in Livewire v4, it is crucial to consult and follow the official Livewire upgrade guide [3][2]. Key Livewire 4 changes to be aware of include modifications to `wire:model.blur` and `.change` behavior, the removal of `wire:transition` modifiers, the new requirement for Livewire component tags to be explicitly closed (e.g., `<livewire:component />`), and updated Livewire endpoint URLs from `/livewire/...` to `/livewire-{hash}/...` [1]. Filament v4 will continue to receive bug fixes until January 2027 and security fixes until January 2028, providing a grace period for projects that require more time to adapt or cannot immediately upgrade to Livewire 4 [1].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://thewebtier.com/filament-v4-to-v5-upgrade-guide-what-actually-changes",
+      "title": "Filament v4 to v5 Upgrade Guide: What Actually Changes (2026)",
+      "kind": "research_citation",
+      "claims": [
+        "Filament v5 is Filament v4 plus Livewire 4 support, with no other functional changes.",
+        "New features in Filament are released to both v4 and v5 in parallel.",
+        "The upgrade script for Filament v4 to v5 is `filament/upgrade:^5.0` followed by `vendor/bin/filament-v5`.",
+        "Custom Livewire code, specifically `wire:model.blur`, unclosed `<livewire:...>` tags, `wire:transition` modifiers, and renamed config keys, are the primary risks during the upgrade.",
+        "The new Livewire 4 endpoint URLs are `/livewire-{hash}/update`.",
+        "Filament v4 gets bug fixes until January 15, 2027, and security fixes until January 15, 2028.",
+        "Filament v5 requires Livewire 4.",
+        "Livewire 4 introduces Islands, non-blocking polling and parallel `wire:model.live` requests, async actions, deferred components, and `wire:sort`."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://filamentphp.com/docs/5.x/upgrade-guide",
+      "title": "Upgrade guide - Filament",
+      "kind": "research_citation",
+      "claims": [
+        "Filament v5 requires Livewire v4.0+."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://filamentphp.com/content/danharrin-filament-v5-blueprint",
+      "title": "Introducing Filament v5 and Filament Blueprint - Filament",
+      "kind": "research_citation",
+      "claims": [
+        "Filament v5 integrates Livewire v4.",
+        "Filament v5 has no additional changes over v4, apart from Livewire v4 support.",
+        "Filament v5 has a brief upgrade guide with no manual steps required.",
+        "An upgrade script is available to check for compatibility issues and apply changes automatically for Filament v5.",
+        "If custom Livewire components are used, the Livewire upgrade guide must also be followed for Filament v5."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://laravel-news.com/filament-5",
+      "title": "Filament v5 Released With Livewire v4 Support and a New Blueprint Tool",
+      "kind": "research_citation",
+      "claims": [
+        "Filament v5 is primarily focused on compatibility with Livewire v4.",
+        "Filament v5 ensures alignment with the latest Livewire internals.",
+        "There are no functional changes between Filament v4 and v5 beyond Livewire v4 support."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://filamentphp.com/insights/danharrin-filament-v5-blueprint",
+      "title": "Introducing Filament v5 and Filament Blueprint - Filament",
+      "kind": "research_citation",
+      "claims": [
+        "Filament v5 integrates Livewire v4.",
+        "Filament v5 has no additional changes over v4 apart from Livewire v4 support.",
+        "Filament v5 will continue pushing features to both versions (v4 and v5)."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://www.answeroverflow.com/m/1457737675267244166",
+      "title": "Filament 5 and Livewire 4 for a new project? - Filament",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 7,
+      "url": "https://livewire.laravel.com/docs/4.x/quickstart",
+      "title": "Quickstart | Laravel Livewire",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire version 4.x is available.",
+        "Livewire requires Laravel version 10 or later.",
+        "Livewire requires PHP version 8.1 or later.",
+        "The command to install Livewire is: composer require livewire/livewire",
+        "The command to generate a Livewire layout is: php artisan livewire:layout",
+        "The command to generate a Livewire component is: php artisan make:livewire pages::post.create",
+        "A Livewire route can be registered with: Route::livewire('/post/create', 'pages::post.create');"
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "Does Filament 5 require Livewire 4?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "filament/filament",
+      "livewire/livewire"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T10:09:19.841778Z",
+  "ended_at": "2026-10-06T10:10:58.629456Z",
+  "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+  "question_id": "q14",
+  "strategy": "demo",
+  "expected_route": "research",
+  "duration_ms": 98787
+}

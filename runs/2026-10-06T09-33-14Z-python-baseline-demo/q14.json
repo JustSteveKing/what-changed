@@ -1,0 +1,49 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "Yes, Filament 5 **requires Livewire 4**. The official Filament upgrade guide for v5 explicitly lists **Livewire v4.0+** as a new requirement [1]. Filament v5 was released primarily to integrate and ensure compatibility with **Livewire v4**, which shipped the same week [2][3]. This new major version bump allows Filament to stay aligned with Livewire's latest internals and provides a predictable upgrade path, though there are no functional changes between Filament v4 and v5 beyond this Livewire v4 support [2][3]. Users upgrading to Filament v5 must also follow the Livewire upgrade guide for any custom Livewire components [3].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://filamentphp.com/docs/5.x/upgrade-guide",
+      "title": "Upgrade guide - Filament",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 2,
+      "url": "https://laravel-news.com/filament-5",
+      "title": "Filament v5 Released With Livewire v4 Support and a New Blueprint Tool",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 3,
+      "url": "https://filamentphp.com/insights/danharrin-filament-v5-blueprint",
+      "title": "Introducing Filament v5 and Filament Blueprint",
+      "kind": "research_citation",
+      "claims": []
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "Does Filament 5 require Livewire 4?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "filament/filament",
+      "livewire/livewire"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:36:11.383972Z",
+  "ended_at": "2026-10-06T09:36:21.233156Z",
+  "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+  "question_id": "q14",
+  "strategy": "demo",
+  "expected_route": "research",
+  "duration_ms": 9849
+}

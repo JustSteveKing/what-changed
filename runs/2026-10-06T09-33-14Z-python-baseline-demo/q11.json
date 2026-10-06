@@ -1,0 +1,62 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The primary change in Livewire 4.1 for `wire:model` modifiers is that `.blur` and `.change` now control **client-side state synchronization**, not just network timing [1][2]. Previously, in Livewire v3, these modifiers only dictated when network requests were sent, while the client-side state (`$wire.property`) would update immediately as the user typed [1][2]. To achieve the v3 behavior where client-side state syncs instantly and the modifier only affects network timing, developers must now explicitly add the `.live` modifier before `.blur` or `.change` (e.g., `wire:model.live.blur`) [1][2][3]. This change allows for more granular control, enabling UI patterns where an input's displayed value might not update until the user completes an action like tabbing away or pressing Enter, without triggering an immediate network request [1][2]. It's also important to note that `wire:model` in Livewire 4.x (including 4.1) is deferred by default, meaning server updates are queued unless `wire:model.live` is used for real-time syncing [4][5]. Additionally, `wire:model` in v4.x now only listens for events directly on its element, requiring the `.deep` modifier to capture bubbling events from child elements [1][2][3].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://github.com/livewire/livewire/blob/4.x/docs/upgrading.md",
+      "title": "livewire/docs/upgrading.md at 4.x · livewire/livewire · GitHub",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 2,
+      "url": "https://livewire.laravel.com/docs/4.x/upgrading",
+      "title": "Upgrade Guide | Laravel Livewire",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 3,
+      "url": "https://livewire.laravel.com/docs/4.x/wire-model",
+      "title": "wire:model - Livewire - Laravel",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 4,
+      "url": "https://laravel-news.com/livewire-wire-model-live",
+      "title": "Real-time Form Updates with Laravel Livewire&#039;s wire:model.live",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 5,
+      "url": "https://stackoverflow.com/questions/77031929/livewire-component-is-not-updated-with-the-wiremodel-value",
+      "title": "Livewire component is not updated with the wire:model value",
+      "kind": "research_citation",
+      "claims": []
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What changed about wire:model modifiers in Livewire 4.1?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "livewire/livewire"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:35:35.550465Z",
+  "ended_at": "2026-10-06T09:35:49.104922Z",
+  "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+  "question_id": "q11",
+  "strategy": "demo",
+  "expected_route": "research",
+  "duration_ms": 13554
+}

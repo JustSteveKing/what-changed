@@ -1,0 +1,137 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "Upgrading to Filament 5 requires a structured approach, primarily driven by its integration with Livewire 4 and the significant architectural shifts introduced in Filament 4. While Filament 5 itself brings minimal *new* breaking changes beyond Livewire 4, the complexity of the upgrade depends heavily on your current Filament version [1][2]. Users upgrading from Filament 3 or earlier will need to address a broader range of changes [3].\n\n## Core Requirements and the Upgrade Process\n\nTo begin, your application must meet Filament 5's new system requirements: **PHP 8.2+**, **Laravel v11.28+**, **Livewire v4.0+**, and **Tailwind CSS v4.0+**. Notably, `doctrine/dbal` is no longer a dependency [2][4].\n\nThe upgrade process involves a dedicated script to automate many mechanical changes:\n1.  Install the upgrade package: `composer require filament/upgrade:\"^5.0\" -W --dev` (use `~5.0` for Windows PowerShell) [2].\n2.  Execute the upgrade script: `vendor/bin/filament-v5`. This script identifies compatibility issues and applies automated fixes [2].\n3.  Update Composer dependencies: `composer require filament/filament:\"^5.0\" -W --no-update` followed by `composer update` [2].\n\nIt's important to review the script's output carefully. Issues may arise on Windows environments due to `Prompts` compatibility, potentially requiring WSL or a fallback configuration [5]. Additionally, incompatible plugins might need temporary removal, followed by re-adding their v5-compatible versions after the upgrade [5].\n\n## Key Changes and Livewire 4 Impacts\n\nThe necessary changes are primarily dictated by whether you are upgrading from Filament 4 or an earlier version like Filament 3.\n\n### Filament 5 Specific Adjustments\nThe core reason for Filament 5's existence is its full support for **Livewire 4** [1][4]. While Filament's built-in forms, tables, actions, and resources are largely unaffected, any **custom Livewire components** you've developed will require manual updates to conform to Livewire 4's breaking changes. This includes ensuring component tags are **self-closing**, adding the `wire:model.deep` modifier to restore v3 `wire:model` behavior on parent elements, and renaming certain configuration keys in `config/livewire.php` (e.g., `layout` to `component_layout`) [4].\n\n### Inherited Changes from Filament 4 (for v3 or older upgrades)\nIf you are upgrading from Filament 3 or an even older version, you must also contend with the architectural shifts introduced in Filament 4 [3]:\n*   **Unified Schema API**: The `form()` and `infolist()` methods now accept a `Schema` instance, with components registered via `->components()` instead of flat arrays. The `Form` and `Infolist` type hints are replaced with `Schema` [3].\n*   **Action Modifiers**: Action closures now require **explicit type hints** (e.g., `fn (Model $record)`) rather than implicitly injected variables [3].\n*   **`extraAttributes` Merging**: Filament 4 uses a **keyed deep-merge** for `extraAttributes()`, meaning multiple calls merge attributes rather than overwriting them [3].\n*   **Plugin Booting**: Custom plugins need a dedicated `boot()` hook to register pages, widgets, and navigation items, moving from the `register()` method used in v3 [3].\n*   **Namespace Changes**: Infolist entry classes were re-namespaced from `Filament\\Infolists\\Components` to `Filament\\Schemas\\Components\\Infolists` [3].\n*   **Tailwind CSS v4**: Custom themes must be updated to use **Tailwind CSS v4**, which often involves moving `@apply` directives into CSS files and updating Tailwind packages [4][6]. Official Filament themes now fully support v4 and v5 [7].\n\n### Performance and Security Benefits\nUpgrading to Filament 5 (specifically recent releases like v5.7.6, released August 6, 2026) brings significant benefits. Performance improvements include **forms rendering up to 92% faster** (e.g., `TextInput`, `Select`) and **tables rendering up to 52% faster** for common scenarios [8]. The update also includes important security patches, such as CSS color value sanitization and opt-in CSV formula-injection protection [8].\n\n## Conclusion: Navigating the Upgrade Path\n\nA successful migration to Filament 5 hinges on a two-pronged approach: leveraging the official upgrade script to handle mechanical changes and meticulously addressing manual adjustments, particularly for custom Livewire components and the architectural shifts from Filament 4. For those upgrading from Filament 3 or earlier, the scope of changes is broader, requiring careful attention to the new Schema API, action signatures, and custom theme adaptations for Tailwind CSS v4. Thorough testing across your application post-upgrade is crucial to ensure full functionality and to capitalize on the performance gains and security enhancements offered by the latest version [8][3].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://filamentphp.com/insights/danharrin-filament-v5-blueprint",
+      "title": "Introducing Filament v5 and Filament Blueprint - Filament",
+      "kind": "research_citation",
+      "claims": [
+        "Filament v5 was released on January 16, 2026.",
+        "Filament v5 integrates Livewire v4.",
+        "Filament v5 has no additional changes over v4, apart from Livewire v4 support.",
+        "Filament v5 has a brief upgrade guide with no manual steps required.",
+        "Filament Blueprint is a premium Laravel Boost extension.",
+        "Filament Blueprint helps AI coding agents produce better implementation plans for Filament v4 and v5 projects.",
+        "More projects are expected to be shared in the coming months of 2026."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://filamentphp.com/docs/5.x/upgrade-guide",
+      "title": "Upgrade guide - Filament",
+      "kind": "research_citation",
+      "claims": [
+        "Filament 5 requires PHP 8.2+, Laravel v11.28+, Livewire v4.0+, and Tailwind CSS v4.0+.",
+        "To upgrade to Filament 5, run `composer require filament/upgrade:\"^5.0\" -W --dev` and then `vendor/bin/filament-v5`.",
+        "After running the upgrade script, execute `composer require filament/filament:\"^5.0\" -W --no-update` and `composer update`.",
+        "Filament v5 requires Livewire v4.0+."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://msaied.com/articles/filament-v3-to-v4-breaking-changes-and-practical-refactor-patterns",
+      "title": "Filament v3 → v4 Migration: Breaking Changes Guide | Mohamed Said",
+      "kind": "research_citation",
+      "claims": [
+        "In Filament v4, the `form()` and `infolist()` methods accept a `Schema` instance instead of a flat array of component objects, and components are registered via a `Schema` instance using `->components()` instead of `->schema([])`.",
+        "Filament v4 enforces typed builder callbacks for action modifiers and uses explicit `fn (Model $record)` signatures instead of implicitly injected `$record` closures.",
+        "Filament v4 uses a keyed deep-merge for `extraAttributes` instead of v3's simple `array_merge`, meaning later calls to `extraAttributes()` on the same component will merge attributes rather than overwrite them.",
+        "In Filament v4, panel plugins are booted in a dedicated `boot()` hook on the plugin interface, moving from v3's `register()` method.",
+        "All infolist entry classes in Filament v4 have moved from `Filament\\Infolists\\Components` to `Filament\\\\.Schemas\\\\.Components\\\\.Infolists`.",
+        "The `php artisan filament:upgrade` command handles mechanical changes like form/infolist return type replacements and some namespace moves but does not automatically rewrite action closure signatures or plugin boot logic.",
+        "Filament v3 and v4 panels cannot be run side-by-side in the same application; all panels must be migrated at once or maintained on a separate branch.",
+        "Filament v4 is not a cosmetic release, featuring a schema-based form and infolist API that represents a genuine architectural shift."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://richdynamix.com/articles/filament-v5-upgrade-from-v4-guide",
+      "title": "Filament v5 Upgrade: Step-by-Step Migration Guide from v4",
+      "kind": "research_citation",
+      "claims": [
+        "Filament v5 was officially released on January 16th, 2026.",
+        "Filament v5 requires PHP 8.2+, Laravel 11.28+, Livewire 4.0+, and Tailwind CSS v4.",
+        "Filament v5's primary purpose is to support Livewire 4.",
+        "Filament v5 has no new features over v4 and no breaking changes to forms, tables, actions, or resources.",
+        "The official upgrade script for Filament v5 is located at `vendor/bin/filament-v5`.",
+        "Custom Livewire components require manual updates for Livewire 4, including self-closing tags, adding `wire:model.deep`, and renaming config keys.",
+        "Filament v5 requires Tailwind CSS v4.0 or higher."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://github.com/filamentphp/filament/issues/19246",
+      "title": "V4 &gt; V5 Upgrade Script Bug · Issue #19246 · filamentphp/filament · GitHub",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 6,
+      "url": "https://github.com/filamentphp/filament/blob/4.x/docs/14-upgrade-guide.md",
+      "title": "filament/docs/14-upgrade-guide.md at 4.x · filamentphp/filament · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "Filament v4 requires PHP 8.2+, Laravel v11.28+, and Tailwind CSS v4.1+.",
+        "Filament v4 no longer requires `doctrine/dbal`.",
+        "The upgrade script for Filament v4 is run using `composer require filament/upgrade:\"^4.0\" -W --dev` followed by `vendor/bin/filament-v4`.",
+        "Filament v4 introduces a new default directory structure for resources and clusters, which can be migrated to using `php artisan filament:upgrade-directory-structure-to-v4`.",
+        "In Filament v4, the `default_filesystem_disk` is set to the `FILESYSTEM_DISK` variable instead of `FILAMENT_FILESYSTEM_DISK`.",
+        "Filament v4 adds a `file_generation` section to the configuration file to revert to v3 style.",
+        "File visibility is now private by default for non-local disks in Filament v4.",
+        "Custom themes in Filament v4 need to be upgraded to Tailwind CSS v4.",
+        "Filament v4 moves Tailwind CSS classes from views into CSS files using the `@apply` directive.",
+        "Table filters in Filament v4 are deferred by default, requiring a button click to apply."
+      ]
+    },
+    {
+      "position": 7,
+      "url": "https://filamentphp.com/themes",
+      "title": "Themes for Filament - Filament",
+      "kind": "research_citation",
+      "claims": [
+        "All four themes fully support Filament v4 and v5 core features."
+      ]
+    },
+    {
+      "position": 8,
+      "url": "https://filamentphp.com/insights/alexandersix-major-performance-improvements-and-security-patches-for-filament-v4-12-and-v5-7",
+      "title": "Major performance improvements &amp; security patches for Filament v4.12 and v5.7! - Filament",
+      "kind": "research_citation",
+      "claims": [
+        "Filament v4.12.6 and v5.7.6 were released on August 6, 2026, incorporating major performance improvements and security patches.",
+        "The performance improvements in Filament v4.12.6 and v5.7.6 are a result of optimizations in the forms and tables packages.",
+        "The forms package saw render time improvements of up to 92% for components like TextInput and Select, and up to 90% for Repeater components.",
+        "The tables package saw performance improvements of approximately 52% for scenarios with 50 rows and 5 TextColumns, and 49% for scenarios with 50 rows, 5 TextColumns, and actions.",
+        "The update includes a new Bound Query Builder rule count and nesting depth feature to prevent excessive CPU and memory usage.",
+        "Filament now includes CSS color value sanitization using the Str::sanitizeCssColor() helper.",
+        "An opt-in CSV formula-injection protection system has been added.",
+        "User and tenant menu items can now be grouped for better readability and are memoized per request.",
+        "The modalDismissesParentActions() method allows modal dismissal to cancel parent actions.",
+        "Custom empty states can now be created for chart widgets."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What do I need to change when upgrading to Filament 5?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "filament/filament"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T10:10:58.631186Z",
+  "ended_at": "2026-10-06T10:12:53.556152Z",
+  "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+  "question_id": "q15",
+  "strategy": "demo",
+  "expected_route": "research",
+  "duration_ms": 114924
+}

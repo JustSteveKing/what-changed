@@ -1,0 +1,127 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "Laravel 13 introduces several significant changes to its queue and event systems that can break existing queue event listeners. These modifications primarily involve how jobs are serialized, specific event property renames, and increased environmental requirements, necessitating updates to maintain compatibility.\n\n## Core Breaking Changes: Serialization, Payloads, and Closure Handling\n\nA major area of impact stems from Laravel 13's changes to job serialization. The framework alters **job payload layouts** and upgrades the underlying **serializable closure library to v2**. This upgrade implements stricter signature checks, which can cause existing queued jobs, especially those utilizing arrow functions, to fail when processed by new workers [1]. This incompatibility means jobs enqueued before the upgrade may not deserialize correctly after workers are updated to Laravel 13 [1][2].\n\nAdditionally, the default `cache` configuration in Laravel 13 now sets `serializable_classes` to `false`. This security enhancement prevents the unserialization of arbitrary PHP objects from the cache. However, if your application intentionally stores PHP objects in the cache—which could include serialized queued listeners or their associated event objects—these operations will fail unless the specific classes are explicitly allow-listed in your `config/cache.php` file [3][4].\n\n## Event Property Renames and Environmental Requirements\n\nListeners will also need updates due to renamed properties within specific queue events:\n*   The `Illuminate\\Queue\\Events\\JobAttempted` event's boolean property `exceptionOccurred` has been replaced. Listeners should now access `$event->exception` to retrieve the actual exception object (or `null` if none occurred) [3][4].\n*   For the `Illuminate\\Queue\\Events\\QueueBusy` event, the `$connection` property has been renamed to `$connectionName` for consistency. Any listeners referencing `$connection` must be updated to `$connectionName` [3][4].\n\nBeyond code-level changes, Laravel 13 mandates a higher minimum PHP version. Applications must run on **PHP 8.3 or higher** [1][5][6]. Queue workers operating on older PHP versions will fail to process jobs after the upgrade, making it crucial to update the entire worker environment.\n\n## Mitigation and Upgrade Considerations\n\nUpgrading to Laravel 13 requires careful planning, particularly for applications heavily relying on queues and custom event listeners. To minimize disruption, consider draining existing job queues before deploying new workers to avoid deserialization errors with older job payloads. All queue event listeners must be reviewed and updated to reflect the new property names (`$event->exception` for `JobAttempted` and `$connectionName` for `QueueBusy`). Finally, ensure that all environments, including local development, CI/CD, and production queue workers, are running PHP 8.3 or newer to prevent runtime failures.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://blog.path-finder.jp/troubleshooting/laravel-13-upgrade-queue-worker-issue-guide-2026-e/",
+      "title": "Laravel 13 Upgrade Queue Worker Issue Guide [2026 EN] | ( ･∀･)つ〃∩ troubleshooting!!",
+      "kind": "research_citation",
+      "claims": [
+        "Jobs enqueued before the Laravel 13 upgrade carry the old payload layout, which new workers cannot deserialize, causing exceptions at pop time.",
+        "The job payload layout changed to a more compact shape in Laravel 13.",
+        "The serializable closure library was bumped to v2 with stricter signature checks in Laravel 13.",
+        "Several methods deprecated in Laravel 11 and 12 have been removed in Laravel 13.",
+        "Paginator defaults changed in Laravel 13, causing cached paginators to fail to rehydrate.",
+        "Laravel 13 runtime requires PHP 8.3 or later on every worker.",
+        "Closure jobs dispatched with arrow functions cannot be recovered in Laravel 13 due to new signature checks.",
+        "SQS is affected by Laravel 13 upgrade issues, where the visibility timeout can cause jobs to retry forever."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://codeboxr.com/laravel-events-listeners-how-they-work",
+      "title": "Laravel Events &amp; Listeners — How They Work (Step-by-Step + Examples) | Codeboxr",
+      "kind": "research_citation",
+      "claims": [
+        "If a listener implements ShouldQueue, it is pushed to your queue backend.",
+        "If a listener implements ShouldQueue, Laravel serializes the listener (and the event) and queues it.",
+        "For sync listeners, the exception bubbles up to the dispatcher (and could fail the HTTP request).",
+        "If a listener throws an exception and it’s queued, the queue worker handles retry/backoff per your queue config.",
+        "For local development the sync driver runs jobs synchronously; use database or redis to actually queue them."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://ortamarco.me/en/blog/what-breaks-upgrading-to-laravel-13",
+      "title": "Laravel 13 Breaking Changes: The Real List | Marco Orta",
+      "kind": "research_citation",
+      "claims": [
+        "The CSRF middleware `VerifyCsrfToken` is renamed to `PreventRequestForgery` in Laravel 13.",
+        "The new `PreventRequestForgery` middleware performs origin verification by reading the browser’s `Sec-Fetch-Site` header.",
+        "The `VerifyCsrfToken` and `ValidateCsrfToken` middleware aliases still exist but are deprecated in Laravel 13.",
+        "Tests that call `withoutMiddleware([VerifyCsrfToken::class])` may not disable CSRF protection as expected in Laravel 13.",
+        "The default `cache` configuration in Laravel 13 includes `serializable_classes => false` as a hardening measure.",
+        "If an application deliberately stores PHP objects in cache, it will stop working in Laravel 13 unless explicitly declared in `config/cache.php`.",
+        "Laravel 13 validates that `uniqueBy` is not empty for `upsert` operations with MySQL or MariaDB, throwing `InvalidArgumentException` if it is.",
+        "The default cache prefixes in Laravel 13 change from underscore to hyphen (e.g., `myapp_cache_` to `myapp-cache-`).",
+        "The `JobAttempted` event in Laravel 13 exposes the exception object via `$event->exception` instead of a boolean `exceptionOccurred` property.",
+        "The `QueueBusy` event in Laravel 13 renames the `$connection` property to `$connectionName`."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://laravel.com/framework/docs/upgrade",
+      "title": "Upgrade Guide | Laravel 13.x - The clean stack for Artisans and agents",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 requires updating `laravel/framework` to `^13.0`.",
+        "Laravel 13 requires updating `laravel/boost` to `^2.0`.",
+        "Laravel 13 requires updating `laravel/tinker` to `^3.0`.",
+        "Laravel 13 requires updating `phpunit/phpunit` to `^12.0`.",
+        "Laravel 13 requires updating `pestphp/pest` to `^4.0`.",
+        "The Laravel installer can be updated using `composer global update laravel/installer`.",
+        "Laravel 13's default cache and Redis key prefixes now use hyphenated suffixes.",
+        "Laravel 13's default application `cache` configuration includes a `serializable_classes` option set to `false`.",
+        "Laravel 13's `Container::call` respects nullable class parameter defaults when no binding exists.",
+        "Laravel 13's database `upsert` with MySQL or MariaDB validates that `uniqueBy` is non-empty."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://laravel.com/framework/docs/releases",
+      "title": "Release Notes | Laravel 13.x - The clean stack for Artisans and agents",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13.x requires a minimum PHP version of 8.3.",
+        "Laravel 13 release date: March 17th, 2026 (Bug Fixes Until), Q3 2027 (Security Fixes Until).",
+        "Laravel 13 introduces the first-party Laravel AI SDK for text generation, tool-calling agents, embeddings, audio, images, and vector-store integrations.",
+        "Laravel 13 includes first-party JSON:API resources for compliant response serialization.",
+        "Laravel 13 enhances request forgery protection with the formalized `PreventRequestForgery` middleware.",
+        "Laravel 13 adds queue routing by class via `Queue::route(...)`.",
+        "Laravel 13 expands first-party PHP attribute support with controller, authorization, and queue-oriented job attributes like `#[Middleware]`, `#[Authorize]`, `#[Tries]`, `#[Backoff]`, `#[Timeout]`, and `#[FailOnTimeout]`.",
+        "Laravel 13 includes `Cache::touch(...)` to extend an existing cache item's TTL.",
+        "Laravel 13 deepens semantic search with native vector query support, embedding workflows, and related APIs."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://www.itpathsolutions.com/laravel-13-new-features-updates-guide",
+      "title": "Laravel 13: New Features, Release Date &amp; Upgrade Guide (2026)",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 was released on March 17, 2026.",
+        "Laravel 13 requires PHP 8.3 or higher.",
+        "Laravel 13 introduces first-party AI tooling, JSON:API resources, vector and semantic search capabilities, and improvements across queues, caching and security.",
+        "Laravel 13 has specific changes to cache prefix formatting, model booting restrictions, CSRF middleware naming, and DELETE query behavior.",
+        "Bug fixes for Laravel 13 are provided through Q3 2027, and security fixes continue through Q1 2028.",
+        "The Laravel AI SDK in Laravel 13 is provider-agnostic and works with OpenAI and Anthropic.",
+        "Laravel 13 completes the migration toward native PHP Attributes as the standard way to configure framework behavior.",
+        "Laravel 13 optimizes route handling by introducing automatic Domain-Specific Route Priority.",
+        "Queue configuration in Laravel 13 has been centralized through a new Queue::route() method.",
+        "Laravel 13 introduces a new Cache::touch() method to extend the time-to-live of a cached item."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What changed in Laravel 13 queue events that could break my listeners?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "laravel/framework"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:56:12.115565Z",
+  "ended_at": "2026-10-06T09:57:56.131913Z",
+  "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+  "question_id": "q08",
+  "strategy": "demo",
+  "expected_route": "research",
+  "duration_ms": 104016
+}

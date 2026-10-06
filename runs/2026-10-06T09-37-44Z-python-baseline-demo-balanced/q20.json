@@ -1,0 +1,147 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "### Latest Livewire Release: An Overview of V4.4.7 and Core V4 Changes\n\nThe most recent stable release for Livewire is **v4.4.7**, which was published on **September 28, 2026** [1][2]. Concurrently, a **v3.8.10** release was also made available for projects still utilizing the older major version [2][3]. Livewire v4 stands as the current major stable version, compatible with **Laravel 11 and 12**, while Livewire v3 continues to support **Laravel 10 and 11** projects [4].\n\n### Key New Features Introduced in Livewire V4\n\nLivewire v4 brought substantial architectural and functional enhancements, significantly evolving how components are structured and how the framework handles interactivity. A major highlight is the introduction of new component formats:\n\n*   **Single-File Components (SFCs)**: This is now the default format, allowing developers to combine PHP logic and Blade templates within a single `.blade.php` file using anonymous classes. These are typically stored in `resources/views/components/⚡component-name.blade.php` [5].\n*   **Multi-File Components (MFCs)**: For more complex components, this format organizes related files (PHP, Blade, JavaScript, CSS, and tests) into a dedicated directory, enhancing IDE support and separation of concerns [5]. Livewire also provides a `livewire:convert` command to seamlessly switch between SFC and MFC formats [5].\n\nA new **component compiler** was introduced to transform these view-based components into executable PHP classes and Blade views at runtime, optimizing performance [5]. Other notable additions include:\n\n*   **Slots and Automatic Attribute Forwarding**: Components now fully support slots and automatic attribute bag forwarding using `{{ $attributes }}`, similar to standard Blade components, which allows for more flexible composition [5].\n*   **Direct JavaScript Inclusion**: View-based components can now embed `<script>` tags directly. Livewire extracts these scripts, serves them as cached files, binds them to the component's `$wire` object, and executes them at the correct lifecycle stage [5].\n*   **Islands**: This feature allows for isolated regions within a component that update independently, preventing unnecessary re-renders and boosting application performance [5].\n*   **Improved Loading Strategies**: Livewire v4 introduced **deferred loading**, where components load immediately after the initial page load (rather than waiting for viewport intersection), and **bundled loading**, which allows multiple lazy or deferred components to load in parallel or as a single request [5].\n\n### Breaking Changes and Adaptations in Livewire V4\n\nMigrating to Livewire v4 requires awareness of several breaking changes and adaptations:\n\n*   **Configuration Renaming**: Various configuration keys have been renamed. For instance, `layout` is now `component_layout`, and `lazy_placeholder` changed to `component_placeholder` [6].\n*   **`smart_wire_keys` Default**: The default setting for `smart_wire_keys` changed from `false` to `true`, affecting how keys are managed for deeply nested components [6].\n*   **Full-Page Component Routing**: Full-page components now require explicit registration using `Route::livewire()` instead of standard Laravel route syntax [6].\n*   **`wire:model` Behavior**: The `wire:model` directive no longer responds to bubbling events; it now only listens for events directly on the element [6]. Additionally, its default behavior shifted from real-time synchronization to deferred updates (on blur/submit), requiring the `.live` modifier for real-time keystroke updates [4].\n*   **Directive Changes**: The `wire:scroll` directive was replaced by `wire:navigate:scroll`, and the `wire:transition` directive removed support for modifiers like `.opacity` or `.duration` [6].\n*   **JavaScript API Updates**: The `$wire.$js()` method signature was updated, and `commit` and `request` hooks were deprecated in favor of a new interceptor system [6].\n*   **`stream()` Method**: The `stream()` method's parameter order was updated, with `to` being renamed to `el` [6].\n\n### Recent Improvements and Bug Fixes in V4 Point Releases\n\nBeyond the foundational changes of Livewire v4, subsequent point releases have focused on refinement, performance, and stability:\n\n*   **Livewire v4.4.1**, released on **August 18, 2026**, delivered **16 fixes and improvements**. Notably, it updated Alpine.js to version **3.16.2** and addressed critical issues such as cached computed properties on Laravel 13, nullable enum property handling, reactive Eloquent models, and server actions. It also fixed problems with script modules and assets not reloading correctly after browser navigation [7].\n*   **Livewire v4.2.0**, released on **February 26, 2026**, included numerous fixes and optimizations. These covered improvements to `wire:model`, smart keys, explicit route model bindings, and enhanced security policies. It also resolved issues related to asset URL handling, the `make:livewire` command, and the SFC compiler. This release also introduced Laravel 13 support for the v3.x branch [8].\n\nThe latest **v4.4.7** release signifies ongoing maintenance and iterative enhancements, ensuring the stability and continued evolution of the Livewire framework [1].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://api.github.com/repos/livewire/livewire/releases/latest",
+      "title": "https://api.github.com/repos/livewire/livewire/releases/latest",
+      "kind": "research_citation",
+      "claims": [
+        "The latest Livewire release is version v4.4.7.",
+        "The latest Livewire release was published on September 28, 2026.",
+        "The full changelog for Livewire v4.4.7 can be found at https://github.com/livewire/livewire/compare/v4.4.6...v4.4.7."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://github.com/livewire/livewire/releases",
+      "title": "Releases · livewire/livewire · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire v4.4.7 was released on September 28, 2026.",
+        "Livewire v3.8.10 was released on September 28, 2026.",
+        "Livewire v4.4.6 was released on September 21, 2026.",
+        "Livewire v4.4.5 was released on September 14, 2026.",
+        "Livewire v3.8.9 was released on September 14, 2026.",
+        "Livewire v4.4.4 was released on September 7, 2026.",
+        "Livewire v3.8.8 was released on September 7, 2026.",
+        "Livewire v4.4.3 was released on August 31, 2026.",
+        "Livewire v3.8.7 was released on August 31, 2026.",
+        "Livewire v4.4.2 was released on August 24, 2026."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://newreleases.io/project/github/livewire/livewire/release/v3.8.10",
+      "title": "livewire/livewire v3.8.10 on GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire changelog for v3.8.10 includes stabilization of loading delay browser test and query string browser tests on 3.x.",
+        "The latest release of Livewire is v4.4.7, which was released 7 days ago.",
+        "The changelog for v3.8.10 covers changes from v3.8.9."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://www.cloudways.com/blog/laravel-livewire/",
+      "title": "What Is Laravel Livewire? A Complete Guide for 2026",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire v4 is the current stable release in 2026.",
+        "Livewire v4 was released and is compatible with Laravel 11 and 12.",
+        "Livewire v3 remains compatible with Laravel 10 and 11 projects."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://deepwiki.com/livewire/livewire/13.2-new-features-in-v4",
+      "title": "New Features in V4 | livewire/livewire | DeepWiki",
+      "kind": "research_citation",
+      "claims": [
+        "V4 introduces single-file components (default) and multi-file components as new component formats alongside the traditional class-based approach.",
+        "Single-file components combine PHP and Blade in a single .blade.php file using anonymous classes, with the component class defined in a @php block.",
+        "Multi-file components organize related files (PHP, Blade, JavaScript, CSS, tests) in a dedicated directory.",
+        "The `livewire:convert` command can convert between single-file and multi-file component formats.",
+        "V4 introduces a compiler that transforms view-based components into executable PHP classes and Blade views at runtime.",
+        "The `SingleFileComponentCompiler` parses frontmatter and view content, generates a cache invalidation hash, checks the cache, generates unique class and view names, and writes compiled files.",
+        "V4 adds support for slots and automatic attribute bag forwarding using `{{ $attributes }}`.",
+        "View-based components in V4 can include `<script>` tags directly, which are extracted, served as cached files, bound to the component's `$wire` object, and executed at the correct lifecycle time.",
+        "Islands provide isolated regions within a component that update independently without creating separate child components.",
+        "V4 introduces deferred loading (components load immediately after initial page load) and bundled loading (multiple lazy/deferred components load in parallel or bundled)."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://deepwiki.com/livewire/livewire/13.1-breaking-changes-in-v4",
+      "title": "Breaking Changes in V4 | livewire/livewire | DeepWiki",
+      "kind": "research_citation",
+      "claims": [
+        "In Livewire v4, the `layout` configuration key has been renamed to `component_layout`.",
+        "In Livewire v4, the `lazy_placeholder` configuration key has been renamed to `component_placeholder`.",
+        "The `smart_wire_keys` configuration defaults to `true` in Livewire v4, whereas it was `false` in v3.",
+        "In Livewire v4, full-page components require `Route::livewire()` for registration, replacing the standard Laravel route syntax.",
+        "In Livewire v4, `wire:model` only listens for events originating directly on the element, unlike v3 where it responded to bubbling events.",
+        "The `wire:scroll` directive has been replaced with `wire:navigate:scroll` in Livewire v4.",
+        "Livewire v4's `wire:transition` directive no longer supports modifiers like `.opacity`, `.scale`, `.duration`, and `.origin`, as it uses the native View Transitions API.",
+        "The `$wire.$js()` method signature in Livewire v4 favors property assignment over the deprecated method-based syntax.",
+        "The `commit` and `request` hooks in Livewire have been deprecated in v4 in favor of a new interceptor system.",
+        "The `stream()` method parameter order has changed in Livewire v4, with the `to` parameter renamed to `el`."
+      ]
+    },
+    {
+      "position": 7,
+      "url": "https://msaied.com/articles/livewire-v441-released-bug-fixes-alpine-3162-and-laravel-13-compatibility",
+      "title": "Livewire v4.4.1: Bug Fixes & Alpine 3.16.2 | Mohamed Said",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire v4.4.1 was released on August 18, 2026.",
+        "Livewire v4.4.1 includes 16 fixes and improvements.",
+        "Livewire v4.4.1 bumps Alpine.js to version 3.16.2.",
+        "Livewire v4.4.1 fixes a regression causing cached computed properties to return broken objects when running on Laravel 13.",
+        "Livewire v4.4.1 fixes an issue where updating a nullable enum property to null would throw a ValueError.",
+        "Livewire v4.4.1 fixes an issue where accessing a lazy-loaded relation on a reactive Eloquent model incorrectly triggered CannotMutateReactivePropException.",
+        "Livewire v4.4.1 prevents server actions from being unintentionally triggered by reactive property bindings.",
+        "Livewire v4.4.1 fixes script modules not reloading after browser back/forward navigation.",
+        "Livewire v4.4.1 fixes assets following a stylesheet being silently skipped and never loaded after navigation.",
+        "Livewire v4.4.1 makes Route::lazy() and Route::defer() macros available to package service providers."
+      ]
+    },
+    {
+      "position": 8,
+      "url": "https://php.libhunt.com/livewire-changelog/4.2.0",
+      "title": "Livewire v4.2.0 release notes (2026-02-26) | LibHunt",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire v4.2.0 was released on February 26, 2026.",
+        "Livewire v4.2.0 includes fixes for wire:model, smart keys, explicit route model bindings, and security policy denylist.",
+        "Livewire v4.2.0 includes optimizations for smart keys and update requests.",
+        "Livewire v4.2.0 includes fixes for asset URL handling, make:livewire command, and SFC compiler.",
+        "Livewire v4.2.0 includes fixes for streaming falsy values, push mode URL syncing, and component failure with non-UTF-8 data.",
+        "Livewire v4.2.0 includes fixes for Promise rejection, window.location.hash preservation, and EventBus listener leaks.",
+        "Livewire v3.x added Laravel 13 support."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What changed in the latest Livewire release?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "livewire/livewire"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:41:58.071501Z",
+  "ended_at": "2026-10-06T09:43:45.049839Z",
+  "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+  "question_id": "q20",
+  "strategy": "demo",
+  "expected_route": "research",
+  "duration_ms": 106978
+}

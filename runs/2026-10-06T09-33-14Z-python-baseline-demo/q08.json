@@ -1,0 +1,41 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The most significant change in Laravel 13 queue events that could break existing listeners relates to the use of **FIFO queues**. If your application utilizes FIFO queues, **queued event listeners** must now define a `messageGroup` method [1]. This method returns a string that identifies the message group, such as `\"customer-{$this->order->customer_id}\"` [1]. Failing to define this method for listeners dispatched to FIFO queues will likely cause unexpected behavior or errors. Optionally, listeners can also define a `deduplicator` method for handling deduplication IDs [1]. Alternatively, dispatching these queued instances to a non-FIFO queue bypasses this new requirement [1]. Beyond this, Laravel 13 generally focused on minimizing breaking changes, aiming for a relatively minor upgrade effort [2]. However, it does require a minimum **PHP version of 8.3** [2], which could indirectly affect listener execution if the environment is not updated.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://laravel.com/framework/docs/queues",
+      "title": "Queues | Laravel 13.x - The clean stack for Artisans and agents",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 2,
+      "url": "https://laravel.com/framework/docs/releases",
+      "title": "Release Notes | Laravel 13.x - The clean stack for Artisans and agents",
+      "kind": "research_citation",
+      "claims": []
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What changed in Laravel 13 queue events that could break my listeners?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "laravel/framework"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:35:07.916797Z",
+  "ended_at": "2026-10-06T09:35:20.122595Z",
+  "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+  "question_id": "q08",
+  "strategy": "demo",
+  "expected_route": "research",
+  "duration_ms": 12205
+}

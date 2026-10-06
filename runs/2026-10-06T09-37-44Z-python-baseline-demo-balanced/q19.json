@@ -1,0 +1,153 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "Choosing between Livewire and Inertia.js for a new Laravel project is a common decision that significantly impacts development workflow, project scalability, and team dynamics. Both tools have evolved with major updates—Livewire 4 and Inertia v3—narrowing the gap in their capabilities, but their core philosophies remain distinct. The optimal choice hinges on specific project requirements, existing team expertise, and the desired level of frontend interactivity.\n\n## Understanding the Core Philosophies: Server-Driven vs. Client-Driven\n\nLivewire and Inertia.js offer different approaches to building interactive web applications with Laravel. Their fundamental distinction lies in whether they prioritize a server-driven or client-driven user interface.\n\n### Livewire's Backend-First Approach\nLivewire champions a **server-driven UI** model, allowing developers to construct dynamic interfaces primarily using **PHP and Blade templates** with minimal JavaScript [1][2]. This approach enables PHP developers to build reactive components without deep frontend expertise. Livewire 4, released in January 2026, introduced significant enhancements, including **single-file components** as the default, a rewritten diffing algorithm that **reduces DOM updates by approximately 60%**, and built-in optimistic UI features [1][3]. These improvements make Livewire particularly well-suited for **rapid development**, crafting **admin panels, CRUD (Create, Read, Update, Delete) applications**, and internal tools where a backend-centric team can efficiently deliver interactive experiences [1].\n\n### Inertia.js's Frontend-First Integration\nIn contrast, Inertia.js acts as a **'glue layer'** that facilitates the use of modern JavaScript frameworks like **React, Vue, or Svelte** with Laravel without the need to build a separate API [4][5]. It enables a **client-driven UI** by intercepting standard link clicks and programmatic visits, making XHR requests to the server. The server responds with JSON data containing the JavaScript page component name and props, which Inertia then dynamically swaps to create a **single-page application (SPA) experience** [4]. Inertia v3, released in March 2026, brought improvements such as a built-in request client (replacing Axios) and enhanced optimistic updates across the router, forms, and HTTP requests, alongside simplified server-side rendering setup during development [1].\n\n## Performance and SEO: A Closer Look at Trade-offs\n\nPerformance and search engine optimization (SEO) profiles vary significantly between the two approaches, driven by their rendering mechanisms.\n\n### Livewire's Performance Profile\nLivewire's architecture involves **server round-trips for every interaction** that modifies component state, which can introduce latency, especially on slower network connections [6][2]. However, this server-side rendering approach results in a significantly **smaller JavaScript bundle**, typically around **61KB gzipped** for Livewire 4 [6]. Livewire inherently offers strong **SEO benefits** because it delivers full HTML content on the initial page load, making it easily crawlable by search engines [6][5]. For localized UI interactions that don't require server communication, Livewire components can be augmented with Alpine.js to reduce server calls [5].\n\n### Inertia.js's Performance Profile\nInertia.js, leveraging client-side rendering, benefits from **faster UI state changes locally** and **fewer network requests post-initial load** as it only fetches data, not full HTML [6]. However, it comes with a **larger initial JavaScript bundle**, often around **180KB gzipped** when combined with a framework like Vue 3 [6]. By default, Inertia.js presents SEO challenges because crawlers initially receive an empty HTML shell. Mitigating this requires additional setup for **server-side rendering (SSR)**, typically involving a separate Node.js server [6][5]. While offering an SPA-like feel, some navigations in Inertia might still feel slower than a pure SPA due to data refetching [1][7].\n\n## Development Experience and Project Suitability\n\nThe choice between Livewire and Inertia often boils down to team skills and the nature of the application's user interface.\n\n**Livewire's Strengths**: It offers **simplicity, rapid development speed** for minimum viable products (MVPs), and a unified PHP codebase [1][2]. This makes it an excellent fit for backend-heavy applications where frontend complexity is moderate, such as **admin dashboards, internal tools, and straightforward SaaS applications** [1]. For PHP-centric teams, Livewire has a **lower initial learning curve** as developers remain within their familiar PHP ecosystem [1].\n\n**Inertia.js's Strengths**: It provides **flexibility and scalability** for building complex and highly interactive user interfaces, leveraging the vast npm ecosystem [1][2]. Inertia is ideal for applications requiring a **true SPA experience** and is preferred by teams with existing expertise in modern JavaScript frameworks like React or Vue [1]. The learning curve for Inertia is **steeper**, as it demands proficiency in both Laravel and a chosen frontend framework, but it offers greater control for advanced frontend scenarios [1][2][8].\n\nFor advanced features or mobile applications, Inertia may require recreating backend APIs for native mobile apps and lacks inherent offline support [8][7]. Livewire's server round-trip model can make highly collaborative, real-time features less responsive without careful optimization [6].\n\n## Making the Right Choice: Project Goals Dictate the Path\n\nNeither Livewire nor Inertia.js is inherently \"better\"; instead, each is \"better suited\" for different contexts. The decision should align with the project's long-term vision and the team's strengths.\n\nChoose **Livewire** for projects prioritizing:\n*   **Speed and simplicity**\n*   **Backend-centric development**\n*   **PHP-focused teams**\n*   Applications like **admin panels, CRUD systems, and internal tools** where a polished, highly interactive frontend is not the primary requirement [1].\n\nOpt for **Inertia.js** when the project demands:\n*   **Rich, highly interactive UIs**\n*   **Long-term frontend scalability**\n*   **Teams comfortable with modern JavaScript frameworks** (React, Vue, Svelte)\n*   Applications that require a **true single-page application experience** and leverage the broader frontend ecosystem [1].\n\nFor large or complex applications, a **hybrid approach**—using Livewire for less interactive sections like admin panels and Inertia for dynamic, user-facing parts—can also be a viable and effective strategy [1]. Ultimately, aligning the technology choice with the team's skillset and the application's functional requirements will lead to the most efficient development and successful outcome.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://laracopilot.com/blog/laravel-livewire-vs-inertia-2026",
+      "title": "Livewire vs Inertia in 2026: Which Laravel Frontend Wins?",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire is a server-driven UI approach using Blade and PHP with minimal JavaScript, while Inertia is a client-driven UI approach using Laravel with Vue/React, offering an SPA-like experience.",
+        "Livewire's core difference is being backend-first, whereas Inertia's is frontend-first.",
+        "Livewire 4 (January 2026) introduced single-file components as default, Islands for partial page re-renders, built-in drag-and-drop sorting, optimistic UI, and `Route::livewire()` for full-page components.",
+        "Inertia v3 (March 2026) replaced Axios with a built-in request client, added optimistic updates in the router, forms, and HTTP requests, and enabled server-side rendering during `npm run dev` without a separate Node process.",
+        "Livewire's performance involves server round-trips per interaction, more requests, and a smaller JS bundle, while Inertia's performance relies on client-side rendering, fewer requests, and a larger JS bundle.",
+        "Livewire is generally better for simplicity and faster initial development, especially for PHP-heavy teams, suitable for CRUD apps, admin panels, internal tools, and simple SaaS dashboards.",
+        "Inertia is generally better for interaction-heavy apps and complex UIs, offering more flexibility and scalability for product-focused frontends and mobile-like experiences, and is preferred by teams already familiar with React or Vue.",
+        "Livewire's main risk is complex UI state becoming messy in PHP, while Inertia's risk involves more moving parts and managing two languages.",
+        "For a fast MVP, Livewire is recommended; for long-term product scalability, Inertia is recommended.",
+        "A hybrid approach using both Livewire for admin sections and Inertia for the user-facing frontend is also a viable strategy."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://dev.to/hamizulfaiz/why-i-stopped-overthinking-the-livewire-vs-inertia-debate-and-how-to-pick-one-5h67",
+      "title": "Why I stopped overthinking the Livewire vs. Inertia debate (and how to pick one) - DEV Community",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire allows handling frontend state and validation directly in PHP, without needing a separate REST or GraphQL API.",
+        "Livewire offers tight integration with Laravel, making it feel like a native part of the framework.",
+        "Livewire's SEO-friendliness is attributed to its server-side rendering by default.",
+        "Livewire's main drawback is server round-trips for actions, leading to slight latency.",
+        "Livewire can become harder to manage than a dedicated JS framework for highly complex UIs.",
+        "Inertia.js acts as a bridge between Laravel and frontend frameworks like Vue.js or React.",
+        "Inertia.js provides the full ecosystem of Vue/React, allowing seamless use of NPM packages.",
+        "Inertia.js offers a true SPA experience with nearly instantaneous page transitions.",
+        "Inertia.js allows developers to continue using web.php for routing and Controllers for data.",
+        "Inertia.js has a high learning curve, requiring proficiency in both Laravel and a frontend framework."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://acquaintsoft.home.blog/2026/09/25/laravel-livewire-4-vs-inertia-js-in-2026-which-frontend-approach-should-you-choose/",
+      "title": "Laravel Livewire 4 vs Inertia.js in 2026: Which Frontend Approach Should You Choose? &#8211; Mobile Application Development Company in USA",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire 4 was released in January 2026.",
+        "Livewire 4 features single-file components.",
+        "Livewire 4's rewritten diffing algorithm cuts DOM updates by around 60 percent.",
+        "Inertia.js version 2 rewrote its request layer for asynchronous requests.",
+        "Inertia.js 2.0 includes features like deferred props and prefetching.",
+        "Laravel 12 ships official starter kits for React, Vue, and Livewire."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://inertiajs.com/docs/v3/core-concepts/how-it-works",
+      "title": "How It Works - Inertia.js Documentation",
+      "kind": "research_citation",
+      "claims": [
+        "Inertia replaces a web application's view layer, using JavaScript page components (React, Vue, Svelte) instead of server-side rendering.",
+        "Inertia functions as a client-side routing library, enabling page visits without full reloads by intercepting clicks on its `<Link>` component or programmatic `router.visit()` calls.",
+        "When an Inertia link is clicked, it's intercepted and made via XHR; the server responds with a JSON object containing the JavaScript page component name and data (props) instead of full HTML.",
+        "Inertia dynamically swaps the previous page component with the new one and updates the browser's history state, creating a single-page application experience."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://www.scalablepath.com/php/livewire-vs-inertia",
+      "title": "Livewire vs Inertia: Which one Should I Choose for Laravel Development?",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire relies totally on asynchronous requests to inform the server about actions needed to re-render the view.",
+        "For dynamic page interactions like showing or hiding something, Alpine.js can be used with Livewire to avoid some server calls.",
+        "Livewire offers various settings to optimize performance, but it can be easier to negatively impact performance with Livewire than with Vue or React.",
+        "The performance outcome with Livewire ultimately depends on the developer's experience and the attention to detail applied to the code.",
+        "Theoretically, Livewire might be considered the better choice for SEO because it renders the view on the server side, so content is already there when it reaches the user's browser.",
+        "Inertia.js, by default, works with client-side rendering, although a Server-Side Rendering (SSR) option exists and requires a separate Node.js server."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://apnahive.com/laravel-inertia-js-vs-livewire-in-2026-the-honest-answer-after-building-the-same-app-both-ways",
+      "title": "Laravel Inertia.js vs Livewire in 2026: The Honest Answer After Building the Same App Both Ways &#8211; Apna Hive",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire 4 shipped in January 2026, and Inertia 3 shipped in March 2026.",
+        "Livewire components have a network round-trip on every interaction that changes server state, while Vue components have zero network overhead for UI state changes.",
+        "On a mobile 4G connection with 80ms latency, the difference in network round-trips between Livewire and Inertia can make a UI feel snappy or like it's thinking.",
+        "Livewire 4's bundle size is approximately 61KB gzipped (Livewire JS: ~46KB, Alpine.js: ~15KB), while Inertia + Vue 3 (with code splitting, production build) has an initial bundle of ~180KB gzipped.",
+        "For public-facing pages where Core Web Vitals like Interaction to Next Paint (INP) and Total Blocking Time are critical, Livewire's smaller bundle size is measurable.",
+        "For form interactions with live validation and auto-save, Livewire can result in one network request per field change or per debounce interval, whereas Inertia + Vue makes zero network requests for UI state changes, with one debounced request for persistence.",
+        "For SEO, Livewire offers excellent performance with a fast Time to First Byte (TTFB) and Fast First Contentful Paint (FCP) as it provides full HTML in the first response without requiring JavaScript.",
+        "Inertia + Vue without SSR has a slow FCP because Vue bootstraps and fetches the initial page component, and crawlers see an empty shell initially, though SSR is an option.",
+        "For real-time features, Livewire's Echo integration listens to broadcast channels and calls a Livewire method to update component state, while the Vue version requires more setup but offers more control with local state updates that don't require a server round-trip.",
+        "For complex multi-user collaborative features, the Vue approach with optimistic local state updates feels more responsive."
+      ]
+    },
+    {
+      "position": 7,
+      "url": "https://medium.com/@benshawuk/you-might-not-need-inertia-js-0964194f6f7b",
+      "title": "Medium",
+      "kind": "research_citation",
+      "claims": [
+        "Inertia JS allows pairing modern Javascript frameworks (React, Vue, Svelte) with Laravel while retaining benefits of a traditional server-side backend.",
+        "Inertia JS avoids REST APIs, mismatched client/server state, and the need to roll custom authentication.",
+        "Inertia JS is officially acquired by Laravel and enjoys first-party support.",
+        "Inertia JS can feel slow for navigation, even with prefetching enabled.",
+        "Inertia JS requires data refetching and resending layout/page assets on each visit, leading to noticeable delays on slower connections.",
+        "Inertia JS has limited caching and lacks fine-grained control over it.",
+        "Inertia JS does not support offline functionality or PWA-style behavior due to the requirement of a server round-trip for navigation.",
+        "Frontend routing libraries like React Router and TanStack Router offer instant navigation with zero delay.",
+        "TanStack Query provides comprehensive control over data fetching, caching, invalidation, background updates, and prefetching.",
+        "Laravel's Sanctum is recommended for authenticating SPAs using session-based auth with CSRF protection."
+      ]
+    },
+    {
+      "position": 8,
+      "url": "https://rootstack.com/en/blog/laravel-inertia",
+      "title": "Inertia.js and its advantages for Laravel developers | Rootstack",
+      "kind": "research_citation",
+      "claims": [
+        "Inertia.js allows developers to create single-page applications without the need to build an API.",
+        "Inertia.js can be configured with React.",
+        "The developer using Inertia.js must have knowledge of both PHP and Vue.",
+        "If the intention is to create an app for Android or iOS, the backend API must be recreated when using Inertia.js.",
+        "Inertia.js has very limited usability without Vuex."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "Is Livewire better than Inertia for a new project?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "livewire/livewire",
+      "inertiajs/inertia-laravel"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T10:20:14.855016Z",
+  "ended_at": "2026-10-06T10:23:21.154445Z",
+  "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+  "question_id": "q19",
+  "strategy": "demo",
+  "expected_route": "decline",
+  "duration_ms": 186299
+}

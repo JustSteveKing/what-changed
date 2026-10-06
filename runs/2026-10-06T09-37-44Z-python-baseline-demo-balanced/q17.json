@@ -1,0 +1,85 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "Laravel 14, anticipated for release in **Q1 2027**, is set to introduce a range of significant updates, including new features, enhancements, and breaking changes. Developers should prepare for a minimum PHP requirement of **8.4**, with **PHP 8.5** being the recommended target for extended active support. The release will continue Laravel's commitment to continuous improvement, while also addressing technical debt through deprecations and structural adjustments [1][2][3][4].\n\n## Release Timeline and PHP Requirements\n\nLaravel 14 is projected to arrive in the first quarter of **2027**, following Laravel's established annual release cycle [3][4]. This major version will mandate **PHP 8.4** as its minimum requirement, a decision driven by Symfony 8, on which Laravel relies for core components [2][3]. While PHP 8.4 is the minimum, it's notable that its active support ends in December 2026, *before* Laravel 14 is expected to ship. Therefore, **PHP 8.5** is recommended as the target version, as it will remain under active support through the end of 2027, providing a more stable and actively maintained environment [2].\n\nLaravel 14 will benefit from bug fixes until **Q3 2028** and security updates until **Q1 2029**, aligning with the framework's standard support policy of 18 months for bug fixes and two years for security patches [1][3].\n\n## New Features and Enhancements\n\nSeveral new features and quality-of-life improvements are slated for Laravel 14:\n*   **Route::query()**: This new helper will provide direct routing support for the HTTP `QUERY` method, which is a safe method capable of carrying a request body [1][2].\n*   **`$user->authorize()`**: An `authorize()` method will be added to the `Authorizable` contract and trait, offering a concise way to perform authorization checks that throw an `AuthorizationException` on failure, similar to `$user->can()` but with stricter error handling [1][2].\n*   **Context for `report()`**: The `report()` helper and exception handler's `report()` method will now accept an optional context array. This allows developers to attach relevant data, like an `order_id`, to exception reports, significantly aiding debugging [1][2].\n*   **Enhanced `Storage::fake()`**: The `Storage::fake()` method will be extended to support on-demand disks, enabling more comprehensive testing for dynamically built storage configurations [1][2].\n*   **Eloquent Query Builder Methods**: New methods like `orWhereKey()` and `orWhereKeyNot()` will be introduced, along with support for subqueries in all `whereKey()` family methods, offering more flexible Eloquent querying [1][2].\n*   **AI and Vector Search**: Laravel 14 is also expected to continue expanding its AI and vector search capabilities, building on the groundwork laid in previous versions [4].\n\n## Breaking Changes and Deprecations\n\nAs a major release, Laravel 14 will include several breaking changes and the removal of features deprecated during the Laravel 13 cycle [4]. Key breaking changes include:\n*   **Queue Pause Method Signatures**: The queue pause methods will be updated to take the queue name as the first argument, with the connection becoming an optional second argument [1][2].\n*   **`lazy()` and `chunk()` Behavior**: These query builder methods will no longer mutate the underlying query builder, meaning subsequent operations on the same builder instance will return expected results [2].\n*   **`findOr()` with Arrays**: When an array of IDs is passed to `findOr()`, the fallback callback will now be invoked if not all IDs are found, aligning its behavior with `findOrFail()` [2].\n*   **`Cache::has()` and `Cache::forget()` with Arrays**: These cache methods will correctly handle array arguments; `has()` will return `true` only if all keys exist, and `forget()` will remove all specified keys, returning `true` if all were successfully removed [2].\n*   **`MassPrunable` and Soft-Deleted Models**: The `MassPrunable` trait will now include soft-deleted models in its pruning operations, ensuring consistency with the `Prunable` trait [2].\n\n## Preparing for Laravel 14\n\nTo ensure a smooth transition to Laravel 14, it is crucial to proactively update PHP versions and review existing codebases for potential breaking changes. Staying current with Laravel 13.x minor releases is beneficial, as most new features are delivered continuously through these updates, rather than being held back for major versions [2]. Utilizing tools like `composer why-not php 8.4` and enabling deprecation logging can help identify and address compatibility issues early [4][2].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://laravel-news.com/laravel-14",
+      "title": "What We Know About Laravel 14",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 14 is expected in Q1 2027.",
+        "Laravel 14 will require PHP 8.4 as the minimum version.",
+        "Laravel 14 will have bug fixes through Q3 2028.",
+        "Laravel 14 will have security updates through Q1 2029.",
+        "Laravel 14 features include Route::query() support for the HTTP QUERY method.",
+        "Laravel 14 adds an authorize() method to the Authorizable contract and trait.",
+        "Laravel 14's report() helper and exception handler's report() method accept an optional context array.",
+        "Laravel 14's Storage::fake() can be used for on-demand disks.",
+        "Laravel 14 adds orWhereKey() and allows subqueries in whereKey().",
+        "In Laravel 14, queue pause methods take the queue first, and resume() and isPaused() also take the queue first."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://qadrlabs.com/post/laravel-14-what-we-know-so-far-and-how-to-get-ready",
+      "title": "Laravel 14: What We Know So Far and How to Get Ready",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 14 is expected in Q1 2027.",
+        "Laravel 14 will require PHP 8.4 as a minimum version, inherited from Symfony 8.",
+        "The `master` branch of `laravel/framework` shows Laravel 14 will require PHP 8.4 and Symfony components version `^8.1.0`.",
+        "PHP 8.4's active support ends on December 31, 2026, which is before Laravel 14 is expected to ship.",
+        "PHP 8.5 is recommended as the target version for Laravel 14, as it remains in active support through the end of 2027.",
+        "Breaking changes in Laravel 14 include: queue pause methods signature change, `lazy()` and `chunk()` no longer mutating the query builder, `findOr()` with arrays now invokes the fallback callback, `Cache::has()` and `Cache::forget()` array arguments work correctly, and `MassPrunable` includes soft-deleted models.",
+        "New features visible on the `master` branch include: `Route::query()` helper, `$user->authorize()` shorthand, `report()` helper with a context array, `Storage::fake()` support for on-demand disks, and `orWhereKey()` and `orWhereKeyNot()`."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://laravel-news.com/laravel-releases",
+      "title": "Laravel Release Cycle: Versions, Support Policy, and Dates",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 14 is expected in Q1 2027.",
+        "Laravel 14 will require PHP 8.4.",
+        "Laravel 14 is expected to have bug fixes until Q3 2028.",
+        "Laravel 14 is expected to have security fixes until Q1 2029."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://anowar.dev/blog/laravel-14-release-date",
+      "title": "Laravel 14 Release Date: What We Know (2026) - Anowar",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 14 is estimated to arrive in February or March 2027.",
+        "Laravel 14 is expected to include a minimum PHP version bump, likely to PHP 8.4.",
+        "Laravel 14 is expected to remove features that were marked as deprecated during the Laravel 13 cycle.",
+        "Laravel 14 is expected to continue the build-out of AI and vector search capabilities.",
+        "Laravel 13 was released on March 17, 2026."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What changed in Laravel 14?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "laravel/framework"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T10:14:24.457941Z",
+  "ended_at": "2026-10-06T10:17:11.619185Z",
+  "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+  "question_id": "q17",
+  "strategy": "demo",
+  "expected_route": "research",
+  "duration_ms": 167161
+}

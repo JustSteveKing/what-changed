@@ -1,0 +1,42 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "For a new project, neither Livewire nor Inertia is definitively \"better,\" as both are officially supported Laravel tools with different philosophies and optimal use cases, resulting in a \"surprising technical tie\" [1][2]. **Livewire** excels in scenarios prioritizing rapid development, backend-driven logic, and simplicity, making it ideal for CRUD-heavy applications, admin panels, internal tools, and SaaS dashboards with simpler user experiences [1][2]. It allows developers to stay within the PHP ecosystem, significantly reducing initial setup time by **40–60%**, and offers faster onboarding for Laravel-heavy teams without requiring extensive JavaScript knowledge [1][2]. Livewire natively handles SEO by rendering HTML directly from the server and typically results in interaction latencies of ~**150–300ms** per server round-trip [1][2]. Conversely, **Inertia.js** is advantageous for projects requiring complex, highly interactive user interfaces, real-time interactions, and scalable frontends, often leading to a mobile-like experience [1][2]. It provides full control over the frontend using modern JavaScript frameworks like Vue or React, improving frontend flexibility by **2–3x**, and offers a richer component ecosystem [1][2]. While requiring JavaScript knowledge and more setup, Inertia solves SEO challenges with Server-Side Rendering (SSR) and achieves faster interaction latencies of ~**50–150ms** after the initial load due to client-side rendering [1][2]. The decision hinges on whether the project prioritizes speed and simplicity (Livewire) or flexibility and frontend scalability (Inertia), and whether the development team possesses strong Vue/React expertise [2]. A hybrid approach, using Livewire for admin and Inertia for the user-facing frontend, is also a viable strategy [2].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://www.desarrollolibre.net/blog/laravel/laravel-livewire-vs-laravel-inertia-with-vue-a-comparison-of-real-developments",
+      "title": "Laravel Livewire vs Inertia with Vue: A Comparison of REAL Developments - Desarrollolibre",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 2,
+      "url": "https://laracopilot.com/blog/laravel-livewire-vs-inertia-2026",
+      "title": "Livewire vs Inertia in 2026: Which Laravel Frontend Wins?",
+      "kind": "research_citation",
+      "claims": []
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "Is Livewire better than Inertia for a new project?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "livewire/livewire",
+      "inertiajs/inertia-laravel"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:37:11.547207Z",
+  "ended_at": "2026-10-06T09:37:22.471157Z",
+  "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+  "question_id": "q19",
+  "strategy": "demo",
+  "expected_route": "decline",
+  "duration_ms": 10923
+}

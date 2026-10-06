@@ -1,0 +1,34 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "In Pest **4**, the primary change affecting snapshot tests is an alteration in how **snapshot names are generated** when using the `toMatchSnapshot` expectation [–k4SUV]. This modification has a **High** likelihood of impact, requiring users to update their existing snapshots after upgrading [–k4SUV]. To do this, users must run the command `./vendor/bin/pest --update-snapshots`, which rebuilds the snapshot files to conform to the new naming convention [–k4SUV]. While Pest **4** also upgraded its PHP requirement to **8.3.0** or greater and is built on **PHPUnit 12**, these are broader system changes, whereas the snapshot name generation directly impacts the behavior and maintenance of snapshot tests themselves [–k4SUV][1].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://pestphp.com/docs/pest-v4-is-here-now-with-browser-testing",
+      "title": "Pest v4 Is Here — Now with Browser Testing | Pest - The elegant PHP Testing Framework",
+      "kind": "research_citation",
+      "claims": []
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What changed in Pest 4 that affects snapshot tests?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "pestphp/pest"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:36:01.952341Z",
+  "ended_at": "2026-10-06T09:36:11.382267Z",
+  "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+  "question_id": "q13",
+  "strategy": "demo",
+  "expected_route": "research",
+  "duration_ms": 9429
+}

@@ -1,0 +1,48 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "Upgrading to Filament 5 primarily involves meeting new system requirements and running an automated upgrade script. Your application must meet minimum versions of **PHP 8.2+**, **Laravel v11.28+**, **Livewire v4.0+**, and **Tailwind CSS v4.0+** [1]. The upgrade process begins by installing the upgrade tool via Composer: `composer require filament/upgrade:\"^5.0\" -W --dev` (or `~5.0` for Windows PowerShell) [1]. Next, run `vendor/bin/filament-v5`, which will automatically apply most breaking changes and output further commands specific to your application, typically instructing you to update Filament itself and run `composer update` [1]. If your project contains custom Livewire components, you must also follow the official Livewire upgrade guide for Livewire v4.0+ [1][2]. Additionally, be prepared to temporarily remove or update any third-party plugins that may not yet be compatible with Filament v5 [1]. Beyond integrating Livewire v4, Filament v5 introduces no substantial functional changes compared to v4, meaning the core Filament API remains largely consistent [2][3].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://filamentphp.com/docs/5.x/upgrade-guide",
+      "title": "Upgrade guide",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 2,
+      "url": "https://filamentphp.com/insights/danharrin-filament-v5-blueprint",
+      "title": "Introducing Filament v5 and Filament Blueprint",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 3,
+      "url": "https://laravel-news.com/filament-5",
+      "title": "Filament v5 Released With Livewire v4 Support and a New Blueprint Tool",
+      "kind": "research_citation",
+      "claims": []
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What do I need to change when upgrading to Filament 5?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "filament/filament"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:36:21.235002Z",
+  "ended_at": "2026-10-06T09:36:34.612963Z",
+  "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+  "question_id": "q15",
+  "strategy": "demo",
+  "expected_route": "research",
+  "duration_ms": 13377
+}

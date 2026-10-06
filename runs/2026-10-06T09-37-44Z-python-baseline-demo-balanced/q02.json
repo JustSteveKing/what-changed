@@ -1,0 +1,121 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The current stable version of the **Pest PHP testing framework is Pest 5**, with the latest identified patch release being **v5.3.0** [1][2]. This major iteration represents a significant advancement for PHP developers and AI agents, introducing a suite of powerful features and requiring modern PHP environments [3][4].\n\nPest 5 was officially launched on **July 28, 2026**, though some sources indicate a release date of July 29 or 30, 2026 [1][5]. It mandates **PHP 8.4 or higher** and is built upon **PHPUnit 13**, leveraging the latest improvements from both platforms [6][4]. Key enhancements in Pest 5 include the **Tia Engine** for Test Impact Analysis, which intelligently re-runs only affected tests to drastically reduce execution time, and new plugins for **AI evaluations** (Evals) and **agent verification** [3][4]. These features aim to streamline development workflows, improve AI agent reliability, and enhance overall testing efficiency [4].\n\nThe most recent patch release within the Pest 5 series is **v5.3.0**, which introduced a `--trace` feature for browser testing and improved baseline reuse for CI merge commits [2]. Pest 5's focus on performance, AI integration, and developer experience solidifies its position as a cutting-edge testing solution for the PHP ecosystem.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://pestphp.com/docs/support-policy",
+      "title": "Support Policy | Pest - The elegant PHP Testing Framework",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 5 was initially released on July 28, 2026.",
+        "Pest 5 requires PHP 8.4 or higher.",
+        "Bug fixes for Pest 5 are to be determined.",
+        "Pest 4 was initially released on August 21, 2025.",
+        "Bug fixes for Pest 4 are available until July 28, 2027.",
+        "Pest 3 was initially released on September 9, 2024.",
+        "Bug fixes for Pest 3 are available until August 21, 2026.",
+        "Pest 2 was initially released on March 20, 2023.",
+        "Bug fixes for Pest 2 are available until September 9, 2025.",
+        "Pest 1 was initially released on January 7, 2021."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://github.com/pestphp/pest/releases",
+      "title": "Releases · pestphp/pest · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "v5.3.0 includes a --trace feature for the browser and reuses baselines across replacement CI merge commits.",
+        "v5.2.1 fixes an issue where the command `gh` was not found on Windows.",
+        "v5.2.0 adds GitLab CI baseline support, fixes issues with datasets and the `gh` command on Windows, and persists state on detached HEAD.",
+        "v5.1.4 fixes suppressing PHPUnit XML coverage during recording, keys Tia worker partials per process, and includes rector fixes.",
+        "v5.1.3 drops the bundled Boost pest-testing skill and re-anchors after a full suite run without a coverage driver.",
+        "v5.1.2 fixes treating a test skipped from a hook as finished, includes the PHP minor version in the fingerprint, addresses named dataset arguments, exit codes with --shard and --parallel, and prevents memory exhaustion when generating --tia graphs with PCOV.",
+        "v5.1.0 uses phpunit:13.3, inherits its features, and fixes livewire sfc and mutate plugin with --tia.",
+        "v5.0.4 fixes various bugs on the --tia engine.",
+        "v5.0.3 fixes datasets key incorrect in --tia mode.",
+        "v4.7.8 fixes named datasets with a single argument."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://pestphp.com/",
+      "title": "Pest | The elegant testing framework for PHP developers and AI agents",
+      "kind": "research_citation",
+      "claims": [
+        "Pest is an elegant testing framework for PHP developers and AI agents.",
+        "Pest brings the joy of testing to PHP, with browser testing and AI evaluations built in.",
+        "Pest version 5 is now available.",
+        "Pest supports Test Impact Analysis (TIA) to run only affected tests.",
+        "Pest offers readable failures that explain themselves.",
+        "Pest is an all-in-one framework that includes parallel execution, coverage, mutation, and snapshots.",
+        "Pest allows running browser tests using Playwright with the same syntax as other Pest tests.",
+        "Pest enables agents to verify their own work against a live app.",
+        "Pest can be used to evaluate LLM features like code.",
+        "Pest is compatible with frameworks like Laravel, Symfony, Livewire, Inertia, WordPress, Filament, Statamic, and CodeIgniter."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://pestphp.com/docs/pest5-now-available",
+      "title": "Pest 5 Now Available | Pest - The elegant PHP Testing Framework",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 5 is the biggest version of Pest yet, built on top of PHP 8.4 and PHPUnit 13.",
+        "Pest 5 introduces the Tia Engine for Test Impact Analysis, which re-runs only tests affected by recent changes.",
+        "The Agent Plugin allows AI coding agents to verify code changes with a single command within the test suite.",
+        "The Evals plugin enables evaluation of LLM agents and AI-generated output directly from the test suite.",
+        "A first-party PHPStan plugin is available to teach PHPStan about Pest's functional API.",
+        "The Rector plugin provides automated refactoring rules to modernize test code and convert assertions.",
+        "Time-Balanced Sharding distributes tests across CI machines based on execution time for balanced completion.",
+        "Pest 5 adds new expectations including `toBeEmail()`, `toBeUlid()`, `toBeIpAddress()`, `toBeMacAddress()`, `toBeHostname()`, `toBeDomain()`, `toBeBase64()`, and `toBeHexadecimal()`."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://www.besthub.dev/articles/pest-5-0-modern-php-ai-testing-framework-powered-by-php-8-4-phpunit-13-6bb02a58ed46",
+      "title": "Pest 5.0: Modern PHP AI Testing Framework Powered by P… | BestHub",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 5.0 was released on July 30, 2026.",
+        "Pest 5 requires PHP >= 8.4 and is built on PHPUnit 13."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://pestphp.com/docs/installation",
+      "title": "Installation | Pest - The elegant PHP Testing Framework",
+      "kind": "research_citation",
+      "claims": [
+        "Pest requires PHP 8.4+ to run.",
+        "To install Pest, first require it as a \"dev\" dependency using `composer require pestphp/pest --dev --with-all-dependencies`.",
+        "After installing Pest as a dependency, initialize it in your project by running `./vendor/bin/pest --init`.",
+        "To run Pest tests, execute the `./vendor/bin/pest` command.",
+        "The `pest-plugin-browser` package can be installed for browser testing in Pest.",
+        "The `pest-plugin-drift` package can be used to convert PHPUnit tests to Pest."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What's the current version of Pest?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "pestphp/pest"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:45:54.145722Z",
+  "ended_at": "2026-10-06T09:47:45.990655Z",
+  "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+  "question_id": "q02",
+  "strategy": "demo",
+  "expected_route": "direct",
+  "duration_ms": 111844
+}

@@ -1,0 +1,145 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "## Identifying the Current Stable Release\n\nThe latest stable version of `livewire/livewire` is **v4.4.7**, officially released on **September 28, 2026** [1][2][3]. This release is the most recent update within the Livewire 4 series, which is designated as the primary stable branch for ongoing development and new projects [4].\n\n## Livewire 4: The Major Stable Branch\n\nLivewire v4, launched in January 2026, represents a significant evolution of the framework, focusing on enhanced performance and developer experience [5][6]. It introduces a **rewritten reactivity engine** that significantly reduces DOM updates (by an estimated 60%) and includes smarter caching for component states [6][4].\n\nKey features in Livewire v4 include:\n*   **Single-file and multi-file components**, allowing developers to combine PHP logic and Blade templates in one file or organize them in a dedicated directory [5][7].\n*   **Islands**, which enable isolated regions within a component to update independently, improving performance without requiring separate child components [7].\n*   **New directives** such as `wire:sort` for drag-and-drop functionality and `wire:intersect` for actions based on viewport visibility [7].\n*   **Performance improvements** like parallel live updates for `wire:model.live` requests and non-blocking polling, making interfaces feel more responsive [7][8].\n*   Enhanced form handling, deferred loading for components, and support for asynchronous actions [7][4].\n\nLivewire v4 requires a minimum of **Laravel 11** and is fully compatible with **Laravel 12**, providing a modern foundation for reactive user interfaces [4].\n\n## Dual Branch Maintenance and Historical Context\n\nWhile Livewire v4.4.7 leads the v4 series, the v3 branch also remains actively maintained. **v3.8.10** was released concurrently on September 28, 2026, demonstrating continued support for both major versions [1][2]. This dual maintenance strategy caters to different project needs and upgrade paths. Livewire v3, for example, maintains compatibility with Laravel 10 and 11 projects, offering a stable option for those not yet ready to transition to v4's Laravel 11+ requirements [4]. This approach ensures developers can select the version best suited to their application's dependencies and feature requirements.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://github.com/livewire/livewire/releases",
+      "title": "Releases · livewire/livewire · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire v4.4.7 was released on September 28, 2023.",
+        "Livewire v3.8.10 was released on September 28, 2023.",
+        "Livewire v4.4.6 was released on September 21, 2023.",
+        "Livewire v4.4.5 was released on September 14, 2023.",
+        "Livewire v3.8.9 was released on September 14, 2023.",
+        "Livewire v4.4.4 was released on September 7, 2023.",
+        "Livewire v3.8.8 was released on September 7, 2023.",
+        "Livewire v4.4.3 was released on August 31, 2023.",
+        "Livewire v3.8.7 was released on August 31, 2023.",
+        "Livewire v4.4.2 was released on August 24, 2023."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://releasealert.dev/github/livewire/livewire",
+      "title": "livewire/livewire on GitHub | Release Alert",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire stable release v4.4.7 was on September 28, 2026.",
+        "Livewire stable release v3.8.10 was on September 28, 2026.",
+        "Livewire stable release v4.4.6 was on September 21, 2026.",
+        "Livewire stable release v4.4.5 was on September 14, 2026.",
+        "Livewire stable release v3.8.9 was on September 14, 2026.",
+        "Livewire stable release v4.4.4 was on September 7, 2026.",
+        "Livewire stable release v3.8.8 was on September 7, 2026.",
+        "Livewire stable release v4.4.3 was on August 31, 2026.",
+        "Livewire stable release v3.8.7 was on August 31, 2026.",
+        "Livewire stable release v4.4.2 was on August 24, 2026."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://packagist.org/packages/livewire/livewire",
+      "title": "livewire/livewire - Packagist.org",
+      "kind": "research_citation",
+      "claims": [
+        "The canonical repository URL for livewire/livewire is https://github.com/livewire/livewire.",
+        "The latest version of livewire/livewire is v4.4.7, released on 2026-09-28 18:12 UTC.",
+        "The package livewire/livewire was published on Packagist.org on 2026-09-28 18:37 UTC.",
+        "The official documentation for Livewire can be found on the Livewire website at https://livewire.laravel.com/docs."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://www.cloudways.com/blog/laravel-livewire",
+      "title": "What Is Laravel Livewire? A Complete Guide for 2026",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire v4, the current version in 2026, introduced a rewritten reactivity engine, lazy loading, and improved form handling compared to v3.",
+        "Livewire v3 remains compatible with Laravel 10 and 11 projects.",
+        "Livewire v4 requires Laravel 11 minimum.",
+        "Livewire v4 works perfectly with Laravel 12.",
+        "To check the Livewire version, use the command: composer show livewire/livewire."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://sadiqueali.medium.com/livewire-4-the-update-that-actually-changes-everything-118ebb41b5d4",
+      "title": "Medium",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire 4 launched in January 2026.",
+        "Livewire 4 introduces single-file components, Islands, the Blaze compiler, and wire:transition."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://sadiqueali.medium.com/livewire-v4-in-2026-whats-new-migration-guide-and-why-it-s-a-game-changer-for-reactive-uis-58f6cff4a417",
+      "title": "Medium",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire v4 is scheduled for release in 2026.",
+        "Livewire v4 will feature a new diffing algorithm that reduces DOM updates by 60%.",
+        "Livewire v4 will include smarter caching for component state.",
+        "Livewire v4 will introduce bridges to Vue and React components for seamless interop.",
+        "Livewire v4 will simplify lifecycle hooks, including mount, hydrate, and dehydrate.",
+        "Livewire v4 will offer stronger TypeScript support for frontend bindings.",
+        "Livewire v4 will allow components to persist state across sessions."
+      ]
+    },
+    {
+      "position": 7,
+      "url": "https://livewire.laravel.com/docs/4.x/upgrading",
+      "title": "Upgrade Guide | Laravel Livewire",
+      "kind": "research_citation",
+      "claims": [
+        "To install Livewire v4, update composer.json to require livewire/livewire:^4.0 and then clear the application's cache using 'php artisan optimize:clear'.",
+        "The GitHub comparison link for Livewire v3 to v4 is: https://github.com/livewire/livewire/compare/3.x...main",
+        "Livewire v4 introduces single-file and multi-file components as new component formats.",
+        "Livewire v4 supports slots and automatic attribute bag forwarding using {{ $attributes }}.",
+        "Livewire v4 introduces Islands for isolated regions within a component that update independently.",
+        "Livewire v4 introduces deferred loading and bundled loading for components.",
+        "Livewire v4 introduces async actions using the .async modifier or #[Async] attribute.",
+        "Livewire v4 introduces the wire:sort directive for drag-and-drop sorting.",
+        "Livewire v4 introduces the wire:intersect directive for viewport intersection.",
+        "Livewire v4 introduces the wire:ref directive for element references."
+      ]
+    },
+    {
+      "position": 8,
+      "url": "https://laravelmagazine.com/filament-v5-lands-with-livewire-4-and-the-blueprint-ai-tool",
+      "title": "Filament v5 Lands with Livewire 4 Support and the Blueprint AI Tool",
+      "kind": "research_citation",
+      "claims": [
+        "Filament v5 was released on January 16, 2026.",
+        "Filament v5's primary purpose is to support Livewire v4.",
+        "Livewire v4 introduces parallel live updates for `wire:model.live` requests.",
+        "Livewire v4 enables non-blocking polling.",
+        "Filament Blueprint is a new premium tool launched alongside v5 for AI-assisted development.",
+        "Filament Blueprint works with both Filament v4 and v5."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What is the latest stable version of livewire/livewire?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "livewire/livewire"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:43:45.051882Z",
+  "ended_at": "2026-10-06T09:45:54.143167Z",
+  "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+  "question_id": "q01",
+  "strategy": "demo",
+  "expected_route": "direct",
+  "duration_ms": 129091
+}

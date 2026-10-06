@@ -1,0 +1,48 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The available sources do not provide a release date for \"Pest 6.\" The PHP testing framework Pest, which is likely the \"Pest\" referred to given the context of other software releases in the search results, is currently at version **5** [1][2]. There are announcements for \"Pest v5 Now Available\" and documentation related to previous versions such as \"Pest v4,\" \"Pest v3,\" and \"Pest 2.0\" [1][2][3]. However, none of the provided information indicates a release date or even an upcoming release for \"Pest 6.\"",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://pestphp.com/",
+      "title": "Pest | The elegant testing framework for PHP developers and AI agents",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 2,
+      "url": "https://github.com/pestphp/pest",
+      "title": "GitHub - pestphp/pest: The elegant testing framework for PHP developers and AI agents. · GitHub",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 3,
+      "url": "https://pestphp.com/docs/installation",
+      "title": "Installation | Pest - The elegant PHP Testing Framework",
+      "kind": "research_citation",
+      "claims": []
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "When will Pest 6 be released?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "pestphp/pest"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:37:03.527939Z",
+  "ended_at": "2026-10-06T09:37:11.545660Z",
+  "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+  "question_id": "q18",
+  "strategy": "demo",
+  "expected_route": "decline",
+  "duration_ms": 8017
+}

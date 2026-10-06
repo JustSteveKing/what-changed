@@ -1,0 +1,55 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The latest significant release for Livewire, a full-stack framework for Laravel, is **Livewire v4**, which introduces several improvements and optimizations over v3 [1]. Key changes in v4 include renamed configuration keys like `layout` to `component_layout` and `lazy_placeholder` to `component_placeholder`, with `component_layout` now defaulting to the `layouts::` namespace. The `smart_wire_keys` default setting was changed to **true** to help prevent issues with deeply nested components. New configuration options were added for defining `component_locations` and `component_namespaces`, customizing `make_command` defaults, and enabling a `csp_safe` mode [1]. Internal improvements brought automatic performance optimizations, reduced bundle size, improved hydration, and faster initial page loads. Update hooks for replacing entire arrays or objects from the frontend were consolidated to send a single update, matching v2 behavior and differing from v3's granular updates. Method signature changes occurred in the `stream()` method, where the `to:` parameter was renamed to `el:`, and the internal `mount()` method for `LivewireManager` gained a `$slots` parameter [1]. Specific releases within the v4 series, such as **v4.2.0** (released February 26, 2026), further optimized smart keys and fixed `wire:model` issues with non-existent string array keys [2]. Following this, **v4.2.1** (tagged February 28, 2026) addressed a breaking change in `v4.2` by restoring a previously removed public function [3]. The highest version listed is **v4.4.7** [4].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://github.com/livewire/livewire/blob/4.x/docs/upgrading.md",
+      "title": "livewire/docs/upgrading.md at 4.x · livewire/livewire · GitHub",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 2,
+      "url": "https://php.libhunt.com/livewire-changelog/4.2.0",
+      "title": "Livewire v4.2.0 release notes (2026-02-26) | LibHunt",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 3,
+      "url": "https://github.com/livewire/livewire/discussions/10065",
+      "title": "Breaking change in 4.2 #10065",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 4,
+      "url": "https://github.com/livewire/livewire/releases",
+      "title": "Releases · livewire/livewire",
+      "kind": "research_citation",
+      "claims": []
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What changed in the latest Livewire release?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "livewire/livewire"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:33:38.379370Z",
+  "ended_at": "2026-10-06T09:34:01.384633Z",
+  "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+  "question_id": "q20",
+  "strategy": "demo",
+  "expected_route": "research",
+  "duration_ms": 23005
+}

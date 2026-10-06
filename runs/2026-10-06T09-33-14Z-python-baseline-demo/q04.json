@@ -1,0 +1,41 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The latest detailed release notes available for Inertia.js are for **v3.7.0**, released on **August 18, 2026** [1]. While **v3.8.0** and **v3.7.1** are listed as more recent releases, their specific changes are not detailed in the provided changelog [2]. Key improvements in **v3.7.0** include fixes for React's `useForm` submitting stale data and respecting manual `setDefaults()`, improved optimistic update rollback for multiple pending requests, and preventing `useHttp` from parsing empty **204 responses** [1]. The release also introduced a `host` option for the SSR server, added a `withApp` callback to `createInertiaApp`, and included `SharedPageProps` in optimistic update callback types [1]. Security enhancements involve sandboxing the error dialog `iframe` to prevent `window.parent` access and blocking `__proto__` in query string parsing, alongside a critical `axios` bump to address `CVE-2025-7783` [1]. Other notable updates include correcting URL search parameter merge logic, allowing custom URL protocols, and fetching from the server on back button if the version hash is not current [1].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://github.com/inertiajs/inertia/blob/3.x/CHANGELOG.md",
+      "title": "inertia/CHANGELOG.md at 3.x · inertiajs/inertia · GitHub",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 2,
+      "url": "https://github.com/inertiajs/inertia/releases",
+      "title": "Releases · inertiajs/inertia",
+      "kind": "research_citation",
+      "claims": []
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "Show me the release notes for the latest Inertia release",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "inertiajs/inertia-laravel"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:34:31.601830Z",
+  "ended_at": "2026-10-06T09:34:50.530540Z",
+  "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+  "question_id": "q04",
+  "strategy": "demo",
+  "expected_route": "direct",
+  "duration_ms": 18928
+}

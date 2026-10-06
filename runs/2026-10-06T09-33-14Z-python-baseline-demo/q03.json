@@ -1,0 +1,48 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The latest release for the Filament UI framework for Laravel, **v5.9.0**, was published on **September 26, 2026, at 19:40 UTC** [1]. This release is marked as the \"Latest\" on the official GitHub releases page and was made by user `@danharrin` [1]. While the major version **Filament v5** was initially released in **January 2026** to support Livewire v4 [2], [3], the Filament team planned to continue improving **v5** throughout **2026** [3], making **v5.9.0** a subsequent minor update within that major version.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://github.com/filamentphp/filament/releases",
+      "title": "Releases · filamentphp/filament",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 2,
+      "url": "https://laravel-news.com/filament-5",
+      "title": "Filament v5 Released With Livewire v4 Support and a New Blueprint Tool",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 3,
+      "url": "https://filamentphp.com/insights/alexandersix-filament-through-the-years",
+      "title": "Filament through the years",
+      "kind": "research_citation",
+      "claims": []
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "When was the latest Filament release published?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "filament/filament"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:34:19.293469Z",
+  "ended_at": "2026-10-06T09:34:31.600866Z",
+  "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+  "question_id": "q03",
+  "strategy": "demo",
+  "expected_route": "direct",
+  "duration_ms": 12307
+}

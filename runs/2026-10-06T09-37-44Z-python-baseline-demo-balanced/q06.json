@@ -1,0 +1,164 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The latest Laravel 13.x releases, including **v13.34.0** from September 29, 2026, introduce significant changes affecting queue workers, focusing on both critical compatibility adjustments and functional enhancements for robustness and management [1][2].\n\n## Key Breaking Change: Queue Serialization Incompatibility\n\nThe most critical update for queue workers in Laravel 13 is the adoption of a new, more compact job serialization format. This change renders jobs queued by a Laravel 12 application incompatible with Laravel 13 workers, meaning Laravel 13 workers will fail to process older jobs. Consequently, applications upgrading to Laravel 13 must **fully drain their queues** before deploying Laravel 13 workers to avoid job failures [3]. Additionally, Laravel 13 requires a minimum PHP version of **8.3** (or 8.4 depending on the specific patch version), necessitating a PHP upgrade alongside the framework [4][\\_mGaig].\n\n## Enhanced Worker Management and Robustness\n\nRecent 13.x releases (including **v13.34.0**, **v13.33.0**, **v13.30.0**, and **v13.26.0**) bring numerous improvements to queue worker stability and control [5].\n\n**Smarter Timeout Handling**: Queue workers now feature more intelligent timeout handling. Developers can **opt out of worker termination** when a job times out, providing greater control over worker behavior. This enhancement includes dropping `restart_syscalls` from `pcntl_signal` within the worker process [5][6].\n\n**Improved Error and Crash Reporting**: Laravel **v13.34.0** introduced the capability for jobs to count unexpected worker crashes towards their `maxExceptions` limit. This offers clearer insights into job failures that stem from worker instability rather than job logic, preventing endless retries [5][7]. Furthermore, the `queue:restart` command now provides more effective error messages when a worker cannot be restarted, aiding in faster debugging [8][5].\n\n**Increased Visibility and Control**: Workers can now surface paused queues in their output, and the `queue:work` command explicitly outputs the reason a worker stopped. For more granular control over queue management, a new `--queue` option has been added to the `queue:flush` command [5].\n\n**Event Object Refinements**: Queue-related events have been refined for better information flow. The `JobAttempted` event now directly exposes the **exception object** (`$event->exception`) that caused the job attempt to fail, replacing the less informative boolean `$event->exceptionOccurred`. For consistency across queue events, the `$connection` property in the `QueueBusy` event has been renamed to `$connectionName` [4][9].\n\n## Conclusion\n\nThese comprehensive changes collectively aim to make Laravel's queue system more robust, transparent, and manageable for developers. While the new serialization format presents a critical upgrade consideration requiring careful queue draining, the enhancements to worker management, error reporting, and event handling ultimately lead to a more reliable and observable queue infrastructure.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://endoflife.date/laravel",
+      "title": "Laravel | endoflife.date",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 was released 6 months and 3 weeks ago on March 17, 2026.",
+        "Laravel 13's active support ends in 1 year on September 30, 2027.",
+        "Laravel 13's security support ends in 1 year and 5 months on March 17, 2028.",
+        "The latest release for Laravel 13 is 13.34.0, released on September 29, 2026.",
+        "Laravel 12 was released 1 year and 7 months ago on February 24, 2025.",
+        "Laravel 12's active support ended 1 month and 3 weeks ago on August 13, 2026.",
+        "Laravel 12's security support ends in 4 months and 3 weeks on February 24, 2027.",
+        "The latest release for Laravel 12 is 12.69.3, released on September 29, 2026.",
+        "Laravel 11 was released 2 years and 6 months ago on March 12, 2024.",
+        "Laravel 11's active support ended 1 year ago on September 3, 2025."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://releasebot.io/updates/laravel",
+      "title": "Laravel Release Notes - September 2026 Latest Updates - Releasebot",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel v13.34.0 was released on September 29, 2026.",
+        "Laravel v12.69.3 was released on September 29, 2026.",
+        "Laravel Framework 13.x updates in September 2026 include Scout Typesense semantic and hybrid search.",
+        "Laravel Framework 13.x updates in September 2026 include reliable MariaDB Vector Queries and an Eloquent Vector Cast.",
+        "Laravel Framework 13.x updates in September 2026 include copyToDisk() and moveToDisk() for streaming files between disks.",
+        "Laravel Framework 13.x updates in September 2026 include DevCommands options to exclude vendor and default dev commands from php artisan dev.",
+        "Laravel Framework 13.x updates in September 2026 include a native Mercure connector to Echo.",
+        "Laravel Framework 13.x updates in September 2026 include chunkBy() to split collections and lazy collections.",
+        "Laravel Framework 13.x updates in September 2026 include one-time mail and notification assertions.",
+        "Laravel Framework 13.x updates in September 2026 include nullable AsCollection and AsArrayObject casts."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://www.phpeveryday.com/articles/laravel-13-2026-release-new-features-and-upgrade-guide",
+      "title": "Laravel 13 (2026) Release: New Features and Upgrade Guide - PHP Everyday",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 introduces typed configuration retrieval, throwing a ConfigTypeMismatchException if a value does not match the declared type.",
+        "The query builder in Laravel 13 uses prepared statement caching by default, showing 15-25% improvement on read-heavy workloads with MySQL 8.x and PostgreSQL 16+.",
+        "Eloquent in Laravel 13 handles backed enums more gracefully, including nullable enums and enum arrays, with the AsEnumCollection cast storing an array of enum values in a JSON column.",
+        "Laravel 13 removes the app/Http/Kernel.php file; all middleware configuration lives in bootstrap/app.php.",
+        "New Artisan commands in Laravel 13 include make:dto, analyse, and route:conflicts.",
+        "Laravel 13 drops support for PHP 8.2 and 8.3, requiring PHP 8.4+ minimum.",
+        "Deprecated methods removed in Laravel 13 include Route::controller(), $request->has() with array syntax, Model::unguard(), and Str::slug() with custom separator as second positional arg.",
+        "Job payloads in Laravel 13 use a more compact serialization format, causing jobs queued by Laravel 12 to fail on a Laravel 13 worker.",
+        "Default pagination in Laravel 13 returns 25 items per page instead of 15.",
+        "Laravel 13 was released in Q1 2026."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://ortamarco.me/en/blog/what-breaks-upgrading-to-laravel-13",
+      "title": "Laravel 13 Breaking Changes: The Real List | Marco Orta",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 12 stopped receiving bug fixes on August 13, 2026.",
+        "Laravel 13 requires PHP 8.3 minimum and supports up to PHP 8.5.",
+        "The CSRF middleware VerifyCsrfToken is renamed to PreventRequestForgery in Laravel 13 and adds origin verification.",
+        "The default cache configuration in Laravel 13 includes `serializable_classes => false`.",
+        "Laravel 13 validates that `uniqueBy` is not empty for `upsert` operations with MySQL or MariaDB.",
+        "Default cache prefixes in Laravel 13 change from underscore to hyphen.",
+        "The `JobAttempted` event in Laravel 13 exposes the exception object instead of a boolean.",
+        "The `$connection` property in `QueueBusy` is renamed to `$connectionName` in Laravel 13.",
+        "Container::call in Laravel 13 respects nullable defaults.",
+        "Routes with an explicit domain are evaluated before routes without one in Laravel 13."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://releasebot.io/updates/laravel/laravel-framework",
+      "title": "Laravel Updates by Laravel - September 2026 - Releasebot",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel v13.34.0 includes a --queue option to queue:flush.",
+        "Laravel v13.34.0 adjusts some worker docblocks.",
+        "Laravel v13.34.0 displays an error in queue:restart when a worker isn't restartable.",
+        "Laravel v13.34.0 allows jobs to count worker crashes towards maxExceptions.",
+        "Laravel v13.33.0 includes smarter queue worker timeout handling.",
+        "Laravel v13.33.0 drops restart_syscalls from pcntl_signal in Worker.",
+        "Laravel v13.33.0 adds the ability to opt out of killing the worker on job timeout.",
+        "Laravel v13.32.0 includes Cloud queue management improvements.",
+        "Laravel v13.32.0 allows enums in queue pause/resume methods.",
+        "Laravel v13.30.0 outputs the worker stop reason in queue:work."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://github.com/laravel/framework/releases/tag/v13.33.0",
+      "title": "Release v13.33.0 · laravel/framework · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "[13.x] Drop restart_syscalls from pcntl_signal in Worker by @jackbayliss in #61590",
+        "[13.x] Ability to opt out of killing the worker on job timeout by @jackbayliss in #61591"
+      ]
+    },
+    {
+      "position": 7,
+      "url": "https://laravel-news.com",
+      "title": "Laravel News: Tutorials, Packages &amp; Framework News",
+      "kind": "research_citation",
+      "claims": [
+        "Count Worker Crashes as Job Exceptions in Laravel 13.34"
+      ]
+    },
+    {
+      "position": 8,
+      "url": "https://github.com/laravel/framework/blob/13.x/CHANGELOG.md",
+      "title": "framework/CHANGELOG.md at 13.x · laravel/framework · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "The Laravel framework version 13.x had a release v13.34.0 on 2026-09-29 which included a fix for `Number::parseInt()` returning false for values above 32-bit range.",
+        "The Laravel framework version 13.x had a release v13.34.0 on 2026-09-29 which included a fix for `PhpRedisLock::refresh()` when phpredis serialization is enabled.",
+        "The Laravel framework version 13.x had a release v13.34.0 on 2026-09-29 which included a fix for `Collection::mode()` returning values not present in the data when nulls exist.",
+        "The Laravel framework version 13.x had a release v13.34.0 on 2026-09-29 which included adjustments to some worker docblocks.",
+        "The Laravel framework version 13.x had a release v13.34.0 on 2026-09-29 which included a fix for displaying errors in `queue:restart` when a worker isn't restartable.",
+        "The Laravel framework version 13.x had a release v13.34.0 on 2026-09-29 which included a fix for `trans_choice()` picking the wrong plural form for negative numbers.",
+        "The Laravel framework version 13.x had a release v13.34.0 on 2026-09-29 which included a fix for `Number::format()`, `percentage()`, and `currency()` returning \"-0\".",
+        "The Laravel framework version 13.x had a release v13.34.0 on 2026-09-29 which included a fix for double negation in Eloquent `whereNot()` with array conditions.",
+        "The Laravel framework version 13.x had a release v13.34.0 on 2026-09-29 which included a fix for `sortBy()` with multiple columns and `SORT_NUMERIC` truncating fractional values.",
+        "The Laravel framework version 13.x had a release v13.34.0 on 2026-09-29 which included a fix for Memcached locks longer than 30 days expiring immediately."
+      ]
+    },
+    {
+      "position": 9,
+      "url": "https://laravel.com/framework/docs/upgrade",
+      "title": "Upgrade Guide | Laravel 13.x - The clean stack for Artisans and agents",
+      "kind": "research_citation",
+      "claims": [
+        "The `Illuminate\\Queue\\Events\\JobAttempted` event now exposes the exception object (or `null`) via `$exception`, replacing the previous boolean `$exceptionOccurred` property.",
+        "The `Illuminate\\Queue\\Events\\QueueBusy` event property `$connection` has been renamed to `$connectionName` for consistency with other queue events."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What changed in the latest Laravel release that affects queue workers?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "laravel/framework"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:37:44.185045Z",
+  "ended_at": "2026-10-06T09:41:58.068817Z",
+  "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+  "question_id": "q06",
+  "strategy": "demo",
+  "expected_route": "research",
+  "duration_ms": 253883
+}

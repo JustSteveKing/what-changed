@@ -1,0 +1,48 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "Laravel 14, the next major release of the framework, is expected in **Q1 2027** and has not yet officially shipped or announced a final feature list [1][2]. Based on current development, it will require a minimum PHP version of **8.4** and is projected to receive bug fixes until **Q3 2028** and security updates until **Q1 2029** [1]. Anticipated changes include the introduction of **`Route::query()`** for handling HTTP `QUERY` method requests, which will be treated as read requests by the CSRF middleware and included in `Route::any()` [1]. Dependency updates will see `ably/ably-php` transition to protocol 2.0 and `orchestra/testbench-core` move to `^12.0`, with support for PHPUnit versions 11.5, 12.5, and 13 [1]. Following the trajectory of Laravel 13, which focused on AI-native workflows and expressive APIs, Laravel 14 is also expected to continue building out **AI and vector-search capabilities** and will likely remove features that were marked deprecated during the Laravel 13.x release cycle [3][2].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://laravel-news.com/laravel-14",
+      "title": "What We Know About Laravel 14",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 2,
+      "url": "https://anowar.dev/blog/laravel-14-release-date",
+      "title": "Laravel 14 Release Date: What We Know (2026) - Anowar",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 3,
+      "url": "https://laravel.com/framework/docs/releases",
+      "title": "Release Notes | Laravel 13.x - The clean stack for Artisans and agents",
+      "kind": "research_citation",
+      "claims": []
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What changed in Laravel 14?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "laravel/framework"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:36:52.813346Z",
+  "ended_at": "2026-10-06T09:37:03.526964Z",
+  "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+  "question_id": "q17",
+  "strategy": "demo",
+  "expected_route": "research",
+  "duration_ms": 10713
+}

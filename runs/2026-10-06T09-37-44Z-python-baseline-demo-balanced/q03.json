@@ -1,0 +1,92 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The latest release for a project named \"Filament\" depends on which project is being referred to, as there are at least two distinct and actively developed software projects sharing this name [1][2].\n\nThe most recent published release across all identified projects is **Google Filament v1.77.2**, which was released on **October 6, 2026** [2]. This version of the real-time physically based rendering engine is available as a Maven dependency for Android and via CocoaPods for iOS [2].\n\nFor the **Filament PHP framework**, which is used for building Laravel applications and admin panels, the latest stable release is **v5.9.0**, published on **September 26, 2026** [3]. The Filament PHP framework saw its v5 release in January 2026, with no further major versions planned for 2026. Instead, development is focusing on improving versions 5 and 4, and scaling content production [4]. Recent updates, such as v5.9.0, include new features like strict hierarchical breadcrumbs and Rich Editor enhancements [5].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://filamentphp.com/",
+      "title": "Build Laravel apps &amp; admin panels fast - Filament",
+      "kind": "research_citation",
+      "claims": [
+        "Filament has over 32.2K GitHub stars.",
+        "Filament has over 19.1K Discord members.",
+        "Filament has over 41M downloads.",
+        "Filament has over 1.1K community plugins."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://github.com/google/filament",
+      "title": "GitHub - google/filament: Filament is a real-time physically based rendering engine for Android, iOS, Windows, Linux, macOS, and WebGL2 · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "Filament release archives contain host-side tools required to generate assets.",
+        "Filament version 1.77.2 is available as a Maven dependency for Android.",
+        "Filament version 1.77.2 is available via CocoaPods for iOS.",
+        "The official website for Filament is google.github.io/filament/"
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://packagist.org/packages/filament/filament",
+      "title": "filament/filament - Packagist.org",
+      "kind": "research_citation",
+      "claims": [
+        "The latest version of filament/filament is v5.9.0, released on 2026-09-26 19:40 UTC.",
+        "Filament/filament has a release history including versions such as v5.9.0, v5.8.4, v5.8.3, v5.8.2, v5.8.1, v5.8.0, and many others dating back to v0.1.0."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://filamentphp.com/insights/alexandersix-filament-through-the-years",
+      "title": "Filament through the years - Filament",
+      "kind": "research_citation",
+      "claims": [
+        "Filament v4 was released in August 2025.",
+        "Filament v5 was released in January 2026.",
+        "Filament has no intention of releasing another major version in 2026.",
+        "Throughout 2026, Filament plans to continue improving the framework and scale up content production.",
+        "Filament plans to celebrate more with the community through community events in 2026."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://github.com/filamentphp/filament/releases",
+      "title": "Releases · filamentphp/filament · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "The release notes for Filament v3.3.56 include a fix for using valid Livewire upload references in restriction tests and using file hash names for uploaded files.",
+        "The release notes for Filament v5.9.0 include new features such as strict hierarchical breadcrumbs, Rich Editor enhancements (icons, grid layout, search, sticky controls, minimal custom controls), search for Builder block picker, customizable table filters reset action, resolving nested resource index URLs, enum() for ImportColumn, nested action parent data, button size helper for ToggleButtons, full-width toggle buttons, rich content faker, Markdown faker, opt-in CSP nonce support for scripts, and table content render hooks.",
+        "The release notes for Filament v4.14.0 include new features such as strict hierarchical breadcrumbs, Rich Editor enhancements (icons, grid layout, search, sticky controls, minimal custom controls), search for Builder block picker, customizable table filters reset action, resolving nested resource index URLs, enum() for ImportColumn, nested action parent data, button size helper for ToggleButtons, full-width toggle buttons, rich content faker, Markdown faker, and table content render hooks.",
+        "The release notes for Filament v5.8.4 include a fix for collapsing non-contained sections correctly.",
+        "The release notes for Filament v5.8.3 include Swedish and Estonian translations, fixes for Livewire's DataStore singleton binding, FileUpload audio preview interactions, query builder filter indicators, Dropdown aria-controls loop, password checks for MFA actions, mobile-stacked table layouts, state casts from cached child schemas, temporary test paths, and rendering column orders.",
+        "The release notes for Filament v4.13.4 include a fix for collapsing non-contained sections correctly.",
+        "The release notes for Filament v4.13.3 include Swedish and Estonian translations, fixes for Livewire's DataStore singleton binding, FileUpload audio preview interactions, query builder filter indicators, Dropdown aria-controls loop, password checks for MFA actions, mobile-stacked table layouts, state casts from cached child schemas, temporary test paths, and rendering column orders.",
+        "The release notes for Filament v5.8.2 include German, pt-BR, and Czech translations, documentation updates for app authentication cache requirements and shared Blueprint workflow, fixes for mobile-stacked tables, page header content squeezing, rich editor content area clickability, session persistence for TableSelect, and rebuilding repeatable entry items.",
+        "The release notes for Filament v4.13.2 include German, pt-BR, and Czech translations, documentation updates for app authentication cache requirements and shared Blueprint workflow, fixes for mobile-stacked tables, page header content squeezing, rich editor content area clickability, session persistence for TableSelect, and rebuilding repeatable entry items.",
+        "The release notes for Filament v5.8.1 include fixes for scrollbar-gutter-stable utility, enum state casts, and FileUpload's visibilitychange."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "When was the latest Filament release published?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "filament/filament"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:47:45.992608Z",
+  "ended_at": "2026-10-06T09:51:10.896038Z",
+  "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+  "question_id": "q03",
+  "strategy": "demo",
+  "expected_route": "direct",
+  "duration_ms": 204903
+}

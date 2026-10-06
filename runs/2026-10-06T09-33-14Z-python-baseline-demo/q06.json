@@ -1,0 +1,41 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The latest developments affecting Laravel queue workers include **quality-of-life improvements** introduced in Laravel **13.26** [1]. More significantly, **managed queues** on Laravel Cloud, announced at Laracon US 2026, represent a major change in how queue workers are deployed and managed. These managed queues run on isolated compute and feature autoscaling that can scale to zero when idle, with idle workers now waking up in under **one second** (a notable improvement from approximately **30 seconds** previously). They also support First-In, First-Out (FIFO) queues for strict message ordering and accommodate long-running jobs of up to **one hour** on the new Pro class [2]. This external service fundamentally changes the operational aspects of managing Laravel queue workers for those utilizing Laravel Cloud.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://www.youtube.com/watch?v=8PLwC-Ye-Bk",
+      "title": "New in Laravel 13.26: Debounced Listeners, Queue",
+      "kind": "research_citation",
+      "claims": []
+    },
+    {
+      "position": 2,
+      "url": "https://laravel.com/blog/everything-we-announced-at-laracon-us-2026",
+      "title": "Everything we announced at Laracon US 2026",
+      "kind": "research_citation",
+      "claims": []
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What changed in the latest Laravel release that affects queue workers?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "laravel/framework"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:33:14.625366Z",
+  "ended_at": "2026-10-06T09:33:38.377275Z",
+  "run_id": "2026-10-06T09-33-14Z-python-baseline-demo",
+  "question_id": "q06",
+  "strategy": "demo",
+  "expected_route": "research",
+  "duration_ms": 23751
+}

@@ -1,0 +1,130 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The question \"When will Pest 6 be released?\" requires distinguishing between two distinct software applications that use \"Pest\" or \"PEST\" in their name. For one, version 6 has already been released; for the other, there are currently no announced plans for a version 6.\n\n## PEST Environmental Modeling Software: Version 6 Released in 2003\n\nThe environmental modeling software, known as PEST (Parameter ESTimation), is a comprehensive suite of programs designed for decision-support environmental modeling. It automates calibration and uncertainty analysis by interacting with a model's input and output files [1]. PEST version **6.05** was officially released in **April 2003**. This release was a General Release, built using FORTRAN, and ran on DOS operating systems [2]. Therefore, for this specific application, \"Pest 6\" is a historical release, having occurred over two decades ago.\n\n## Pest PHP Testing Framework: Currently on Version 5, No Version 6 Announced\n\nIn contrast, Pest is also known as an elegant and comprehensive testing framework for PHP developers and AI agents [3]. This framework has undergone several major iterations. Pest v3 introduced significant features such as mutation testing, architectural presets, and a new configuration API [4]. Following this, Pest v4 was released in 2025, bringing browser testing capabilities and further enhancements to mutation testing [5].\n\nThe current major version of the PHP testing framework is **Pest 5**. This version is built on PHP 8.4 and PHPUnit 13, requiring PHP 8.4 or higher for operation [6]. Pest 5 was initially scheduled for release on July 28, 2026 [6]. As of October 1, 2026, the latest available release is **v5.3.0**, reflecting ongoing development within the version 5 series [7]. There is currently **no information available or announced release date** for a future \"Pest 6\" for this PHP testing framework in the provided sources [6][3][5][4].\n\n## Conclusion: Differentiating \"Pest 6\" Release Status\n\nThe release status of \"Pest 6\" depends entirely on the specific software being referenced. Version **6.05** of the PEST environmental modeling software was released in **April 2003** [2]. For the popular Pest PHP testing framework, version 5 is the current major release, with its latest update being v5.3.0 as of October 1, 2026. However, there are **no announced plans or release dates** for a version 6 of the Pest PHP testing framework [7][6].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://pesthomepage.org/",
+      "title": "Home | PEST",
+      "kind": "research_citation",
+      "claims": [
+        "PEST refers to a software package and a number of suites of utility programs that support it.",
+        "PEST is a software package that automates highly-parameterized calibration and calibration-constrained uncertainty analysis of any numerical model.",
+        "PEST interacts with a model through the model’s own input and output files.",
+        "PEST-support software suites perform tasks that assist and complement model parameter estimation and uncertainty analysis, including setup facilitation, flexible spatial parameterization, stochastic parameter field generation, multi-component objective function definition, linear and nonlinear prior and posterior uncertainty analysis, and data space inversion."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://19january2021snapshot.epa.gov/ceam/pest_.html",
+      "title": "PEST | Environmental Modeling Community of Practice | US EPA",
+      "kind": "research_citation",
+      "claims": [
+        "PEST version 6.05 was released in April 2003."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://pestphp.com/",
+      "title": "Pest | The elegant testing framework for PHP developers and AI agents",
+      "kind": "research_citation",
+      "claims": [
+        "Pest is an elegant testing framework for PHP developers and AI agents.",
+        "Pest brings the joy of testing to PHP.",
+        "Browser testing and AI evals are built into Pest.",
+        "Pest has a source code repository on GitHub.",
+        "Pest supports Test Impact Analysis (TIA) to run only affected tests.",
+        "Pest offers parallel execution, coverage, mutation, and snapshots.",
+        "Pest allows running browser tests using Playwright.",
+        "Pest can be used to evaluate LLM features like code.",
+        "Pest has over 70 million downloads.",
+        "Pest has over 60 plugins."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://pestphp.com/docs/pest3-now-available",
+      "title": "Pest v3 Now Available | Pest - The elegant PHP Testing Framework",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 3 introduces Mutation Testing, Arch Presets, Team Management, a new Configuration API, and improvements to Architectural Testing.",
+        "Mutation Testing in Pest 3 introduces a new technique that introduces small changes to code to see if tests catch them.",
+        "Arch Presets in Pest 3 offer predefined rules for testing application architecture, including 'php', 'security', 'laravel', 'strict', and 'relaxed' presets.",
+        "Team Management in Pest 3 allows managing tasks and todos with a team directly from the console.",
+        "Pest 3 introduces a new configuration API based on the `pest()` function, intended to be more intuitive than the previous `uses()` function.",
+        "Pest 3 includes new architectural expectations such as `toUseStrictEquality()`, `toHaveMethodsDocumented()`, and `toHaveFileSystemPermissions()`.",
+        "Pest 3 introduces a new `after()` method for running teardown callbacks after specific tests or groups of tests.",
+        "Pest 3 is based on PHPUnit 11, allowing the use of any PHPUnit 11 features within Pest.",
+        "Pest 3 includes improvements such as Type Coverage checking for constants, better error messages, and basic support for static analysis tools within test closures."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://medium.com/@hansisara/phpunit-and-pest-ec080b3c7344",
+      "title": "Medium",
+      "kind": "research_citation",
+      "claims": [
+        "Pest v4, a major release in 2025, added browser testing, improved mutation testing, a profanity filter, conditional skips, and enhancements to arch presets.",
+        "Pest runs on PHPUnit 12.",
+        "Pest is extremely popular in the Laravel ecosystem, with new projects defaulting to Pest since approximately 2023/2024.",
+        "PHPUnit 12, requiring PHP 8.3+, is the latest stable version, while PHPUnit 11 receives bug fixes until early 2026."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://pestphp.com/docs/pest5-now-available",
+      "title": "Pest 5 Now Available | Pest - The elegant PHP Testing Framework",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 5 is available and built on top of PHP 8.4 and PHPUnit 13.",
+        "Pest 5 requires PHP 8.4 or greater.",
+        "The Tia Engine in Pest 5 reduces test suite run time by re-running only affected tests.",
+        "The Agent Plugin in Pest 5 allows AI coding agents to verify code changes with a single command.",
+        "The Evals plugin in Pest 5 allows evaluation of LLM agents and AI-generated output.",
+        "Pest 5 includes a first-party PHPStan plugin to teach PHPStan about Pest's functional API.",
+        "Pest 5 includes an automated refactoring plugin powered by Rector.",
+        "Pest 5 refines test sharding with time-balanced sharding.",
+        "Pest 5 introduces new expectations: toBeEmail(), toBeUlid(), toBeIpAddress(), toBeMacAddress(), toBeHostname(), toBeDomain(), toBeBase64(), and toBeHexadecimal()."
+      ]
+    },
+    {
+      "position": 7,
+      "url": "https://github.com/pestphp/pest/releases",
+      "title": "Releases · pestphp/pest · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "Pest v5.3.0 was released on October 1, 2026.",
+        "Pest v5.2.1 was released on September 17, 2026.",
+        "Pest v5.2.0 was released on September 14, 2026.",
+        "Pest v5.1.4 was released on September 7, 2026.",
+        "Pest v5.1.3 was released on August 25, 2026.",
+        "Pest v5.1.2 was released on August 25, 2026.",
+        "Pest v5.1.0 was released on August 10, 2026.",
+        "Pest v5.0.4 was released on August 7, 2026.",
+        "Pest v5.0.3 was released on August 3, 2026.",
+        "Pest v4.7.8 was released on August 3, 2026."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "When will Pest 6 be released?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "pestphp/pest"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T10:17:11.621163Z",
+  "ended_at": "2026-10-06T10:20:14.852932Z",
+  "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+  "question_id": "q18",
+  "strategy": "demo",
+  "expected_route": "decline",
+  "duration_ms": 183231
+}

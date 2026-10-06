@@ -1,0 +1,147 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "Upgrading to Pest 5 primarily involves updating dependencies and adapting to changes introduced by its underlying PHPUnit 13 requirement, rather than significant API-level breaking changes within Pest itself. The overall upgrade path is generally straightforward, particularly for well-maintained test suites [1][2][3].\n\n### Core Dependency Requirements\n\nThe most critical aspect of upgrading to Pest 5 is meeting its new dependency requirements. Pest 5 mandates **PHP 8.4.0 or greater** as a hard minimum, which is a foundational shift from Pest 4's PHP 8.3.0 requirement [1][2][4]. Projects must also update the main `pestphp/pest` dependency to `^5.0` in their `composer.json` file. All other official Pest-maintained plugins, such as `pestphp/pest-plugin-laravel`, must also be updated to their `^5.0` versions [1][2][4].\n\nFor Laravel projects, a notable prerequisite is that the official Pest Laravel plugin for Pest 5 requires **Laravel 13.23 or newer**. Attempting to install Pest 5's Laravel plugin on earlier Laravel versions will result in a Composer conflict, blocking the upgrade until Laravel itself is updated [5].\n\n### Minimal API-Level Breaking Changes in Pest Itself\n\nPest 5 introduces very few direct API-level breaking changes to its core functionality. Unlike previous major versions that saw specific method removals (e.g., Pest 3 replacing `tap()` with `defer()`), Pest 5's own API remains largely consistent [2][6].\n\nThe significant \"breaking\" impacts stem almost entirely from Pest 5 being built directly on **PHPUnit 13** [1][7]. PHPUnit 13 includes several changes that can affect existing test suites:\n*   **Mocking Patterns:** PHPUnit 13 hard-deprecates patterns like `any()` and `with*()` without an explicit `expects()` call. While these still function, they produce deprecation warnings and are slated for removal in PHPUnit 14. This can lead to \"silent\" failures where tests appear to pass but no longer verify the intended interactions [5].\n*   **Removed Assertions:** Older assertion methods, such as `assertContainsOnly` and `assertNotContainsOnly`, have been removed. These now throw fatal `Error` messages and require migration to their specialized replacements (e.g., `assertContainsOnlyString`) or `assertThat` with specific matchers [5].\n*   **Laravel-Specific Mocking:** Laravel's `createPartialMock()` helper can trigger PHPUnit 13's `with*()` deprecation, even if the test code appears innocent. This requires developers to use PHPUnit's `getMockBuilder()` directly to avoid the deprecation [5].\n\nDespite these underlying PHPUnit changes, real-world upgrades have reported minimal to zero direct code changes to existing Pest tests. One case study noted only a three-line `composer.json` update and no changes to test code for a production suite of 139 tests [3].\n\n### Configuration and New Feature Considerations\n\nThe upgrade to Pest 5 generally requires **no changes to `phpunit.xml` or any existing Pest configuration files** [5]. This simplifies the migration process, allowing developers to focus on code rather than configuration adjustments.\n\nPest 5 introduces powerful new features like Test Impact Analysis (TIA), which re-runs only the tests affected by recent code changes to significantly speed up local development feedback loops [1][7]. However, to utilize TIA, a code coverage driver such as **PCOV or Xdebug must be installed** to record the baseline dependency graph. Without one, TIA simply won't activate, running the full suite each time without erroring [5].\n\nOverall, the upgrade to Pest 5 is primarily a dependency management exercise, with most \"breaking\" aspects being inherited from PHPUnit 13. Projects that have kept their PHPUnit usage clean of deprecations and are on compatible PHP and Laravel versions are likely to experience a smooth transition.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://pestphp.com/docs/pest5-now-available",
+      "title": "Pest 5 Now Available | Pest - The elegant PHP Testing Framework",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 5 is built on top of PHP 8.4 and PHPUnit 13.",
+        "Pest 5 introduces the Tia Engine for Test Impact Analysis, which re-runs only affected tests.",
+        "The Agent Plugin allows AI coding agents to verify changes using a single command within the test suite.",
+        "The Evals plugin enables evaluation of LLM agents and AI-generated output directly from the test suite.",
+        "A first-party PHPStan plugin is available to teach PHPStan about Pest's functional API.",
+        "The Rector plugin provides automated refactoring rules to modernize test code and convert assertions.",
+        "Pest 5 refines test sharding with time-balanced sharding, distributing tests based on execution time.",
+        "New expectations in Pest 5 include toBeEmail(), toBeUlid(), toBeIpAddress(), toBeMacAddress(), toBeHostname(), toBeDomain(), toBeBase64(), and toBeHexadecimal().",
+        "Upgrading to Pest 5 requires changing the pestphp/pest dependency to ^5.0 in composer.json.",
+        "Pest 5 requires PHP 8.4 or greater."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://pestphp.com/docs/upgrade-guide",
+      "title": "Upgrade Guide | Pest - The elegant PHP Testing Framework",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 5 requires PHP 8.4.0 or greater.",
+        "Pest 5 is built on top of PHPUnit 13.",
+        "Pest 4 requires PHP 8.3.0 or greater.",
+        "Pest 4 changes the way snapshot names are generated for `toMatchSnapshot`.",
+        "Pest 4 is built on top of PHPUnit 12.",
+        "The `pestphp/pest-plugin-watch` and `pestphp/pest-plugin-faker` plugins have been archived and removed from Pest 4.",
+        "Pest 3 requires PHP 8.2.0 or greater.",
+        "Pest 3 removed the `tap()` method, recommending `defer()` instead.",
+        "Pest 3 is built on top of PHPUnit 11.",
+        "Pest 2 requires PHP 8.1.0 or greater."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://redberry.international/is-pest-5-worth-it/",
+      "title": "Is Pest 5 Worth It? We Upgraded and Benchmarked It",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 5 was presented by Nuno Maduro at Laracon US in Boston on July 28.",
+        "Redberry upgraded their website from Pest 4 to Pest 5 three weeks after its release.",
+        "The upgrade from Pest 4 to Pest 5 required three lines in composer.json and zero changes to test code for Redberry's production suite of 139 tests and 497 assertions.",
+        "Pest 5 requires PHP 8.4.0 or greater.",
+        "Pest 5 installs on Laravel 13 and not on Laravel 12 or 11.",
+        "Raw test speed for Pest 5 was measured at 102.24 seconds (serial) and 67.11 seconds (parallel), compared to 103.90 seconds (serial) and 65.99 seconds (parallel) for Pest 4.",
+        "Pest 5's Test Impact Analysis (TIA) engine replays an unchanged 139-test run in 0.46 seconds.",
+        "TIA's first run with --tia takes about 40 extra seconds and requires a coverage driver like PCOV or Xdebug.",
+        "Pest 5 includes time-balanced sharding, an Agent plugin for AI coding agents, and native Evals for scoring LLM output.",
+        "The article was last updated on Sep 29, 2026, and first published on Aug 25, 2026."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://github.com/jasonmccreary/pest-docs/blob/5.x/upgrade-guide.md",
+      "title": "pest-docs/upgrade-guide.md at 5.x · jasonmccreary/pest-docs · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 5 requires PHP 8.4.0 or greater.",
+        "To migrate from Pest 4 to Pest 5, update the `pestphp/pest` dependency to `^5.0` in your application's `composer.json` file.",
+        "All other Pest-maintained plugins should be updated to version `^5.0` in your application's `composer.json` file.",
+        "Pest 5 is built on top of PHPUnit 13.",
+        "Pest 4 requires PHP 8.3.0 or greater.",
+        "To migrate from Pest 3 to Pest 4, update the `pestphp/pest` dependency to `^4.0` in your application's `composer.json` file.",
+        "All other Pest-maintained plugins should be updated to version `^4.0` in your application's `composer.json` file.",
+        "If you were using `toMatchSnapshot`, Pest 4 changes the way snapshot names are generated, requiring an update using the `--update-snapshots` option.",
+        "Pest 4 is built on top of PHPUnit 12.",
+        "The `pestphp/pest-plugin-watch` and `pestphp/pest-plugin-faker` plugins have been archived and are no longer maintained in Pest 4."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://ortamarco.me/en/blog/what-breaks-upgrading-to-pest-5",
+      "title": "Pest 5 Upgrade: What Actually Breaks | Marco Orta",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 5 requires PHP 8.4.0 or greater as a hard minimum.",
+        "Pest 5 ships built directly on top of PHPUnit 13.",
+        "The official Pest Laravel plugin for Pest 5 currently requires Laravel 13.23 or newer.",
+        "PHPUnit 13 hard-deprecates `any()` and `with*()` without `expects()` patterns.",
+        "Laravel's `createPartialMock()` collides with PHPUnit 13's deprecations.",
+        "PHPUnit 13 removes specialized replacements for `assertContainsOnly` and `assertNotContainsOnly`.",
+        "Pest 5's Tia Engine needs PCOV or Xdebug installed to record its baseline dependency graph.",
+        "Pest 5 upgrade guide documents no changes to `phpunit.xml` or any Pest configuration file."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://v3.pestphp.com/docs/upgrade-guide",
+      "title": "Upgrade Guide | Pest - The elegant PHP Testing Framework",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 3 requires PHP 8.2.0 or greater.",
+        "To migrate from Pest 2 to Pest 3, update the `pestphp/pest` dependency to `^3.0`.",
+        "If using Laravel with Pest 3, upgrade Collision to version 8 and ensure Laravel 11 is required.",
+        "All other Pest maintained plugins should be updated to version `^3.0` for Pest 3.",
+        "Pest 3 is built on top of PHPUnit 11.",
+        "The `toHaveMethod` and `toHaveMethods` expectations in Pest 3 now expect a namespace or class name, not an object.",
+        "The `tap()` method was removed in Pest 3 and replaced by the `defer()` method for high-order testing.",
+        "Pest 2 requires PHP 8.1.0 or greater.",
+        "To migrate from Pest 1 to Pest 2, update the `pestphp/pest` dependency to `^2.0`.",
+        "If using Laravel with Pest 2, upgrade Collision to version 7 and ensure Laravel 10 is required."
+      ]
+    },
+    {
+      "position": 7,
+      "url": "https://hafiqiqmal93.medium.com/pest-5-is-a-faster-feedback-loop-for-laravel-93be455833c5",
+      "title": "Medium",
+      "kind": "research_citation",
+      "claims": [
+        "Pest 5 raises the runtime floor to PHP 8.4.",
+        "Pest 5 moves the suite onto PHPUnit 13.",
+        "Pest 5 includes a CI feature that previously shipped in Pest 4.6.",
+        "Pest 5 introduces Test Impact Analysis, which re-runs tests touched by a change.",
+        "Pest 5 introduces the Agent plugin, giving a coding agent a probe inside the real Laravel test environment.",
+        "Pest 5 introduces Evals, a way to test non-deterministic AI output."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What are the breaking changes when upgrading to Pest 5?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "pestphp/pest"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T10:05:31.240791Z",
+  "ended_at": "2026-10-06T10:07:52.179558Z",
+  "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+  "question_id": "q12",
+  "strategy": "demo",
+  "expected_route": "research",
+  "duration_ms": 140938
+}

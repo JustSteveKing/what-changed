@@ -1,0 +1,213 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "The `laravel/framework` package is currently in its **13th major iteration**, with the latest stable release being **v13.34.0**. Laravel has moved away from dedicated Long-Term Support (LTS) versions, opting instead for a consistent support policy across all major releases. Looking ahead, Laravel **14** is actively under development and is anticipated for release in early **2027**.\n\n### The Current Stable Release: Laravel 13.x\n\nThe latest stable version of the `laravel/framework` package is **v13.34.0**, released on **September 29, 2026** [1][2]. This version, part of the Laravel 13.x series, mandates a minimum PHP version of **^8.3** [1][3]. Laravel 13 itself was initially launched on **March 17, 2026** [4][3].\n\nRecent updates within the 13.x branch, such as v13.34.0, introduced enhancements like tracking job durations in `JobProcessed` events and improved notifications for jobs nearing timeout. Other updates in this series have included features like a Mercure broadcast driver, a read-through filesystem, and advancements in image processing [2][5].\n\n### The Discontinuation of Long-Term Support (LTS)\n\nLaravel no longer provides specific Long-Term Support (LTS) releases, a change that was implemented after Laravel 6 [4][6]. Instead, all major Laravel versions, including Laravel 13, adhere to a standardized support policy. This policy guarantees **18 months of bug fixes** and **two years of security fixes** from their release date [4][7].\n\nFor Laravel 13, bug fixes are scheduled until **September 17, 2027**, and security fixes will continue until **March 17, 2028** [8][3]. This approach ensures a predictable and consistent maintenance window for all major releases.\n\n### The Next Generation: Laravel 14 in Development\n\nLaravel 14 is the forthcoming major version and is currently under active development on the `master` branch of the `laravel/framework` repository [9][10]. Its release is projected for **Q1 2027** [9][11][12]. A key requirement for Laravel 14 will be a minimum PHP version of **8.4**, primarily driven by its dependency on Symfony 8.0 components [9][10]. Developers are advised to target PHP **8.5** for new projects, as PHP 8.4 will already be in security-fix-only mode by Laravel 14's expected release [10].\n\nAnticipated features for Laravel 14, based on the `master` branch, include a new `Route::query()` helper for the HTTP `QUERY` method, an `authorize()` shorthand method on the user model, and an enhanced `report()` helper that accepts an optional context array [9][10]. Following the standard support policy, Laravel 14 is expected to receive bug fixes until **Q3 2028** and security updates until **Q1 2029** [9].\n\n### Summary of Laravel's Release Approach\n\nLaravel maintains a predictable annual release cycle, typically launching a new major version in the first quarter of each year [4][7]. This consistent schedule, combined with a uniform 18-month bug fix and 2-year security fix policy for all major versions, allows developers to plan upgrades and maintain their applications effectively while benefiting from continuous innovation delivered through weekly minor releases [4].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://packagist.org/packages/laravel/framework",
+      "title": "laravel/framework - Packagist.org",
+      "kind": "research_citation",
+      "claims": [
+        "The latest stable version of the Laravel framework is v13.34.0, released on 2026-09-29 12:46 UTC.",
+        "The Laravel framework requires PHP version ^8.3.",
+        "The Laravel framework has had 590,230,197 installs.",
+        "The Laravel framework has 21,065 dependents.",
+        "The Laravel framework has 34,948 stars on GitHub.",
+        "The Laravel framework has 97 open issues on GitHub.",
+        "The Laravel framework is licensed under the MIT license.",
+        "The Laravel framework is published on Packagist.org on 2026-09-29 12:46 UTC.",
+        "The Laravel framework is auto-updated.",
+        "Last update: 2026-10-06 06:44:43 UTC."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://github.com/laravel/framework/blob/13.x/CHANGELOG.md",
+      "title": "framework/CHANGELOG.md at 13.x · laravel/framework · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "The Laravel framework's CHANGELOG.md for the 13.x branch details releases from v13.34.0 (2026-09-29) down to v13.0.0 (2026-03-17).",
+        "Release v13.34.0 on 2026-09-29 includes updates such as including duration in JobProcessed event, notifying jobs of timeouts, and adding a --queue option to queue:flush.",
+        "Release v13.33.0 on 2026-09-22 includes updates such as dropping restart_syscalls from pcntl_signal in Worker and adjusting when password hash is stored for authenticated sessions.",
+        "Release v13.32.0 on 2026-09-15 includes updates such as allowing enums in queue pause/resume methods and adding copyToDisk & moveToDisk to FilesystemAdapter.",
+        "Release v13.31.0 on 2026-09-08 includes updates such as adding totalSize method to Queue and restoring the container instance after route:cache boots a fresh application.",
+        "Release v13.30.1 on 2026-09-01 includes updates such as adding connection and queue to WorkerStopping and adding insertOrIgnoreReturning() to the Eloquent builder passthru.",
+        "Release v13.30.0 on 2026-09-01 includes updates such as outputting the worker stop reason in queue:work and supporting Microsoft SQL Server DSN connection strings.",
+        "Release v13.29.0 on 2026-08-25 has no specific changes listed in the provided changelog snippet.",
+        "Release v13.27.0 on 2026-08-25 includes updates such as preventing duplicate scoped instance registrations and adding refreshForUpdate() method to Eloquent models.",
+        "Release v13.26.1 on 2026-08-18 reverts a change related to orWhereKey and orWhereKeyNot."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://laravel.com/framework/docs/releases",
+      "title": "Release Notes | Laravel 13.x - The clean stack for Artisans and agents",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13.x requires a minimum PHP version of 8.3.",
+        "Laravel 13.x bug fixes are provided until March 17th, 2026.",
+        "Laravel 13.x security fixes are provided until March 17th, 2028.",
+        "Laravel 13.x release date was March 17th, 2026."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://laravel-news.com/laravel-releases",
+      "title": "Laravel Release Cycle: Versions, Support Policy, and Dates",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel ships one major version a year, in the first quarter.",
+        "Laravel 13 is the current major version, released on March 17th, 2026.",
+        "Laravel 14 is expected in Q1 2027.",
+        "Every major Laravel release receives bug fixes for 18 months and security fixes for two years.",
+        "There are no Long-Term Support (LTS) releases anymore.",
+        "Laravel 6 was the last LTS version.",
+        "Laravel 13 requires PHP 8.3, and Laravel 14 will require PHP 8.4.",
+        "Laravel 13 bug fixes ended on August 13th, 2026.",
+        "Laravel 12 receives security fixes only until February 24th, 2027."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://laravel-news.com/tag/releases",
+      "title": "Laravel Releases: Latest Version (13.x), Changelog &amp; Release Notes",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13.34 counts worker crashes toward maxExceptions, notifies interruptible jobs before a timeout, and adds job durations to JobProcessed.",
+        "Laravel 13.33 adds tags to Cache::memo(), a Refreshes attribute for generated columns, AsCollection::nullable(), and inplace() index migrations.",
+        "Laravel 13.32 adds a Mercure broadcast driver, Storage::copyToDisk() and moveToDisk(), and enum support in queue pause/resume.",
+        "Laravel 13.31 adds Queue::totalSize() to count every job on a connection and a JobInterrupted event.",
+        "Laravel 13.27 masks query bindings in exception messages, adds whereBinary() for case-sensitive lookups, refreshForUpdate(), and a Cloud facade.",
+        "Laravel 13.26 adds a read-through filesystem driver, debounced queued event listeners, Queue::forward() routing, and new process testing helpers.",
+        "Laravel 13.25 adds queue:pause --all across every connection and runs artisan dev in a tabbed terminal UI.",
+        "Laravel 13.24 adds dominant color detection and HEIC support to the image API, a modelKeys() query builder method, and an array_keys validation rule.",
+        "Laravel 13.23 adds a monthly log rotation driver and SES tenant support in the SES v2 mail transport.",
+        "Laravel 13.22 adds a #\\[BindWhen\\] attribute for conditional container bindings and DNS lookup faking for validation rules."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://www.tldevtech.com/timeline-of-laravel-versions",
+      "title": "Timeline of Laravel Versions - TL Dev Tech",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 5.1 was the first LTS (Long Term Support) version, released in June 2015.",
+        "Laravel 5.5 was an LTS version, released in August 2017.",
+        "Laravel 6 adopted semantic versioning.",
+        "Laravel 11 brings improved routing and caching mechanisms.",
+        "Laravel 11 includes new developer tools and a simplified upgrade process.",
+        "Laravel 11 has full compatibility with PHP 8.2.",
+        "Laravel 11 has a streamlined project structure with fewer preset directories.",
+        "Laravel 11 centralizes configuration settings into .env files.",
+        "Laravel 11 has enhanced data handling and middleware management.",
+        "Laravel 11 has improved scheduling and bug-fixing tools."
+      ]
+    },
+    {
+      "position": 7,
+      "url": "https://endoflife.date/laravel",
+      "title": "Laravel | endoflife.date",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel framework major releases are released approximately every year in Q1.",
+        "For all Laravel releases, bug fixes are provided for 18 months.",
+        "For all Laravel releases, security fixes are provided for 2 years.",
+        "For all additional libraries, including Lumen, only the latest major release receives bug fixes."
+      ]
+    },
+    {
+      "position": 8,
+      "url": "https://laravelversions.com/en",
+      "title": "Laravel Versions",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 13 is scheduled for release on March 17, 2026.",
+        "Laravel 13 will receive bug fixes until September 17, 2027.",
+        "Laravel 13 will receive security fixes until March 17, 2028.",
+        "Laravel 12 will receive bug fixes until August 13, 2026.",
+        "Laravel 12 will receive security fixes until February 24, 2027.",
+        "Laravel 11's security updates will end on March 12, 2026."
+      ]
+    },
+    {
+      "position": 9,
+      "url": "https://laravel-news.com/laravel-14",
+      "title": "What We Know About Laravel 14",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 14 is expected in Q1 2027.",
+        "Laravel 14 will require PHP 8.4 as the minimum version.",
+        "Laravel 14 will have bug fixes through Q3 2028.",
+        "Laravel 14 will have security updates through Q1 2029.",
+        "Laravel 14 features are being developed in the `master` branch of `laravel/framework`.",
+        "Route::query() will be a new feature in Laravel 14.",
+        "The $user->authorize() method will be added to the Authorizable contract and trait in Laravel 14.",
+        "The report() helper and exception handler's report() method will accept an optional context array in Laravel 14.",
+        "Storage::fake() will support on-demand disks in Laravel 14.",
+        "orWhereKey() and subqueries in whereKey() will be supported in Laravel 14."
+      ]
+    },
+    {
+      "position": 10,
+      "url": "https://qadrlabs.com/post/laravel-14-what-we-know-so-far-and-how-to-get-ready",
+      "title": "Laravel 14: What We Know So Far and How to Get Ready",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 14 is expected in Q1 2027.",
+        "Laravel 14 will require PHP 8.4 as a minimum version.",
+        "The PHP 8.4 minimum requirement for Laravel 14 is due to Symfony 8.0, which was released on November 27, 2025, and requires PHP 8.4.",
+        "The `master` branch of `laravel/framework` shows that all Symfony components are pinned to `^8.1.0`, removing the fallback for Symfony 7.4, which makes PHP 8.3 unresolvable.",
+        "PHP 8.4's active support ends on December 31, 2026, which is before Laravel 14 is expected to ship in Q1 2027.",
+        "PHP 8.5 is recommended as the target version, as it is supported by Laravel 13 and remains in active support through the end of 2027.",
+        "The `master` branch of `laravel/framework` shows a new routing helper `Route::query()` for the HTTP QUERY method.",
+        "The `master` branch of `laravel/framework` shows an authorization shorthand `$user->authorize()` that moves the entry point onto the user model.",
+        "The `report()` helper on the `master` branch gains a context array as an optional second argument.",
+        "The `master` branch of `laravel/framework` adds `Storage::fake('ondemand')` for on-demand disks in tests."
+      ]
+    },
+    {
+      "position": 11,
+      "url": "https://acquaintsoft.com/answers/what-is-the-roadmap-for-laravel-releases",
+      "title": "What Is the Roadmap for Any Future Laravel Releases?",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 14 is expected in Q1 2027.",
+        "New versions are usually previewed at community events like Laracon 2027.",
+        "Future updates heavily prioritize AI integration through the first-party Laravel AI SDK, real-time capabilities via Laravel Reverb, and cloud-native scaling."
+      ]
+    },
+    {
+      "position": 12,
+      "url": "https://sadiqueali.medium.com/laravel-14-is-coming-in-q1-2027-heres-everything-we-actually-know-so-far-d6be1dae8710",
+      "title": "Medium",
+      "kind": "research_citation",
+      "claims": [
+        "Laravel 14 is anticipated to be released in Q1 2027.",
+        "The Laravel team has not officially announced a release date or feature list for Laravel 14.",
+        "Information about Laravel 14 is being inferred from commits to the `master` branch of `laravel/framework`.",
+        "Features merged into the `master` branch are subject to change, reversion, or inclusion in minor releases."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What is the latest version of laravel/framework?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "laravel/framework"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T09:52:15.425975Z",
+  "ended_at": "2026-10-06T09:54:34.301645Z",
+  "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+  "question_id": "q05",
+  "strategy": "demo",
+  "expected_route": "direct",
+  "duration_ms": 138875
+}

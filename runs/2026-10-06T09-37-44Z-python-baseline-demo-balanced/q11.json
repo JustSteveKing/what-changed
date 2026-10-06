@@ -1,0 +1,139 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "Livewire 4.1 introduced notable modifications to the behavior of `wire:model` modifiers, primarily altering how client-side state synchronizes and how events are listened for. These updates require developers to adjust their `wire:model` implementations to ensure expected functionality for data binding and event handling [1][2].\n\n## Revised Behavior of `.blur` and `.change` Modifiers\nA significant change in Livewire 4.1 concerns the `.blur` and `.change` modifiers. In Livewire 3, these modifiers exclusively dictated when a network request was dispatched, while the client-side state of the associated property updated immediately as a user typed. However, in **Livewire 4.1, these modifiers now control both the timing of client-side state synchronization and the network request itself** [1][3][2].\n\nTo revert to the Livewire 3 behavior, where the client-side state updates in real-time even when using `.blur` or `.change`, developers must now explicitly prepend the `.live` modifier. For instance, `wire:model.live.blur` will ensure immediate client-side updates while deferring the network request until the input loses focus [1][3].\n\nThis shift initially led to an issue in Livewire v4.1.0 where inputs with `wire:model.blur` or `wire:model.change` failed to send their values upon form submission via the Enter key. This could result in data loss if the `.enter` modifier was not also explicitly included. This bug was subsequently **addressed and fixed in Livewire v4.1.1** [4].\n\n## Default Event Listening and the `.deep` Modifier\nLivewire 4.1 also modified `wire:model`'s default event listening behavior. **`wire:model` now, by default, only responds to events that originate directly from the element it is bound to**, mirroring the functionality previously provided by the `.self` modifier [1]. To enable `wire:model` to capture events that bubble up from child elements within a component, developers must now **explicitly use the `.deep` modifier** [1][5]. This change prevents unintended interactions, such as a `wire:model` on a container element reacting to events from internal form inputs.\n\n## Other Noteworthy Changes and Considerations\nBeyond these core adjustments, Livewire 4.1 introduced other points for developer consideration. In v4.1.0, the **order of modifiers became temporarily significant**, particularly for `.live` and `.self`. For example, `wire:model.live.self` allowed changes to propagate to a parent component, while `wire:model.self.live` did not. This modifier order issue has since been fixed in the main branch [6]. Furthermore, the `.blur` modifier was found to have never functioned as intended on `#[Modelable]` components and has consequently been **removed from relevant documentation**, with event-based modifiers like `.blur` instead targeting DOM events within the child component itself [7][8].\n\n## Conclusion\nLivewire 4.1 significantly refined `wire:model` modifier functionality, primarily by extending the roles of `.blur` and `.change` to include client-side state synchronization. Developers must now adapt by using the `.live` modifier to preserve real-time client-side updates and employing the `.deep` modifier to capture events from child elements. These changes aim to provide more granular control over data flow and event propagation within Livewire applications.",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://livewire.laravel.com/docs/4.x/upgrading",
+      "title": "Upgrade Guide | Laravel Livewire",
+      "kind": "research_citation",
+      "claims": [
+        "In Livewire v4.1, modifiers like `.blur` and `.change` now control when client-side state syncs, not just network timing.",
+        "If using `.blur` or `.change` modifiers in Livewire v4.1 and desiring the previous behavior, add `.live` before them (e.g., `wire:model.live.blur`).",
+        "In Livewire v4, `wire:model` now only listens for events originating directly on the element itself, equivalent to the `.self` modifier behavior.",
+        "To capture events from child elements with `wire:model` in Livewire v4, add the `.deep` modifier (e.g., `wire:model.deep`).",
+        "In Livewire v4, modifiers like `.blur` and `.change` now control when client-side state syncs, in addition to controlling when network requests are sent.",
+        "To retain the previous behavior of `.blur` or `.change` modifiers in Livewire v4, add `.live` before the modifier (e.g., `wire:model.live.blur`).",
+        "The `wire:model.lazy` modifier in Livewire v4 continues to work as it did in v3.",
+        "In Livewire v4, `wire:model` expressions now support bracket notation for accessing nested properties, interpreting square brackets (`[` and `]`) as property accessors."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://github.com/livewire/livewire/blob/4.x/docs/upgrading.md",
+      "title": "livewire/docs/upgrading.md at 4.x · livewire/livewire · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "In Livewire v4.1, modifiers like .blur and .change now control when client-side state syncs, not just network timing.",
+        "To retain the previous behavior of .blur and .change modifiers in Livewire v4.1, users should add .live before them, e.g., wire:model.live.blur.",
+        "In Livewire v3, modifiers like .blur and .change only controlled when network requests were sent, while client-side state synced immediately.",
+        "In Livewire v4, .blur and .change modifiers control both client-side state sync timing and network request timing.",
+        "To achieve the v3 behavior of .blur and .change in Livewire v4, the .live modifier must be added before them (e.g., wire:model.live.blur)."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://richdynamix.com/articles/livewire-3-to-4-migration-guide",
+      "title": "Livewire 3 to 4 Migration Guide: Upgrade in 30 Minutes",
+      "kind": "research_citation",
+      "claims": [
+        "In Livewire 3, wire:model.blur and wire:model.change controlled only when the network request fired, while client-side $wire.property synced in real-time.",
+        "In Livewire 4, wire:model.blur and wire:model.change control when client state syncs as well as when the network request fires.",
+        "To preserve the old Livewire 3 behavior where client state synced live even with .blur or .change modifiers, the .live modifier must be added in Livewire 4 (e.g., wire:model.live.blur).",
+        "The plain .blur modifier without .live in Livewire 4 defers both client state sync and the network request until the user leaves the field.",
+        "For validation-as-you-type patterns, wire:model.live.debounce.300ms is often recommended in Livewire 4."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://github.com/livewire/livewire/discussions/9858",
+      "title": "v4.1 wire:model.blur not sending input&#39;s values w/ payload when Enter pressed in same input to submit form · livewire/livewire · Discussion #9858 · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "In Livewire v4.1.0, the `wire:model.blur` modifier does not send the input's value in the event payload when the Enter key is pressed to submit a form, unless the `.enter` modifier is also explicitly added.",
+        "This behavior in Livewire v4.1.0 can lead to lost user-inputted data if the `.enter` modifier is forgotten on `.blur` or `.change` inputs.",
+        "The `wire:model.live.blur` modifier in Livewire v4.1.0 updates the ephemeral data on every keystroke, which is equivalent to the pre-v4.1 behavior of `wire:model.blur`.",
+        "A fix for the issue where `wire:model.blur` did not send input values on Enter key press was submitted via PR #9873 and confirmed to work in v4.1.1."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://livewire.laravel.com/docs/4.x/wire-model",
+      "title": "wire:model | Laravel Livewire",
+      "kind": "research_citation",
+      "claims": [
+        "The `.live` modifier for `wire:model` enables server updates as a user types.",
+        "By default, `wire:model.live` has a 150-millisecond debounce.",
+        "The debounce time for `wire:model.live` can be customized using `.debounce.Xms` (e.g., `wire:model.live.debounce.250ms=\"title\"`).",
+        "The `.blur` modifier for `wire:model` delays syncing until the user clicks away from the input.",
+        "The `.change` modifier for `wire:model` triggers on the change event, useful for select elements.",
+        "The `.enter` modifier for `wire:model` syncs when the user presses the Enter key.",
+        "The `.deep` modifier for `wire:model` allows it to respond to events bubbling up from child elements.",
+        "The `.renderless` modifier for `wire:model` sends a live model update to the server without re-rendering the component.",
+        "Nested properties can be accessed using dot notation (e.g., `wire:model=\"address.city\"`) or bracket notation (e.g., `wire:model=\"address['city']\"`).",
+        "Array elements can be accessed using dot notation (e.g., `wire:model=\"items.0.name\"`) or bracket notation (e.g., `wire:model=\"items[0].name\"`)."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://github.com/livewire/livewire/discussions/9878",
+      "title": "Order of modifiers in wire:model (v4.1+) · livewire/livewire · Discussion #9878 · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "In Livewire version 4.1.0, the order of modifiers in wire:model is important when using .live and .self modifiers.",
+        "When wire:model is set to .live.self, changes in the child component bubble up to the parent.",
+        "When wire:model is set to .self.live, changes do not bubble up to the parent.",
+        "A fix for the wire:model modifier order issue was merged into the main branch of Livewire via commit 2cda6d74.",
+        "In Livewire v4.x, wire:model should ignore child events by default, making the .self modifier unnecessary."
+      ]
+    },
+    {
+      "position": 7,
+      "url": "https://github.com/livewire/livewire/discussions/9952",
+      "title": "wire:model modifiers bug with Modelable components · livewire/livewire · Discussion #9952 · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "Livewire version v4.1.3 has a bug with wire:model modifiers on Modelable components.",
+        "The .blur modifier does not work as expected on modelable Livewire components.",
+        "The .live.blur modifier updates local state on every input event but does not send a network request on blur.",
+        "The .blur.live modifier updates local state and sends a network request on every input event.",
+        "A fix for the wire:model modifier bug on modelable components was submitted in PR #9993.",
+        "The .blur modifier was removed from the documentation for modelable components because it never worked."
+      ]
+    },
+    {
+      "position": 8,
+      "url": "https://livewire.laravel.com/docs/4.x/attribute-modelable",
+      "title": "Modelable | Laravel Livewire",
+      "kind": "research_citation",
+      "claims": [
+        "The `#[Modelable]` attribute in Livewire allows a property in a child component to be bound from a parent component using `wire:model`.",
+        "Without `#[Modelable]`, manual handling of two-way communication between parent and child components is required.",
+        "The parent can use `wire:model` modifiers like `.live`, `.debounce.500ms`, and `.live.throttle.500ms` for timing and network control with modelable components.",
+        "Event-based modifiers like `.blur`, `.change`, and `.enter` on `wire:model` control DOM events on specific elements within the child component, not reactive component bindings.",
+        "Livewire currently supports only one `#[Modelable]` attribute per component."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What changed about wire:model modifiers in Livewire 4.1?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "livewire/livewire"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T10:03:53.552189Z",
+  "ended_at": "2026-10-06T10:05:31.238813Z",
+  "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+  "question_id": "q11",
+  "strategy": "demo",
+  "expected_route": "research",
+  "duration_ms": 97686
+}

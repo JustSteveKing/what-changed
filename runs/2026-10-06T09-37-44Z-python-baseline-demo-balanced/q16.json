@@ -1,0 +1,161 @@
+{
+  "terminal_state": "completed",
+  "incomplete": false,
+  "incomplete_reasons": [],
+  "text": "Inertia 3 brought substantial changes to its server-side rendering (SSR) capabilities, primarily focusing on simplifying the developer experience, enhancing production robustness, and offering finer control over rendering behavior. These updates aim to make SSR more accessible and performant for modern web applications [1][2].\n\n### A Simplified Approach to SSR Development\n\nOne of the most impactful changes in Inertia 3 is the significant simplification of the SSR development workflow. The introduction of the new **`@inertiajs/vite` plugin** automates much of the SSR configuration, allowing developers to get SSR running \"out-of-the-box\" during development [1][3]. This eliminates the previous necessity of running a separate Node.js server specifically for development, streamlining the setup process and reducing boilerplate [4][2]. This contrasts sharply with earlier versions, which often required more manual configuration and distinct server processes during development [1].\n\n### Enhanced Production Capabilities and Requirements\n\nInertia 3 also refined SSR for production environments by updating requirements and integrating improved features. The SSR server now mandates **Node.js 22 or higher** [5][6]. For production deployments, the system is initiated with the command `php artisan inertia:start-ssr`, which starts the SSR process. A key improvement is the implementation of a **graceful fallback mechanism**: if SSR encounters a failure, Inertia will automatically fall back to client-side rendering, ensuring the application remains functional [5]. The Vite plugin also plays a crucial role here, simplifying the process of building both client-side and server-side bundles for deployment using commands like `vite build && vite build --ssr` [6].\n\n### Fine-Grained Control and Ongoing Refinements\n\nInertia 3 provides developers with more granular control over SSR behavior through explicit configuration options within the Vite plugin. Parameters such as the `entry` point for the SSR bundle, the `port` and `host` for the SSR server, and the ability to enable `cluster` mode for multi-threaded processing can now be customized [5]. Furthermore, the framework introduces the flexibility to **disable SSR entirely** via configuration or on a **per-route basis**, allowing developers to optimize performance for specific parts of their application [5][3]. Ongoing v3.x releases have continued to refine SSR, addressing issues like multi-byte UTF-8 corruption, improving HTTPS performance, and enhancing error classification for better debugging [7][8]. New components like `WhenMounted` have also been added to assist in handling client-only components gracefully within an SSR context [8].\n\n### Conclusion: A Focus on Developer Experience\n\nThe comprehensive changes to SSR in Inertia 3 underscore a clear commitment to improving the developer experience and delivering a more robust and adaptable rendering solution. By simplifying development setup, enhancing production stability with fallbacks, and offering detailed configuration options, Inertia 3 makes server-side rendering a more integrated and manageable part of the application development lifecycle [1].",
+  "sources": [
+    {
+      "position": 1,
+      "url": "https://inertiajs.com/docs/v3/getting-started/upgrade-guide",
+      "title": "Upgrade Guide for v3.0 - Inertia.js Documentation",
+      "kind": "research_citation",
+      "claims": [
+        "Inertia.js v3.0 is a major release focused on simplicity and developer experience.",
+        "Axios has been replaced with a built-in XHR client for a smaller bundle in Inertia.js v3.0.",
+        "SSR in Inertia.js v3.0 now works out of the box during development without a separate Node.js server.",
+        "The new @inertiajs/vite plugin in Inertia.js v3.0 handles page resolution and SSR configuration automatically.",
+        "Inertia.js v3.0 introduces standalone HTTP requests via the useHttp hook.",
+        "Inertia.js v3.0 introduces optimistic updates with automatic rollback.",
+        "Inertia.js v3.0 introduces layout props for sharing data between pages and layouts.",
+        "Inertia.js v3.0 improves exception handling.",
+        "Inertia.js v3.0 includes instant visits that swap to the target component before the server responds.",
+        "Inertia.js v3.0 includes form component generics for type-safe errors and slot props."
+      ]
+    },
+    {
+      "position": 2,
+      "url": "https://laravel.com/blog/inertiajs-v3-is-now-in-beta",
+      "title": "Inertia.js v3 Is Now in Beta | Laravel - The clean stack for Artisans and agents",
+      "kind": "research_citation",
+      "claims": [
+        "Inertia.js v3 beta was released on March 5, 2026.",
+        "Inertia.js v3 replaces Axios with a built-in XHR client.",
+        "Inertia.js v3 introduces a Vite plugin that handles page resolution and SSR automatically.",
+        "Inertia.js v3 adds first-class support for optimistic updates, standalone HTTP requests, and layout props.",
+        "Inertia v3 requires PHP 8.2+, Laravel 11+, React 19+ (React adapter), and Svelte 5+ (Svelte adapter)."
+      ]
+    },
+    {
+      "position": 3,
+      "url": "https://inertia-rails.dev/guide/upgrade-guide",
+      "title": "Upgrade Guide for v3.0 | Inertia Rails",
+      "kind": "research_citation",
+      "claims": [
+        "Inertia.js v3.0 replaces Axios with a built-in XHR client for a smaller bundle.",
+        "Inertia.js v3.0 SSR works out of the box during development without a separate Node.js server.",
+        "The new @inertiajs/vite plugin in v3.0 handles page resolution and SSR configuration automatically.",
+        "Inertia.js v3.0 introduces standalone HTTP requests via the `useHttp` hook.",
+        "Inertia.js v3.0 introduces optimistic updates with automatic rollback.",
+        "Inertia.js v3.0 introduces layout props for sharing data between pages and layouts.",
+        "Inertia.js v3.0 improves exception handling.",
+        "Inertia.js v3.0 includes instant visits that swap to the target component before the server responds.",
+        "Inertia.js v3.0 includes form component generics for type-safe errors and slot props.",
+        "Inertia.js v3.0 allows disabling SSR per-route via middleware or facade."
+      ]
+    },
+    {
+      "position": 4,
+      "url": "https://laravel-news.com/inertia-3-0-0",
+      "title": "Inertia.js v3.0.0 Is Here with Optimistic Updates, useHttp, and More",
+      "kind": "research_citation",
+      "claims": [
+        "Inertia.js v3.0.0 was released on March 26, 2026.",
+        "Inertia.js v3.0.0 includes built-in XHR HTTP client, a new useHttp hook, first-class optimistic update support, a layout props API, and SSR in Vite development mode.",
+        "The useHttp hook is new in Inertia.js v3.",
+        "Optimistic update support is a new feature in Inertia.js v3.",
+        "The layout props API replaces event bus and provide/inject workarounds in Inertia.js v3.",
+        "SSR now works in Vite development mode without a separate server process in Inertia.js v3."
+      ]
+    },
+    {
+      "position": 5,
+      "url": "https://inertiajs.com/docs/v3/advanced/server-side-rendering",
+      "title": "Server-Side Rendering (SSR) - Inertia.js Documentation",
+      "kind": "research_citation",
+      "claims": [
+        "Inertia SSR requires Node.js 22 or higher.",
+        "The Vite plugin handles SSR configuration automatically, including development mode SSR without a separate Node.js server.",
+        "To configure SSR explicitly with the Vite plugin, you can set the `entry`, `port`, `host`, and `cluster` options.",
+        "The default SSR entry point for the Vite plugin is `resources/js/ssr.js`.",
+        "The default SSR port is 13714, and the default host is 127.0.0.1.",
+        "Clustering can be enabled for the SSR server by setting `ssr.cluster` to `true` in `vite.config.js`.",
+        "The SSR server binds to `0.0.0.0` by default, but can be restricted using the `host` option.",
+        "In production, the SSR server is started using `php artisan inertia:start-ssr`.",
+        "Inertia gracefully falls back to client-side rendering when SSR rendering fails.",
+        "SSR can be disabled by setting `ssr: false` in the Inertia Vite plugin and `inertia.ssr.enabled` to `false` in `config/inertia.php`."
+      ]
+    },
+    {
+      "position": 6,
+      "url": "https://inertia-rails.dev/guide/server-side-rendering",
+      "title": "Server-Side Rendering (SSR) | Inertia Rails",
+      "kind": "research_citation",
+      "claims": [
+        "Inertia's SSR server requires Node.js 22 or higher.",
+        "The recommended way to configure SSR is with the `@inertiajs/vite` plugin.",
+        "The Vite plugin handles SSR configuration automatically, including development mode SSR without a separate Node.js server.",
+        "To build both bundles for production, use `vite build && vite build --ssr`.",
+        "For production, build both bundles and start the SSR server using `npm run build` and `node public/assets-ssr/inertia.js`.",
+        "The Vite plugin reuses your `inertia.js` entry point for both browser and SSR rendering by default.",
+        "A separate SSR entry point is only needed when you require completely different setup logic for the server.",
+        "By default, the SSR server binds to `0.0.0.0`, making it accessible on all network interfaces.",
+        "If you prefer not to use the Vite plugin, you may configure SSR manually by creating an SSR entry point file and configuring Vite.",
+        "The SSR server runs on a single thread by default, but clustering can be enabled to start multiple Node servers on the same port."
+      ]
+    },
+    {
+      "position": 7,
+      "url": "https://github.com/inertiajs/inertia/blob/3.x/CHANGELOG.md",
+      "title": "inertia/CHANGELOG.md at 3.x · inertiajs/inertia · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "Inertia v3.8.0, released on October 1, 2026, includes a fix for multi-byte UTF-8 corruption in SSR request body parsing.",
+        "Inertia v3.6.0, released on July 2, 2026, includes improvements to HTTPS Vite SSR performance on Linux with small response sizes.",
+        "Inertia v3.5.0, released on June 25, 2026, includes a fix for robust SSR error classification.",
+        "Inertia v3.3.0, released on May 27, 2026, includes support for network URLs for loading CSS assets in the SSR dev server.",
+        "Inertia v3.1.0, released on May 6, 2026, includes an 'host' option for the SSR server.",
+        "Inertia v3.0.1, released on March 31, 2026, includes a fix for FOUC during SSR development and warms up the SSR module graph on dev server start.",
+        "Inertia v3.0.0, released on March 25, 2026, includes SSR support in Vite development mode and a simplified setup.",
+        "Inertia v2.3.14, released on February 11, 2026, includes a fix to shut down the entire cluster on SSR shutdown.",
+        "Inertia v2.3.13, released on January 30, 2026, includes fixes for useForm type inference in generic wrapper components.",
+        "Inertia v2.3.8, released on January 9, 2026, includes a fix for ensuring the Flash Data listener is registered before the event is fired."
+      ]
+    },
+    {
+      "position": 8,
+      "url": "https://github.com/inertiajs/inertia/releases",
+      "title": "Releases · inertiajs/inertia · GitHub",
+      "kind": "research_citation",
+      "claims": [
+        "Inertia v3.8.0 was released on October 1, 2026.",
+        "Inertia v3.8.0 includes fixes for multi-byte UTF-8 corruption in SSR request body parsing, core types when Axios is not installed, and stale optimistic responses.",
+        "Inertia v3.8.0 also includes improvements for comparing asset versions before restoring history on back/forward reloads, preferring server.origin when resolving SSR CSS link URLs, and avoiding top-level await in the generated SSR bundle.",
+        "New features in Inertia v3.8.0 include a WhenMounted component and support for big integers as native BigInt values.",
+        "Inertia v3.7.1 was released on September 11, 2026.",
+        "Inertia v3.7.1 includes fixes for view transition abortions and clearing prefetch hover timers when a link is clicked.",
+        "Inertia v3.7.0 was released on August 18, 2026.",
+        "Inertia v3.7.0 includes fixes for React dropping restored pages on back_forward visits and not canceling background async visits on navigation.",
+        "New features in Inertia v3.7.0 include exposing 'cancel' on the Form component and adding 'cancelOnUnmount' to the Form component."
+      ]
+    }
+  ],
+  "error": null,
+  "cost": null,
+  "cost_note": "Tabstack does not report cost in API responses; spend is shown in the Tabstack console. See docs/VERIFIED.md.",
+  "question": "What changed in Inertia 3 for server-side rendering?",
+  "decision": {
+    "route": "research",
+    "reason": "Demo behaviour: every question goes to one Research call.",
+    "packages": [
+      "inertiajs/inertia-laravel"
+    ],
+    "version_mentioned": null
+  },
+  "started_at": "2026-10-06T10:12:53.558087Z",
+  "ended_at": "2026-10-06T10:14:24.455981Z",
+  "run_id": "2026-10-06T09-37-44Z-python-baseline-demo-balanced",
+  "question_id": "q16",
+  "strategy": "demo",
+  "expected_route": "research",
+  "duration_ms": 90897
+}

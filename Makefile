@@ -44,7 +44,7 @@ rerun: require-key ## [paid] 20 questions through the router, balanced mode (abo
 score: ## Deterministic checks and blank scoring sheet: make score RUN=<run-id> (default: newest run)
 	$(UV) run python -m eval.score $(or $(RUN),$(shell ls -d runs/20*/ | sort | tail -1 | xargs basename))
 
-draft: ## Validate eval/scoring-draft-model.json and write scoring-draft-model.csv per run
+draft: ## Validate eval/scoring-draft-model.json; write scoring-draft-model.csv and fill scoring.csv per run
 	$(UV) run python -m eval.score_draft
 
 fixture: require-key ## [paid] Record a live stream for replay tests: make fixture Q="..." OUT=tests/fixtures/x.json

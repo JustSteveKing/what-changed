@@ -17,6 +17,7 @@ class RequestLogEntry(Model):
     terminal_state: TerminalState
     latency_ms: int
     incomplete: bool
+    cached: bool
     source_count: int
     error_name: str | None
     # Only ever a cost the API reported. Tabstack reports none, so this is None.
@@ -31,6 +32,7 @@ def log_request(answer: ApplicationAnswer, answer_id: uuid.UUID | None, file: Pa
         terminal_state=answer.terminal_state,
         latency_ms=int((answer.ended_at - answer.started_at).total_seconds() * 1000),
         incomplete=answer.incomplete,
+        cached=answer.cached,
         source_count=len(answer.sources),
         error_name=answer.error.name if answer.error else None,
         reported_cost=answer.cost,

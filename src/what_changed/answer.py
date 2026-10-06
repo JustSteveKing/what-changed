@@ -3,6 +3,7 @@ from collections.abc import Awaitable, Callable
 from datetime import UTC, datetime
 from typing import Literal
 
+from what_changed.cache import TtlCache
 from what_changed.config import Config, load_config
 from what_changed.contract import (
     AnswerError,
@@ -40,6 +41,21 @@ def version_exists(version: str, normalized_versions: list[str]) -> bool:
     return False
 
 
+# Direct lookups are cached briefly, keyed on the normalised question. Research
+# answers are not cached: the point of the feature is a current answer, and a
+# cached research answer could miss a release tagged minutes ago. This is only about
+# this application; Tabstack has its own server-side cache, which the `nocache`
+# request parameter bypasses (see docs/VERIFIED.md).
+_default_cache: tuple[float, TtlCache[RouteResult]] | None = None
+
+
+def default_direct_cache(config: Config) -> TtlCache[RouteResult]:
+    global _default_cache
+    if _default_cache is None or _default_cache[0] != config.direct_cache_ttl_s:
+        _default_cache = (config.direct_cache_ttl_s, TtlCache(config.direct_cache_ttl_s))
+    return _default_cache[1]
+
+
 def declined(reason: str) -> RouteResult:
     return RouteResult(
         terminal_state="declined",
@@ -70,11 +86,20 @@ async def run_decision(
     direct: RunDirect,
     research: RunResearch,
     fetch_versions: FetchVersions,
-) -> RouteResult:
+    cache: TtlCache[RouteResult],
+) -> tuple[RouteResult, bool]:
     if decision.route == "decline":
-        return declined(decision.reason)
+        return declined(decision.reason), False
     if decision.route == "direct":
-        return await direct(decision.lookup, config, cancel)
+        key = normalise(question)
+        hit = cache.get(key)
+        if hit is not None:
+            return hit, True
+        result = await direct(decision.lookup, config, cancel)
+        # Only successful lookups are cached; a failure should be retried next time.
+        if result.terminal_state == "completed":
+            cache.set(key, result)
+        return result, False
 
     # A research call about a version that has never been tagged would answer
     # from speculation, so check Packagist first.
@@ -82,8 +107,8 @@ async def run_decision(
         package, version = decision.version_mentioned.package, decision.version_mentioned.version
         versions = await fetch_versions(package, config, cancel)
         if not version_exists(version, [v.version_normalized for v in versions]):
-            return declined(f"Packagist lists no tagged release of {package} matching {version}.")
-    return await research(question, config, cancel)
+            return declined(f"Packagist lists no tagged release of {package} matching {version}."), False
+    return await research(question, config, cancel), False
 
 
 async def answer(
@@ -97,13 +122,16 @@ async def answer(
     direct: RunDirect = run_direct,
     research: RunResearch = run_research,
     fetch_versions: FetchVersions = fetch_packagist_versions,
+    direct_cache: TtlCache[RouteResult] | None = None,
 ) -> ApplicationAnswer:
     started_at = datetime.now(UTC)
     config = config or load_config()
     decision = demo_decision(question) if strategy == "demo" else route(question)
 
+    cache = direct_cache if direct_cache is not None else default_direct_cache(config)
+    cached = False
     try:
-        result = await run_decision(question, decision, config, cancel, direct, research, fetch_versions)
+        result, cached = await run_decision(question, decision, config, cancel, direct, research, fetch_versions, cache)
     except Exception as error:
         state: TerminalState = "timed_out" if isinstance(error, TimedOut) else "cancelled" if isinstance(error, Cancelled) else "failed"
         reasons = {"timed_out": "The call timed out.", "cancelled": "The call was cancelled.", "failed": "The call threw an error."}
@@ -122,6 +150,7 @@ async def answer(
         question=question,
         decision=decision,
         **result.model_dump(),
+        cached=cached,
         started_at=started_at,
         ended_at=datetime.now(UTC),
     )

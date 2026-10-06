@@ -115,6 +115,9 @@ class RouteResult(Model):
 class ApplicationAnswer(RouteResult):
     question: str
     decision: RouteDecision
+    # True when a direct lookup was served from the cache. Defaults to False so
+    # records written before caching existed still parse.
+    cached: bool = False
     started_at: AwareDatetime
     ended_at: AwareDatetime
 

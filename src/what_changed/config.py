@@ -16,6 +16,8 @@ class _Env(BaseModel):
     DIRECT_TIMEOUT_MS: int = Field(default=10_000, gt=0)
     DIRECT_MAX_ATTEMPTS: int = Field(default=3, ge=1, le=5)
     DIRECT_RETRY_BASE_MS: int = Field(default=250, ge=0)
+    # 0 turns the direct lookup cache off.
+    DIRECT_CACHE_TTL_MS: int = Field(default=60_000, ge=0)
     # The docs give no server-side limit for research and say balanced mode can take
     # up to about four minutes, so the default leaves headroom above that.
     RESEARCH_TIMEOUT_MS: int = Field(default=300_000, gt=0)
@@ -33,6 +35,7 @@ class Config:
     direct_timeout_s: float
     direct_max_attempts: int
     direct_retry_base_s: float
+    direct_cache_ttl_s: float
     research_timeout_s: float
     answer_store_dir: Path | None
     request_log_file: Path | None
@@ -52,6 +55,7 @@ def load_config(env: Mapping[str, str] = os.environ) -> Config:
         direct_timeout_s=parsed.DIRECT_TIMEOUT_MS / 1000,
         direct_max_attempts=parsed.DIRECT_MAX_ATTEMPTS,
         direct_retry_base_s=parsed.DIRECT_RETRY_BASE_MS / 1000,
+        direct_cache_ttl_s=parsed.DIRECT_CACHE_TTL_MS / 1000,
         research_timeout_s=parsed.RESEARCH_TIMEOUT_MS / 1000,
         answer_store_dir=None if parsed.ANSWER_STORE_DIR == "off" else Path(parsed.ANSWER_STORE_DIR),
         request_log_file=None if parsed.REQUEST_LOG_FILE == "off" else Path(parsed.REQUEST_LOG_FILE),

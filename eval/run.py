@@ -10,7 +10,7 @@ from what_changed.answer import Strategy, answer
 from what_changed.config import load_config
 from what_changed.contract import EvalQuestionSet, RunManifest, RunRecord
 
-# Usage: uv run python eval/run.py <demo|routed> [label] [--first q06,q20]
+# Usage: uv run python -m eval.run <demo|routed> [label] [--first q06,q20]
 
 
 def git(*args: str) -> str:
@@ -19,7 +19,7 @@ def git(*args: str) -> str:
 
 async def main(argv: list[str]) -> int:
     if not argv or argv[0] not in ("demo", "routed"):
-        print("Usage: uv run python eval/run.py <demo|routed> [label] [--first q06,q20]", file=sys.stderr)
+        print("Usage: uv run python -m eval.run <demo|routed> [label] [--first q06,q20]", file=sys.stderr)
         return 1
     strategy: Strategy = "demo" if argv[0] == "demo" else "routed"
     label = argv[1] if len(argv) > 1 and not argv[1].startswith("--") else strategy

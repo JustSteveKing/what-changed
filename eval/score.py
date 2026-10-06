@@ -46,7 +46,7 @@ def check(record: RunRecord) -> Checks:
 
 def main(argv: list[str]) -> int:
     if not argv:
-        print("Usage: uv run python eval/score.py <run-id>", file=sys.stderr)
+        print("Usage: uv run python -m eval.score <run-id>", file=sys.stderr)
         return 1
     run_id = argv[0]
     run_dir = Path("runs") / run_id
